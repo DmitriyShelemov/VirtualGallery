@@ -1,0 +1,102 @@
+﻿@{
+    Layout = MVC.Shared.Views._Layout;
+}
+
+<span>Room</span>
+
+
+<canvas id="canvas" width="768" height="512" style="background-color: #eee"></canvas>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        var requestAnimFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame ||
+                               window.mozRequestAnimationFrame || window.msRequestAnimationFrame ||
+                               function (c) { window.setTimeout(c, 15); };
+
+        // generate blob image sprite
+        var buffer = document.createElement('canvas'),
+            size = 32,
+            width = size << 1;
+        buffer.width = buffer.height = width;
+        var ctx = buffer.getContext('2d');
+        var radgrad = ctx.createRadialGradient(size, size, size >> 1, size, size, size);
+        radgrad.addColorStop(0.7, "rgba(0,64,255,1)");
+        radgrad.addColorStop(1.0, "rgba(0,64,255,0)");
+        ctx.fillStyle = radgrad;
+        ctx.fillRect(0, 0, width, width);
+        var img = new Image();
+        img.src = buffer.toDataURL("image/png");
+
+        // get the canvas DOM element and the 2D drawing context
+        var canvas = $('#canvas')[0];
+        // create the scene and setup camera, perspective and viewport
+        var scene = new Phoria.Scene();
+        scene.camera.position = { x: -10, y: 12, z: -20};
+        scene.camera.lookat = { x: 6, y: 4, z: -1 };
+        scene.perspective.aspect = canvas.width / canvas.height;
+        scene.viewport.width = canvas.width;
+        scene.viewport.height = canvas.height;
+
+        // create a canvas renderer
+        var renderer = new Phoria.CanvasRenderer(canvas);
+
+        // add a grid to help visualise camera position etc.
+        var plane = Phoria.Util.generateTesselatedPlane(24, 24, 0, 60);
+        scene.graph.push(Phoria.Entity.create({
+            points: plane.points,
+            edges: plane.edges,
+            style: {
+                drawmode: "wireframe",
+                shademode: "plain",
+                linewidth: 0.5,
+                objectsortmode: "back"
+            }
+        }));
+
+        // draw room
+        var room = new GalleryRoom({
+            scene: scene,
+            scale: 3,
+            floor: { texture: "@Links.Content.Img.Textures.marakeshFloor_JPG" },
+            wall: { texture: "@Links.Content.Img.Textures.ashley_ruAQ50911_resize_JPG" },
+            roof: { texture: "@Links.Content.Img.Textures.roof_jpg" },
+            points: [{ x: 0, z: 0 }, { x: 0, z: 4 }, { x: 10, z: 4 }, { x: 10, z: 0 }],
+            height: 4,
+            enters: []
+        });
+
+        var fnAnimate = function () {
+            scene.modelView();
+            renderer.render(scene);
+            requestAnimFrame(fnAnimate);
+        };
+
+
+        // add GUI controls
+        var gui = new dat.GUI();
+        var f = gui.addFolder('Perspective');
+        f.add(scene.perspective, "fov").min(5).max(175);
+        f.add(scene.perspective, "near").min(1).max(100);
+        f.add(scene.perspective, "far").min(1).max(1000);
+        //f.open();
+        f = gui.addFolder('Camera LookAt');
+        f.add(scene.camera.lookat, "x").min(-100).max(100);
+        f.add(scene.camera.lookat, "y").min(-100).max(100);
+        f.add(scene.camera.lookat, "z").min(-100).max(100);
+        f.open();
+        f = gui.addFolder('Camera Position');
+        f.add(scene.camera.position, "x").min(-100).max(100);
+        f.add(scene.camera.position, "y").min(-100).max(100);
+        f.add(scene.camera.position, "z").min(-100).max(100);
+        f.open();
+        f = gui.addFolder('Camera Up');
+        f.add(scene.camera.up, "x").min(-10).max(10).step(0.1);
+        f.add(scene.camera.up, "y").min(-10).max(10).step(0.1);
+        f.add(scene.camera.up, "z").min(-10).max(10).step(0.1);
+        f.open();
+
+        // start animation
+        requestAnimFrame(fnAnimate);
+    });
+</script>

@@ -1,0 +1,1 @@
+RecreateDatabase.cmd "(local)" "VirtualGallery" pause

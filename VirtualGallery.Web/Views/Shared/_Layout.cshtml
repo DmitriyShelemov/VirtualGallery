@@ -1,0 +1,96 @@
+﻿@using VirtualGallery.Infrastructure.Localization
+@model VirtualGallery.Web.Models.BasePageModel
+
+@Html.Partial(MVC.Shared.Views._ConditionalComments)
+<html class="no-js" lang="en">
+	@Html.Partial(MVC.Shared.Views._LayoutHead)
+    <body class="common">
+        <div class="book">
+            <img src="@Links.Content.Img.book_png" alt="book.png"/>
+@*            <div class="koffee-cup">
+                <img src="@Links.Content.Img.koffee_cup_png" alt="koffee-cup.png"/>
+            </div>*@
+        </div>
+        <div class="content">
+            @Html.Partial(MVC.Shared.Views._MainMenu, Model.SelectedTab)
+            <aside>
+                @Html.Partial(MVC.Shared.Views._AsideMenu, Model.SelectedTab)
+            </aside>
+            <main>
+                @RenderBody()
+            </main>
+            <script type="text/javascript">
+                $(function () {
+                    var hideAllShownTooltips = function () {
+                        $('body').find('.tooltip.in:not(.free)').hide();
+                    };
+                    $('body').on("mouseenter", '*[rel="tooltip"]', function () {
+                        var self = $(this),
+                            data = self.data(),
+                            dataTooltip = self.data('tooltip');
+                        var settings = {
+                            delay: {
+                                show: data.delayShow != null ? data.delayShow : 500,
+                                hide: data.delayHide != null ? data.delayHide : 100,
+                            },
+                            shift: Number(data.shift) || 0,
+                            placement: data.placement != null ? data.placement : 'top',
+                            html: data.tooltipHtml != null ? data.tooltipHtml : true,
+                            container: data.tooltipContainer != null ? data.tooltipContainer : ".dialogs"
+                        };
+
+                        var preventParentTooltip = function (current) {
+                            current.parents().filter('*[rel="tooltip"]').each(function () {
+                                var tooltip = $(this).data('tooltip');
+                                if (tooltip) {
+                                    tooltip.hide();
+                                    tooltip.disable();
+                                }
+                            });
+                        };
+
+                        self.tooltip(settings);
+                        if (!dataTooltip) {
+                            self.attr('data-original-title') || self.attr('data-original-title', self.attr('title')).removeAttr('title');
+                            var tooltipTimeout = setTimeout(function () {
+                                self.tooltip("show");
+                                self.off(".tooltipTimeout");
+
+                                preventParentTooltip(self);
+
+                            }, settings.delay.show);
+                            $("body").trigger("tooltip:open", { index: tooltipTimeout, delay: settings.delay.show });
+
+                            self.on("mouseleave.tooltipTimeout", function () {
+                                clearTimeout(tooltipTimeout);
+                                self.off(".tooltipTimeout");
+                            });
+
+                            self.on("mouseleave", function (e) {
+                                self.parents().filter('*[rel="tooltip"]').each(function () {
+                                    var tooltip = $(this).data('tooltip');
+                                    if (tooltip) {
+                                        tooltip.enable();
+                                        tooltip.show();
+                                        return false;
+                                    }
+                                });
+                            });
+                        } else {
+                            preventParentTooltip(self);
+                        }
+                    });
+
+                    $(document).ajaxStop(hideAllShownTooltips);
+                });
+            </script>
+            @RenderSection("scripts", required: false)
+        </div>
+        <a class="menu-tab" style="position: absolute; top: 20px; right: 20px; color: white"
+           href="@Url.Action(MVC.Auth.Login())">@Localization.Common_Login</a>
+        
+		<div class="dialogs">
+			@RenderSection("Dialogs", required: false)
+		</div>
+    </body>
+</html>

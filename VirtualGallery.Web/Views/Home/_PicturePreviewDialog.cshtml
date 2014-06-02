@@ -1,0 +1,129 @@
+﻿@using System.Linq.Expressions
+@using VirtualGallery.Infrastructure.Localization
+@using VirtualGallery.Web.Models.Home
+@model PictureModel
+@{
+    Expression<Func<PictureModel, string>> pictureNameExp = m => m.Name;
+    var pictureName = ExpressionHelper.GetExpressionText(pictureNameExp);
+    Expression<Func<PictureModel, string>> pictureDescExp = m => m.Description;
+    var pictureDesc = ExpressionHelper.GetExpressionText(pictureDescExp);
+    Expression<Func<PictureModel, string>> pictureDetailsExp = m => m.Details;
+    var pictureDetails = ExpressionHelper.GetExpressionText(pictureDetailsExp);
+    Expression<Func<PictureModel, decimal>> priceRoubleExp = m => m.PriceRouble;
+    var priceRouble = ExpressionHelper.GetExpressionText(priceRoubleExp);
+    Expression<Func<PictureModel, decimal>> priceEuroExp = m => m.PriceEuro;
+    var priceEuro = ExpressionHelper.GetExpressionText(priceEuroExp);
+    Expression<Func<PictureModel, decimal>> priceDollarExp = m => m.PriceDollar;
+    var priceDollar = ExpressionHelper.GetExpressionText(priceDollarExp);
+}
+<div id="picturePreview" class="reveal-modal modal-picture-preview">
+
+    <h2>@Model.Name</h2>
+    <img src='@Model.OriginalUrl'/>
+    <div class='picture-name'>@Model.Description</div>
+
+    @if (ViewBag.AllowEdit)
+     {
+         @Html.TextBoxFor(m => m.Name, new
+         {
+             placeholder = Localization.Hardcoded("Type Picture Name")
+         })
+
+         @Html.TextAreaFor(m => m.Details, new
+         {
+             placeholder = Localization.Hardcoded("Type Picture Details")
+         })
+
+         <i class='fa fa-ruble fa-1'></i>
+
+         @Html.TextBoxFor(m => m.PriceRouble, new
+         {
+             style = "width: 30%;",
+             @class = "inline",
+             type = "number",
+             step = 100,
+             placeholder = "Rub"
+         })
+
+         <i class='fa fa-euro fa-1'></i>
+
+         @Html.TextBoxFor(m => m.PriceEuro, new
+         {
+             style = "width: 30%;",
+             @class = "inline",
+             type = "number",
+             placeholder = "€"
+         })
+
+         <i class='fa fa-dollar fa-1'></i>
+
+         @Html.TextBoxFor(m => m.PriceDollar, new
+         {
+             style = "width: 29%;",
+             @class = "inline",
+             type = "number",
+             placeholder = "$"
+         })
+
+         @Html.TextBoxFor(m => m.Description, new
+         {
+             placeholder = Localization.Hardcoded("Type Decsription")
+         })
+
+         <button id="savePicture" type="submit" class="btn"><i class='fa fa-check fa-1'></i>&nbsp;@Localization.Hardcoded("Save")</button>
+     }
+
+    <div class='buttons-reveal-modal'>
+        @if (ViewBag.AllowEdit)
+        {
+            <a href="#" id="editPicture"><i class='fa fa-edit fa-1'></i></a>
+        }
+        <a class="close-reveal-modal"><i class='fa fa-times fa-1'></i></a>
+    </div>
+</div>
+
+@if (ViewBag.AllowEdit)
+{
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var $dialog = $(".modal-picture-preview");
+            $("#editPicture", $dialog).click(function(e) {
+                e.preventDefault();
+                $dialog.toggleClass("modal-picture-edit");
+            });
+
+            $("#savePicture", $dialog).click(function (e) {
+                e.preventDefault();
+                var data = {
+                    Id: "@Model.Id",
+                    Name: $("#@pictureName", $dialog).val(),
+                    Description: $("#@pictureDesc", $dialog).val(),
+                    Details: $("#@pictureDetails", $dialog).val(),
+                    PriceRouble: $("#@priceRouble", $dialog).val(),
+                    PriceEuro: $("#@priceEuro", $dialog).val(),
+                    PriceDollar: $("#@priceDollar", $dialog).val()
+                };
+                $.ajax({
+                    type: "POST",
+                    cache: false,
+                    url: "@Url.Action(MVC.Home.ActionNames.EditPicture)",
+                    data: data
+                })
+                .done(function (result) {
+                    $dialog.toggleClass("modal-picture-edit");
+
+                    if (typeof (result) === "string") {
+                        $("h2", $dialog).text(data.name);
+                        $(".picture-name", $dialog).text(data.desc);
+                        var oldThumbnail = $('.picture-container > a.picture-preview[data-id="@Model.Id"]');
+                        $(result).insertBefore(oldThumbnail);
+                        oldThumbnail.detach();
+                        oldThumbnail.remove();
+                    } else {
+                        alert(result.ErrorMessage);
+                    }
+                });
+            });
+        });
+    </script>
+}

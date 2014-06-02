@@ -1,0 +1,7 @@
+﻿@model VirtualGallery.Web.Models.Home.HomePageModel
+@{
+    Layout = MVC.Home.Views._Layout;
+}
+
+<div class="main-header">@Html.Raw(Model.Title)<img class="brush" src="@Links.Content.Img.brush_png"/></div>
+@Html.Action(MVC.Home.GetCategories(0))

@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4D169DB9-1E5A-4C2E-8DA2-8E374BDE02B2}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VirtualGallery.Web</RootNamespace>
+    <AssemblyName>VirtualGallery.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.3.1\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc">
+      <HintPath>..\packages\Autofac.Mvc5.3.2.1\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="CaptchaMvc">
+      <HintPath>..\packages\CaptchaMvc.Mvc4.1.5.0\lib\net40-full\CaptchaMvc.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.1.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.1.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="T4MVCExtensions">
+      <HintPath>..\packages\T4MVCExtensions.3.9.0\lib\net40\T4MVCExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="AuthController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
+    <Compile Include="Controllers\DeliveryController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DeliveryController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\AjaxOnlyAttribute .cs" />
+    <Compile Include="Extensions\AjaxOrChildActionOnlyAttribute .cs" />
+    <Compile Include="Extensions\BooleanExtenstions.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Extensions\FromJsonAttribute.cs" />
+    <Compile Include="Extensions\GenericExtensions.cs" />
+    <Compile Include="Extensions\HtmlHelpers\HtmlHelperExtensions.cs" />
+    <Compile Include="Extensions\HtmlHelpers\JavaScriptHtmlHelperExtensions.cs" />
+    <Compile Include="Extensions\JsonSerializerExtensions.cs" />
+    <Compile Include="Extensions\ModelStateDictionaryExtensions.cs" />
+    <Compile Include="Extensions\StoredFileExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\ActionResults\GalleryJsonResult.cs" />
+    <Compile Include="Infrastructure\ClientSide\AjaxRequestResult.cs" />
+    <Compile Include="Infrastructure\ClientSide\AjaxRequestResultDataCommand.cs" />
+    <Compile Include="Infrastructure\Cookies\CookieStateManager.cs" />
+    <Compile Include="Infrastructure\DataAccess\WebDbContextProvider.cs" />
+    <Compile Include="Infrastructure\Dependency\GalleryDependencyResolver.cs" />
+    <Compile Include="Infrastructure\Filters\GalleryAuthorizeAttribute.cs" />
+    <Compile Include="Infrastructure\Filters\LogErrorFilter.cs" />
+    <Compile Include="Infrastructure\ModelBinders\DoubleModelBinder.cs" />
+    <Compile Include="Infrastructure\ModelBinders\LocalizedDefaultModelBinder.cs" />
+    <Compile Include="Infrastructure\Presentation\BaseController.cs" />
+    <Compile Include="Infrastructure\State\SessionStateManager.cs" />
+    <Compile Include="Infrastructure\WorkContext\WebWorkContext.cs" />
+    <Compile Include="Models\Auth\LoginModel.cs" />
+    <Compile Include="Models\BasePageModel.cs" />
+    <Compile Include="Models\Contact\ContactPageModel.cs" />
+    <Compile Include="Models\ErrorModel.cs" />
+    <Compile Include="Models\Home\CategoryModel.cs" />
+    <Compile Include="Models\Home\CategoryListModel.cs" />
+    <Compile Include="Models\Home\CategoryPageModel.cs" />
+    <Compile Include="Models\Home\PicturesModel.cs" />
+    <Compile Include="Models\Home\PictureModel.cs" />
+    <Compile Include="Models\Home\PictureUploadButtonModel.cs" />
+    <Compile Include="Models\ShoppingCart\ShoppingCartPageModel.cs" />
+    <Compile Include="Models\Delivery\DeliveryPageModel.cs" />
+    <Compile Include="Models\Home\HomePageModel.cs" />
+    <Compile Include="Models\MainMenuKey.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShoppingCartController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4MVC.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Bootstrap\bootstrap-theme.css" />
+    <Content Include="Content\Bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Content\Bootstrap\bootstrap.css" />
+    <Content Include="Content\Bootstrap\bootstrap.min.css" />
+    <Content Include="Content\FontAwesome\css\font-awesome.css" />
+    <Content Include="Content\FontAwesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Img\aside-brush.png" />
+    <Content Include="Content\Img\ink-blot.png" />
+    <Content Include="Content\Img\koffee-cup.png" />
+    <Content Include="Content\Img\book.png" />
+    <Content Include="Content\Img\bg.jpg" />
+    <Content Include="Content\Img\brush.png" />
+    <Content Include="Content\Img\modal-gloss.png" />
+    <Content Include="Content\Img\ornament.png" />
+    <Content Include="Content\Img\scroll-blot.png" />
+    <Content Include="Content\Img\Textures\ashley.ruAQ50909_resize.JPG" />
+    <Content Include="Content\Img\Textures\ashley.ruAQ50911_resize.JPG" />
+    <Content Include="Content\Img\Textures\marakeshFloor.JPG" />
+    <Content Include="Content\Img\Textures\roof.jpg" />
+    <Content Include="Content\Img\Textures\stariy-parket.jpg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\Bootstrap\bootstrap-theme.css.map" />
+    <Content Include="Content\Bootstrap\bootstrap.css.map" />
+    <Content Include="Content\FontAwesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\FontAwesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\FontAwesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\FontAwesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\FontAwesome\less\bordered-pulled.less" />
+    <Content Include="Content\FontAwesome\less\core.less" />
+    <Content Include="Content\FontAwesome\less\fixed-width.less" />
+    <Content Include="Content\FontAwesome\less\font-awesome.less" />
+    <Content Include="Content\FontAwesome\less\icons.less" />
+    <Content Include="Content\FontAwesome\less\larger.less" />
+    <Content Include="Content\FontAwesome\less\list.less" />
+    <Content Include="Content\FontAwesome\less\mixins.less" />
+    <Content Include="Content\FontAwesome\less\path.less" />
+    <Content Include="Content\FontAwesome\less\rotated-flipped.less" />
+    <Content Include="Content\FontAwesome\less\spinning.less" />
+    <Content Include="Content\FontAwesome\less\stacked.less" />
+    <Content Include="Content\FontAwesome\less\variables.less" />
+    <Content Include="Content\FontAwesome\scss\font-awesome.scss" />
+    <Content Include="Content\FontAwesome\scss\_bordered-pulled.scss" />
+    <Content Include="Content\FontAwesome\scss\_core.scss" />
+    <Content Include="Content\FontAwesome\scss\_fixed-width.scss" />
+    <Content Include="Content\FontAwesome\scss\_icons.scss" />
+    <Content Include="Content\FontAwesome\scss\_larger.scss" />
+    <Content Include="Content\FontAwesome\scss\_list.scss" />
+    <Content Include="Content\FontAwesome\scss\_mixins.scss" />
+    <Content Include="Content\FontAwesome\scss\_path.scss" />
+    <Content Include="Content\FontAwesome\scss\_rotated-flipped.scss" />
+    <Content Include="Content\FontAwesome\scss\_spinning.scss" />
+    <Content Include="Content\FontAwesome\scss\_stacked.scss" />
+    <Content Include="Content\FontAwesome\scss\_variables.scss" />
+    <Content Include="Content\Img\ink-blot.psd" />
+    <None Include="Scripts\jquery\jquery-2.1.0.intellisense.js" />
+    <Content Include="Scripts\common\bootstrap.js" />
+    <Content Include="Scripts\common\bootstrap.min.js" />
+    <Content Include="Scripts\fileupload\jquery.attachfile.js" />
+    <Content Include="Scripts\fileupload\jquery.fileupload-fp.js" />
+    <Content Include="Scripts\fileupload\jquery.fileupload.js" />
+    <Content Include="Scripts\fileupload\jquery.iframe-transport.js" />
+    <Content Include="Scripts\graphic\dat.gui.js" />
+    <Content Include="Scripts\graphic\gl-matrix-min.js" />
+    <Content Include="Scripts\graphic\gl-matrix.js" />
+    <Content Include="Scripts\graphic\entities\phoria-entity.js" />
+    <Content Include="Scripts\graphic\entities\phoria-renderer.js" />
+    <Content Include="Scripts\graphic\entities\phoria-scene.js" />
+    <Content Include="Scripts\graphic\phoria-util.js" />
+    <Content Include="Scripts\graphic\entities\phoria-view.js" />
+    <Content Include="Scripts\graphic\GalleryRoom.js" />
+    <Content Include="Scripts\jquery\jquery-2.1.0.js" />
+    <Content Include="Scripts\jquery\jquery-2.1.0.min.js" />
+    <Content Include="Scripts\jquery\jquery-2.1.0.min.map" />
+    <None Include="Scripts\jquery\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery\jquery.custom-scrollbar.js" />
+    <Content Include="Scripts\jquery\jquery.reveal.js" />
+    <Content Include="Scripts\jquery\jquery.textchange.js" />
+    <Content Include="Scripts\jquery\jquery.ui.widget.js" />
+    <Content Include="Scripts\jquery\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery\jquery.validate.js" />
+    <Content Include="Scripts\jquery\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\common\modernizr-2.7.2.js" />
+    <None Include="T4MVC.tt.settings.xml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <None Include="T4MVC.tt.hooks.t4" />
+    <None Include="T4MVC.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4MVC.cs</LastGenOutput>
+    </None>
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\_Gallery.cshtml" />
+    <Content Include="Views\Shared\_MainMenu.cshtml" />
+    <Content Include="Views\Delivery\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\Shared\_AsideMenu.cshtml" />
+    <Content Include="Views\Home\_Categories.cshtml" />
+    <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Views\Shared\_ConditionalComments.cshtml" />
+    <Content Include="Views\Shared\_LayoutHead.cshtml" />
+    <Content Include="Views\Home\_Pictures.cshtml" />
+    <Content Include="Views\Home\Category.cshtml" />
+    <Content Include="Views\Home\_Layout.cshtml" />
+    <Content Include="Views\Home\_AddPictureButton.cshtml" />
+    <Content Include="Views\Home\_Picture.cshtml" />
+    <Content Include="Views\Home\_PicturePreviewDialog.cshtml" />
+    <Content Include="Views\Home\_AddCategoryButton.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VirtualGallery.BusinessLogic\VirtualGallery.BusinessLogic.csproj">
+      <Project>{2f14f16d-d5a2-431a-b75b-1358f9a3024e}</Project>
+      <Name>VirtualGallery.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VirtualGallery.DataAccess\VirtualGallery.DataAccess.csproj">
+      <Project>{3697a411-f5f5-4540-a22e-5f5e96a3081d}</Project>
+      <Name>VirtualGallery.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VirtualGallery.Infrastructure\VirtualGallery.Infrastructure.csproj">
+      <Project>{3a650b2e-288b-42b0-a4d9-28a2b4cc83b9}</Project>
+      <Name>VirtualGallery.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:2944/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

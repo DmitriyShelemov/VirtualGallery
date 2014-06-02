@@ -1,0 +1,32 @@
+﻿@using Recaptcha.Web
+@using Recaptcha.Web.Mvc
+@using VirtualGallery.Infrastructure.Localization
+@model VirtualGallery.Web.Models.Contact.ContactPageModel
+@{
+    Layout = MVC.Shared.Views._Layout;
+}
+<div class="left-side">
+    
+    @Html.Recaptcha(theme: RecaptchaTheme.Clean)
+
+    
+
+    <p>
+        <b>Адрес:</b> г. Санкт-Петербург, ул. Торжковская, д. 7 (ст. м. Черная Речка)
+    </p>
+    <p>
+        <b>Телефон:</b> (812) 242-11-95 
+    </p>
+    <p>
+        <b>Email:</b> <a href="mailto:info.spb@alpindustria.ru" target="_top">info.spb@alpindustria.ru</a>
+    </p>
+    <p>
+        <b>Часы работы:</b> ежедневно c 10:00 до 22:00
+    </p>
+</div>
+<div class="right-side">
+    <div class="main-header" style="margin-top: 5%;">@Localization.Contact_Where_We_Are</div>
+    <div id="map" style="height: 300px; width:80%; margin: 5% auto; border: burlywood 2px dotted;">
+        <script type="text/javascript" charset="utf-8" src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=o0PhGpqM3JDsh7xRxnMN48pECc5wBQg1"></script>
+    </div>
+</div>

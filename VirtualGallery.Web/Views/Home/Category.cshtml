@@ -1,0 +1,115 @@
+﻿@using VirtualGallery.Infrastructure.Localization
+@using VirtualGallery.Web.Models.Home
+@model CategoryPageModel
+@{
+    Layout = MVC.Home.Views._Layout;
+}
+
+<div class="main-header" style="@(ViewBag.AllowEdit ? "padding-left: 0;" : "")">
+    <a id="homeCategory" href="@Url.Action(MVC.Home.Index())" style="@(ViewBag.AllowEdit ? "" : "margin-left: -35px;")">
+        <i class="fa fa-bottom fa-home fa-1"></i>
+    </a>
+
+    @if (ViewBag.AllowEdit)
+    {
+        <a id="editCategory"><i class="fa fa-bottom fa-edit fa-1"></i></a>
+        <a id="saveCategory" style="display: none;"><i class="fa fa-bottom fa-save fa-1"></i></a>
+        <a id="cancelCategory" style="display: none;"><i class="fa fa-bottom fa-sign-out fa-1"></i></a>
+        @Html.TextBox("Category", Model.Title, new { 
+            id = "categoryName", 
+            @class = "book-text", 
+            style="width: 67%; display: none;",
+            placeholder = Localization.Hardcoded("Type Category Name") 
+        })
+    }
+
+    <span>@Html.Raw(Model.Title)</span><img class="brush" src="@Links.Content.Img.brush_png"/>
+</div>
+
+@if (ViewBag.AllowEdit)
+{
+    <div class="category-buttons">
+        @Html.Partial(MVC.Home.Views._AddPictureButton, new PictureUploadButtonModel {CategoryId = Model.Category.Id})
+    </div>
+}
+
+@Html.Partial(MVC.Home.Views._Pictures, Model.Category.Pictures)
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var $headerText = $(".main-header > span");
+        var $headerBrush = $(".main-header > img");
+        var $categoryName = $("#categoryName");
+        var $editCategory = $("#editCategory");
+        var $saveCategory = $("#saveCategory");
+        var $cancelCategory = $("#cancelCategory");
+    
+        $editCategory.click(function() {
+            if ($editCategory.hasClass("disabled")) {
+                return;
+            }
+            $editCategory.hide();
+            $headerText.hide();
+            $headerBrush.hide();
+            $saveCategory.show();
+            $cancelCategory.show();
+            $categoryName.show();
+            $categoryName.focus();
+        });
+
+        $cancelCategory.click(function() {
+            if ($cancelCategory.hasClass("disabled")) {
+                return;
+            }
+            
+            $saveCategory.hide();
+            $cancelCategory.hide();
+            $categoryName.hide();
+            $headerText.show();
+            $headerBrush.show();
+            $editCategory.show();
+        });
+
+        var refreshState = function() {
+            if ($.trim($categoryName.val()).length > 0) {
+                $saveCategory.removeClass("disabled");
+            } else if (!$editCategory.hasClass("disabled")) {
+                $saveCategory.addClass("disabled");
+            }
+        };
+
+        $categoryName.on("textchange", refreshState);
+
+        $saveCategory.click(function() {
+            if ($saveCategory.hasClass("disabled")) {
+                return;
+            }
+
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                cache: false,
+                url: "@Url.Action(MVC.Home.EditCategory())",
+                data: {
+                    id: @Model.Category.Id,
+                    name: $.trim($categoryName.val()) 
+                }
+            })
+            .done(function(json) {
+                if (json.Success) {
+
+                    $headerText.text($categoryName.val());
+                    $saveCategory.hide();
+                    $cancelCategory.hide();
+                    $categoryName.hide();
+                    $headerText.show();
+                    $headerBrush.show();
+                    $editCategory.show();
+                }
+            });
+        });
+
+        refreshState();
+    });
+</script>

@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Database/bin/Debug
+/Database/obj/Debug
+/VirtualGallery.BusinessLogic/bin/Debug
+/VirtualGallery.DataAccess/bin/Debug
+/VirtualGallery.Infrastructure/bin/Debug
+/VirtualGallery.Web/bin
+/WebLogFile
+/VirtualGallery.Web/obj/Debug
+/VirtualGallery.Web/files/category

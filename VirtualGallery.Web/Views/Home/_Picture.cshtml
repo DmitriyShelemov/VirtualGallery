@@ -1,0 +1,21 @@
+﻿@model VirtualGallery.Web.Models.Home.PictureModel
+
+<a href='#' class='picture-preview' data-id='@Model.Id' data-animation='fade'>
+    <div class='picture-item' title='@Model.Description'>
+        <div class='picture-details'>@Model.Details</div>   
+        <img src='@Model.ThumbnailUrl'/> 
+        <div class='picture-name @(Model.Name.Length > 12 ? "small" : "")'><span>@Model.Name</span></div>
+        <div class='picture-price'><span>@Html.Raw(Model.Price)</span></div>
+        
+    </div>
+</a>
+<div class='picture-buttons-bottom'>
+    <a id="buyPicture"><i class="fa fa-bottom fa-shopping-cart fa-1"></i></a>
+</div>
+@if (ViewBag.AllowEdit)
+{
+    <div class='picture-buttons'>
+        <a class='topPicture' style='@(!Model.Topic ? "" : "display: none;")'><i class='fa fa-bottom fa-square fa-1'></i></a>
+        <a class='untopPicture' style='@(Model.Topic ? "" : "display: none;")'><i class='fa fa-bottom fa-check-square fa-1'></i></a>
+    </div>
+}

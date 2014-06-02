@@ -1,0 +1,49 @@
+﻿@using VirtualGallery.Infrastructure.Localization
+
+@Html.TextBox("Category", "", new { 
+    id = "categoryName", 
+    @class = "book-text", 
+    style="width: 85%",
+    placeholder = Localization.Hardcoded("New Category") 
+})
+<a id="addCategory" class="disabled"><i class="fa fa-plus-square fa-2-2" style="vertical-align: bottom;"></i></a>
+
+<script type="text/javascript">
+    var $categoryName = $("#categoryName");
+    var $addCategory = $("#addCategory");
+    var refreshState = function() {
+        if ($.trim($categoryName.val()).length > 0) {
+            $addCategory.removeClass("disabled");
+        } else if (!$addCategory.hasClass("disabled")) {
+            $addCategory.addClass("disabled");
+        }
+    };
+
+    $categoryName.on("textchange", refreshState);
+
+    $addCategory.click(function(e) {
+
+        e.preventDefault();
+
+        if ($addCategory.hasClass("disabled")) {
+            return;
+        }
+
+        $.ajax({
+                type: "POST",
+                dataType: "json",
+                cache: false,
+                url: "@Url.Action(MVC.Home.AddCategory())",
+                data: { name: $.trim($categoryName.val()) }
+            })
+            .done(function(json) {
+                if (json.Success) {
+                    window.location = "@Html.Raw(Url.Action(MVC.Home.Category(-1)))".replace("-1", json.Data);
+                }
+            });
+    });
+
+    $(document).ready(function() {
+        refreshState();
+    });
+</script>

@@ -1,0 +1,30 @@
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\VirtualGallery.BusinessLogic.dll
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\VirtualGallery.BusinessLogic.pdb
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.BusinessLogic\obj\Debug\VirtualGallery.BusinessLogic.dll
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.BusinessLogic\obj\Debug\VirtualGallery.BusinessLogic.pdb
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.BusinessLogic\obj\Debug\VirtualGallery.BusinessLogic.csprojResolveAssemblyReference.cache
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\VirtualGallery.BusinessLogic.dll.config
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\EntityFramework.dll
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\VirtualGallery.Infrastructure.dll
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\log4net.dll
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\VirtualGallery.Infrastructure.pdb
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\EntityFramework.xml
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\log4net.xml
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\ru-RU\VirtualGallery.Infrastructure.resources.dll
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\VirtualGallery.BusinessLogic.dll.config
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\VirtualGallery.BusinessLogic.dll
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\VirtualGallery.BusinessLogic.pdb
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\EntityFramework.dll
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\EntityFramework.SqlServer.dll
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\VirtualGallery.Infrastructure.dll
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\log4net.dll
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\VirtualGallery.Infrastructure.pdb
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\EntityFramework.xml
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\EntityFramework.SqlServer.xml
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\log4net.xml
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.BusinessLogic\bin\Debug\ru-RU\VirtualGallery.Infrastructure.resources.dll
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.BusinessLogic\obj\Debug\VirtualGallery.BusinessLogic.csprojResolveAssemblyReference.cache
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.BusinessLogic\obj\Debug\VirtualGallery.BusinessLogic.dll
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.BusinessLogic\obj\Debug\VirtualGallery.BusinessLogic.pdb

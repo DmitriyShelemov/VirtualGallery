@@ -1,0 +1,34 @@
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\VirtualGallery.DataAccess.dll
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\VirtualGallery.DataAccess.pdb
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.DataAccess\obj\Debug\VirtualGallery.DataAccess.dll
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.DataAccess\obj\Debug\VirtualGallery.DataAccess.pdb
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.DataAccess\obj\Debug\VirtualGallery.DataAccess.csprojResolveAssemblyReference.cache
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\VirtualGallery.DataAccess.dll.config
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\EntityFramework.dll
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\VirtualGallery.BusinessLogic.dll
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\VirtualGallery.Infrastructure.dll
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\log4net.dll
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\VirtualGallery.BusinessLogic.pdb
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\EntityFramework.xml
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\VirtualGallery.Infrastructure.pdb
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\log4net.xml
+C:\Users\Dmitry\Documents\Visual Studio 2012\Projects\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\ru-RU\VirtualGallery.Infrastructure.resources.dll
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\VirtualGallery.DataAccess.dll.config
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\VirtualGallery.DataAccess.dll
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\VirtualGallery.DataAccess.pdb
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\EntityFramework.dll
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\VirtualGallery.BusinessLogic.dll
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\VirtualGallery.Infrastructure.dll
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\log4net.dll
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\VirtualGallery.BusinessLogic.pdb
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\EntityFramework.xml
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\VirtualGallery.Infrastructure.pdb
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\log4net.xml
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.DataAccess\bin\Debug\ru-RU\VirtualGallery.Infrastructure.resources.dll
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.DataAccess\obj\Debug\VirtualGallery.DataAccess.csprojResolveAssemblyReference.cache
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.DataAccess\obj\Debug\VirtualGallery.DataAccess.dll
+D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.DataAccess\obj\Debug\VirtualGallery.DataAccess.pdb

@@ -1,0 +1,123 @@
+﻿@using VirtualGallery.BusinessLogic.Pictures
+@using VirtualGallery.Infrastructure.Localization
+@using VirtualGallery.Web.Extensions.HtmlHelpers
+@using VirtualGallery.Web.Models.Home
+@model VirtualGallery.Web.Models.Home.PictureUploadButtonModel
+
+@{
+    var acceptTypes = "image/gif,image/jpeg,image/png,image/bmp";
+    var fileTypeErrorMessage = string.Format(Localization.Picture_TypeNotSupported_Template, Localization.Picture_SupportedTypes_Image);
+
+}
+
+<div id="addPictureContainer">
+    @Html.UploadButtonFor(model => model.File, 
+        "<i class=\"fa fa-upload fa-2-2\"></i>", 
+        new {
+            multiple = "multiple",
+            data_url = Url.Action(MVC.Home.ActionNames.Upload, MVC.Home.Name, new { categoryId = Model.CategoryId }),
+            accept = acceptTypes
+        },
+        new { 
+            @class = "btn-upload",
+            rel="tooltip",
+            title = Localization.Picture_Import_tooltip 
+        })
+</div>
+@Scripts.Render("~/bundles/fileupload")
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var showFileSizeError = function(fileName) {
+            var message = "@Localization.Picture_BigFileSize".replace("{0}", fileName);
+            alert(message);
+        };
+
+        var showFileTypeError = function(fileName) {
+            var message = "@fileTypeErrorMessage".replace("{0}", fileName);
+            alert(message);
+        };
+
+        var $container = $("#addPictureContainer");
+        var res = $('<span/>');
+        var lastUploadedFile = null;
+        var clearProgress = function () {
+            res.html("100%").delay(800).queue(function (nxt) {
+                $(this).empty();
+                nxt();
+            });
+        };
+        
+        var $pictureContainer = $(".picture-container");
+        var pictureTemplate = "@Html.Raw(@Html.Partial(MVC.Home.Views._Picture, new PictureModel
+                               {
+                                   Id = -1,
+                                   ThumbnailUrl = "{ThumbnailUrl}",
+                                   Name = "{Name}",
+                                   Description = "{Description}",
+                                   OriginalUrl = "{OriginalUrl}",
+                                   Topic = false
+                               }).ToHtmlString().Replace("\n", "").Replace("\r", ""))";
+        var pictureAdded = function (index, item) {
+            lastUploadedFile = item;
+            var html = pictureTemplate.replace("-1", item.Id)
+                                        .replace("{ThumbnailUrl}", item.ThumbnailUrl)
+                                        .replace("{OriginalUrl}", item.OriginalUrl)
+                                        .replace("{Name}", item.Name)
+                                        .replace("{Description}", item.Description);
+            $pictureContainer.append($(html));
+
+            $(window).trigger("resize");
+        };
+
+        $('#File').closest("label").after(res);
+        $('#File').fileupload({
+            dataType: 'json',
+            dropZone: $container,
+            pasteZone: $container,
+            singleFileUploads: true,
+            acceptFileTypes: /(\.|\/)(bmp|gif|jpe?g|png)$/i,
+            send: function (e, data) {
+
+                if (!data.forceUpload) {
+
+                    var file = data.files[0];
+                    var fileName = file.name;
+                    if (typeof fileName !== "undefined" && !data.acceptFileTypes.test(fileName)) {
+                        showFileTypeError(fileName);
+                        return false;
+                    }
+
+                    if (typeof file.size !== "undefined" && file.size > @Picture.MaxFileSize) {
+                        showFileSizeError(fileName);
+                        return false;
+                    }
+                }
+                return true;
+            },
+            done: function(e, data) {
+                if (data.result && typeof data.result.Success !== "undefined" && data.result.Success === false) {
+                    alert(data.result.ErrorMessage);
+                    return;
+                }
+
+                $.each(data.result.Data, pictureAdded);
+            },
+            stop: function() {
+                clearProgress();
+            },
+            progressall: function(e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                if (progress < 100) {
+                    res.html(progress + "%");
+                } else {
+                    clearProgress();
+                }
+            }
+        });
+
+        $('#File').closest('label').on('click, mousedown, mouseup', function () {
+            $('#File').closest('label').tooltip("hide");
+        });
+    });
+</script>

@@ -1,0 +1,95 @@
+﻿@using VirtualGallery.Web.Models
+@model VirtualGallery.Web.Models.Home.PicturesModel
+<div class="picture-container" data-id="@Model.ContainerId">
+            
+    @foreach (var picture in Model.Items)
+    {
+        @Html.Partial(MVC.Home.Views._Picture, picture)
+    }
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var $pictureContainer = $('.picture-container[data-id="@Model.ContainerId"]');
+        $pictureContainer.on('click', 'a.picture-preview', function (e) {
+            e.preventDefault();
+            var $dialog = $('#picturePreview'), $this = $(this);
+            if ($dialog) {
+                $dialog.detach().remove();
+            }
+            $.ajax({
+                type: "GET",
+                cache: false,
+                url: "@Url.Action(MVC.Home.ActionNames.PreviewPicture, new { id = -1 })"
+                                .replace("-1", $this.attr("data-id")),
+            })
+                .done(function (data) {
+                    if (typeof (data) === "string") {
+                        $('.dialogs').append(data);
+                        $('#picturePreview').reveal($this.data());
+                    } else {
+                        alert(data.ErrorMessage);
+                    }
+                });
+        });
+
+        $pictureContainer.on("mouseenter", ".picture-item > img", function () {
+            $(this).animate({opacity: 0.2}, 400);
+        });
+
+        $pictureContainer.on("mouseleave", ".picture-item", function () {
+            $(this).find("img").animate({ opacity: 1}, 400);
+        });
+        
+        $(".menu-tabs a[href='#@MainMenuKey.Prices'].menu-tab")
+            .click(function () {
+                if (!$pictureContainer.hasClass("prices")) {
+                    $pictureContainer.addClass("prices");
+                }
+            });
+
+        if (window.location.hash == '#@MainMenuKey.Prices') {
+            $pictureContainer.addClass("prices");
+        }
+        
+@if (ViewBag.AllowEdit)
+{
+    <text>
+        $pictureContainer.on("click", ".topPicture", function () {
+            var $this = $(this);
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                cache: false,
+                url: "@Url.Action(MVC.Home.ActionNames.TopPicture, new {id = -1, top = -2})"
+                            .replace("-1", $this.parents(".picture-buttons").prev(".picture-preview").attr("data-id")).replace("-2", true),
+            })
+                .done(function (json) {
+                    if (json.Success) {
+                        $this.hide();
+                        $this.next(".untopPicture").show();
+                    }
+                });
+        });
+
+        $pictureContainer.on("click", ".untopPicture", function () {
+            var $this = $(this);
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                cache: false,
+                url: "@Url.Action(MVC.Home.ActionNames.TopPicture, new {id = -1, top = -2})"
+                            .replace("-1", $this.parents(".picture-buttons").prev(".picture-preview").attr("data-id")).replace("-2", false),
+            })
+                .done(function (json) {
+                    if (json.Success) {
+                        $this.hide();
+                        $this.prev(".topPicture").show();
+                    }
+                });
+        });
+    </text>
+}
+    });
+</script>

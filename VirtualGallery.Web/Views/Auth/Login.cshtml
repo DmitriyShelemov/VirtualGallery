@@ -1,0 +1,32 @@
+﻿@using VirtualGallery.Infrastructure.Localization
+@model VirtualGallery.Web.Models.Auth.LoginModel
+@{
+    Layout = MVC.Shared.Views._LoginLayout;
+    ViewBag.Title = Localization.Common_Gallery;
+}
+
+<div class="login-page">
+    <div class="login-row" style="height: 100%;">
+        <div class="login-content">
+            <div>
+                @using (Html.BeginForm(MVC.Auth.Login(Model.ReturnUrl, null, null)))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <div class="login-form-content">
+                        <div class="control-group">
+                            @Html.LabelFor(m => m.UserName)
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "input-mlarge" })
+                        </div>
+                        <div class="control-group">
+                            @Html.LabelFor(m => m.Password)
+                            @Html.PasswordFor(m => m.Password, new { @class = "input-mlarge" })
+                        </div>
+                        <input type="submit" value="@Localization.Common_Login" class="btn btn-large btn-primary"/>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>

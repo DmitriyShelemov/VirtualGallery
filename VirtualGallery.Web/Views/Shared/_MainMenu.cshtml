@@ -1,0 +1,38 @@
+﻿@using VirtualGallery.Infrastructure.Localization
+@using VirtualGallery.Web.Models
+@model MainMenuKey
+
+<ul class="menu-tabs">
+    <li>
+        <a class="menu-tab @(Model == MainMenuKey.Main ? "active" : string.Empty)" 
+           href="@Url.Action(MVC.Home.Index())">@Localization.Nav_Main</a>
+    </li>
+    <li>
+        <a class="menu-tab @(Model == MainMenuKey.Prices ? "active" : string.Empty)" 
+           href="#@MainMenuKey.Prices">@Localization.Nav_Prices</a>
+    </li>
+    <li>
+        <a class="menu-tab @(Model == MainMenuKey.ShoppingCart ? "active" : string.Empty)" 
+           href="@Url.Action(MVC.ShoppingCart.Index())">@Localization.Nav_ShoppingCart</a>
+    </li>
+</ul>
+<div class="clear"></div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var $mainMenus = $(".menu-tabs .menu-tab");
+        var selectMenu = function ($menu) {
+            $mainMenus.removeClass("active");
+            $menu.addClass("active");
+        };
+
+        $mainMenus.click(function() {
+            selectMenu($(this));
+        });
+
+
+        if (window.location.hash == '#@MainMenuKey.Prices') {
+            selectMenu($mainMenus.filter("a[href='#@MainMenuKey.Prices']"));
+        }
+    });
+</script>

@@ -1,0 +1,18 @@
+﻿@using VirtualGallery.Infrastructure.Localization
+@using VirtualGallery.Web.Models
+@model MainMenuKey
+
+<ul class="aside-menu">
+    <li>
+        <a class="aside-menu-item @(Model == MainMenuKey.Delivery ? "active" : string.Empty)" href="@Url.Action(MVC.Delivery.Index())">@Localization.Side_Delivery</a>
+    </li>
+    <li>
+        <a class="aside-menu-item @(Model == MainMenuKey.Decor ? "active" : string.Empty)" href="#">@Localization.Side_Decor</a>
+    </li>
+    <li>
+        <a class="aside-menu-item @(Model == MainMenuKey.About ? "active" : string.Empty)" href="#">@Localization.Side_About</a>
+    </li>
+    <li>
+        <a class="aside-menu-item @(Model == MainMenuKey.Contact ? "active" : string.Empty)" href="@Url.Action(MVC.Contact.Index())">@Localization.Side_Contact</a>
+    </li>
+</ul>
