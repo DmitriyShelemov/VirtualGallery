@@ -223,4 +223,24 @@
   <data name="Contact_Where_We_Are" xml:space="preserve">
     <value>Where we are?</value>
   </data>
+  <data name="Common_Validation_Max_Length" xml:space="preserve">
+    <value>Max length is {0} characters.</value>
+    <comment>Max length is {0} characters.</comment>
+  </data>
+  <data name="Common_Validation_Required" xml:space="preserve">
+    <value>The field is required</value>
+    <comment>The field is required</comment>
+  </data>
+  <data name="Common_Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="Contact_Body" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Contact_FromEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Common_Validation_Email" xml:space="preserve">
+    <value>The field is not a valid e-mail address</value>
+  </data>
 </root>

@@ -71,15 +71,25 @@ namespace VirtualGallery.Web.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
+            public readonly string SendFeedback = "SendFeedback";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
+            public const string SendFeedback = "SendFeedback";
         }
 
 
+        static readonly ActionParamsClass_SendFeedback s_params_SendFeedback = new ActionParamsClass_SendFeedback();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_SendFeedback SendFeedbackParams { get { return s_params_SendFeedback; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_SendFeedback
+        {
+            public readonly string model = "model";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -90,8 +100,10 @@ namespace VirtualGallery.Web.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _Feedback = "_Feedback";
                 public readonly string Index = "Index";
             }
+            public readonly string _Feedback = "~/Views/Contact/_Feedback.cshtml";
             public readonly string Index = "~/Views/Contact/Index.cshtml";
         }
     }
@@ -109,6 +121,29 @@ namespace VirtualGallery.Web.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             IndexOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void SendFeedbackOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult SendFeedback()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SendFeedback);
+            SendFeedbackOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void SendFeedbackOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, VirtualGallery.Web.Models.Contact.FeedbackModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult SendFeedback(VirtualGallery.Web.Models.Contact.FeedbackModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SendFeedback);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            SendFeedbackOverride(callInfo, model);
             return callInfo;
         }
 

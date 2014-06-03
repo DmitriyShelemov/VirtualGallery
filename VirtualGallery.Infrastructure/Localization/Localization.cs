@@ -107,6 +107,12 @@ namespace VirtualGallery.Infrastructure.Localization
 			public const string Picture_TypeNotSupported_Template = "Picture_TypeNotSupported_Template";
 			public const string Picture_Loading = "Picture_Loading";
 			public const string Contact_Where_We_Are = "Contact_Where_We_Are";
+			public const string Common_Validation_Max_Length = "Common_Validation_Max_Length";
+			public const string Common_Validation_Required = "Common_Validation_Required";
+			public const string Common_Send = "Common_Send";
+			public const string Contact_Body = "Contact_Body";
+			public const string Contact_FromEmail = "Contact_FromEmail";
+			public const string Common_Validation_Email = "Common_Validation_Email";
 		 		    	
 		}
 
@@ -249,6 +255,30 @@ namespace VirtualGallery.Infrastructure.Localization
 		public static string Contact_Where_We_Are
 		{
 			get{ return GetString(Names.Contact_Where_We_Are);}
+		}
+		public static string Common_Validation_Max_Length
+		{
+			get{ return GetString(Names.Common_Validation_Max_Length);}
+		}
+		public static string Common_Validation_Required
+		{
+			get{ return GetString(Names.Common_Validation_Required);}
+		}
+		public static string Common_Send
+		{
+			get{ return GetString(Names.Common_Send);}
+		}
+		public static string Contact_Body
+		{
+			get{ return GetString(Names.Contact_Body);}
+		}
+		public static string Contact_FromEmail
+		{
+			get{ return GetString(Names.Contact_FromEmail);}
+		}
+		public static string Common_Validation_Email
+		{
+			get{ return GetString(Names.Common_Validation_Email);}
 		}
 		 		    	
 	}

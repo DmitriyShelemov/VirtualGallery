@@ -1,0 +1,66 @@
+﻿@using CaptchaMvc.HtmlHelpers
+@using VirtualGallery.Infrastructure.Localization
+@model VirtualGallery.Web.Models.Contact.FeedbackModel
+
+<div style="margin-left: 42%;">
+    @using (Html.BeginForm(MVC.Contact.SendFeedback(), FormMethod.Post))
+    {
+        @Html.Label(Localization.Hardcoded("Send Feedback"))
+        @Html.LabelFor(m => m.FromEmail)
+        @Html.TextBoxFor(m => m.FromEmail, new { style = "width:100%" })
+        @Html.LabelFor(m => m.Body)
+        @Html.TextAreaFor(m => m.Body, new { style = "width:100%" })
+        <p>
+            @Html.Captcha(8, MVC.Shared.Views._Captcha)
+        </p>
+        <p style="text-align: right;">
+            <button id="sendFeedback" type="button" class="btn btn-primary">
+                <i class="fa fa-check fa-1"></i>
+                @Localization.Common_Send
+            </button>
+        </p>
+    }
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var $sendFeedback = $("#sendFeedback");
+        var $form = $sendFeedback.parents("form:first");
+        $.validator.unobtrusive.parse($form);
+        var $inputs = $("input, textarea", $form);
+        var refreshState = function () {
+            var anyEmpty = false;
+            $inputs.each(function() {
+                anyEmpty |= ($.trim($(this).val()).length == 0);
+            });
+
+            if (!anyEmpty) {
+                $sendFeedback.removeClass("disabled");
+            } else if (!$sendFeedback.hasClass("disabled")) {
+                $sendFeedback.addClass("disabled");
+            }
+        };
+
+        $inputs.on("textchange", refreshState);
+        refreshState();
+
+        $sendFeedback.click(function (e) {
+            e.preventDefault();
+            if ($form.valid()) {
+                $.ajax({
+                    type: "POST",
+                    cache: false,
+                    url: "@Url.Action(MVC.Contact.ActionNames.SendFeedback)",
+                    data: $form.serialize()
+                })
+                .done(function (result) {
+                    if (result.Success) {
+                        $inputs.each(function () {
+                            $(this).val("");
+                        });
+                    }
+                });
+            }
+        });
+    });
+</script>

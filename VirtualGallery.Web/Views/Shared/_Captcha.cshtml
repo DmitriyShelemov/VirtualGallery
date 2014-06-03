@@ -1,0 +1,35 @@
+﻿@using VirtualGallery.Infrastructure.Localization
+@model CaptchaMvc.Models.DefaultBuildInfoModel
+@{
+    string id = Guid.NewGuid().ToString("N");
+    string functionName = string.Format("_{0}_", Guid.NewGuid().ToString("N")); 
+}
+
+<img id="@Model.ImageElementId" src="@Model.ImageUrl" style="width: 47%;" />
+
+<a href="#@Model.InputElementId" id="@id" style="display: none;"><i class="fa fa-1 fa-refresh"></i></a> 
+@Html.TextBox(Model.InputElementId, null, new Dictionary<string, object>
+                                                {
+                                                    {"data-val", "true"},
+                                                    {"data-val-required", Localization.Hardcoded("Is required field")},
+                                                    {"style", "width: 43%;"}
+                                                })
+@Html.ValidationMessage(Model.InputElementId)
+@Html.Hidden(Model.TokenElementId, Model.TokenValue)
+
+<script type="text/javascript">
+
+    $(function () { $('#@id').show(); });
+
+
+    $('#@id').click(function(e) {
+        e.preventDefault();
+
+        $('#@id').hide();
+        $.post("@Model.RefreshUrl", { @Model.TokenParameterName: $('#@Model.TokenElementId').val() },
+            function() {
+                $('#@id').show();
+            });
+        return false;
+    });
+</script>

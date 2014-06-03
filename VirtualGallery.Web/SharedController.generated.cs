@@ -37,6 +37,7 @@ namespace T4MVC
             public class _ViewNamesClass
             {
                 public readonly string _AsideMenu = "_AsideMenu";
+                public readonly string _Captcha = "_Captcha";
                 public readonly string _ConditionalComments = "_ConditionalComments";
                 public readonly string _Layout = "_Layout";
                 public readonly string _LayoutHead = "_LayoutHead";
@@ -45,6 +46,7 @@ namespace T4MVC
                 public readonly string Error = "Error";
             }
             public readonly string _AsideMenu = "~/Views/Shared/_AsideMenu.cshtml";
+            public readonly string _Captcha = "~/Views/Shared/_Captcha.cshtml";
             public readonly string _ConditionalComments = "~/Views/Shared/_ConditionalComments.cshtml";
             public readonly string _Layout = "~/Views/Shared/_Layout.cshtml";
             public readonly string _LayoutHead = "~/Views/Shared/_LayoutHead.cshtml";

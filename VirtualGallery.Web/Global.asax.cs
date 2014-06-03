@@ -1,7 +1,9 @@
 ﻿using System.Data.Entity;
+using System.Drawing;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using CaptchaMvc.Infrastructure;
 using VirtualGallery.DataAccess;
 using VirtualGallery.Web.Infrastructure.Dependency;
 
@@ -23,6 +25,7 @@ namespace VirtualGallery.Web
             DependencyResolver.SetResolver(new GalleryDependencyResolver());
             MvcHandler.DisableMvcResponseHeader = true;
             Database.SetInitializer<VirtualGalleryDbContext>(null);
+            CaptchaUtils.ImageGenerator.FontColor = Color.DarkSlateGray;
         }
     }
 }

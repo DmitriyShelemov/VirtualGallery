@@ -22,3 +22,15 @@ D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.Infrastructure\obj\Debug\Vi
 D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.Infrastructure\obj\Debug\ru-RU\VirtualGallery.Infrastructure.resources.dll
 D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.Infrastructure\obj\Debug\VirtualGallery.Infrastructure.dll
 D:\Dima\VirtualGallery\VirtualGallery\VirtualGallery.Infrastructure\obj\Debug\VirtualGallery.Infrastructure.pdb
+F:\GitHub\Repos\VirtualGallery\VirtualGallery.Infrastructure\bin\Debug\VirtualGallery.Infrastructure.dll
+F:\GitHub\Repos\VirtualGallery\VirtualGallery.Infrastructure\bin\Debug\VirtualGallery.Infrastructure.pdb
+F:\GitHub\Repos\VirtualGallery\VirtualGallery.Infrastructure\bin\Debug\ru-RU\VirtualGallery.Infrastructure.resources.dll
+F:\GitHub\Repos\VirtualGallery\VirtualGallery.Infrastructure\bin\Debug\log4net.dll
+F:\GitHub\Repos\VirtualGallery\VirtualGallery.Infrastructure\bin\Debug\log4net.xml
+F:\GitHub\Repos\VirtualGallery\VirtualGallery.Infrastructure\obj\Debug\VirtualGallery.Infrastructure.csprojResolveAssemblyReference.cache
+F:\GitHub\Repos\VirtualGallery\VirtualGallery.Infrastructure\obj\Debug\VirtualGallery.Infrastructure.Localization.Resourses.Localization.resources
+F:\GitHub\Repos\VirtualGallery\VirtualGallery.Infrastructure\obj\Debug\VirtualGallery.Infrastructure.Localization.Resourses.Localization.ru-RU.resources
+F:\GitHub\Repos\VirtualGallery\VirtualGallery.Infrastructure\obj\Debug\VirtualGallery.Infrastructure.csproj.GenerateResource.Cache
+F:\GitHub\Repos\VirtualGallery\VirtualGallery.Infrastructure\obj\Debug\ru-RU\VirtualGallery.Infrastructure.resources.dll
+F:\GitHub\Repos\VirtualGallery\VirtualGallery.Infrastructure\obj\Debug\VirtualGallery.Infrastructure.dll
+F:\GitHub\Repos\VirtualGallery\VirtualGallery.Infrastructure\obj\Debug\VirtualGallery.Infrastructure.pdb

@@ -185,6 +185,7 @@
     <Compile Include="Models\Auth\LoginModel.cs" />
     <Compile Include="Models\BasePageModel.cs" />
     <Compile Include="Models\Contact\ContactPageModel.cs" />
+    <Compile Include="Models\Contact\FeedbackModel.cs" />
     <Compile Include="Models\ErrorModel.cs" />
     <Compile Include="Models\Home\CategoryModel.cs" />
     <Compile Include="Models\Home\CategoryListModel.cs" />
@@ -337,6 +338,8 @@
     <Content Include="Views\Home\_PicturePreviewDialog.cshtml" />
     <Content Include="Views\Home\_AddCategoryButton.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Contact\_Feedback.cshtml" />
+    <Content Include="Views\Shared\_Captcha.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
