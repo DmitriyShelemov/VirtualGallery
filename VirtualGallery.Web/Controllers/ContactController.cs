@@ -5,6 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using CaptchaMvc.Attributes;
 using CaptchaMvc.HtmlHelpers;
+using VirtualGallery.BusinessLogic.Configuration;
+using VirtualGallery.BusinessLogic.EMail;
+using VirtualGallery.BusinessLogic.EMail.Interfaces;
+using VirtualGallery.BusinessLogic.EMail.Messages;
 using VirtualGallery.BusinessLogic.WorkContext;
 using VirtualGallery.Web.Infrastructure.Presentation;
 using VirtualGallery.Web.Models.Contact;
@@ -13,9 +17,12 @@ namespace VirtualGallery.Web.Controllers
 {
     public partial class ContactController : BaseController
     {
-        public ContactController(IWorkContext workContext)
+        private readonly IMailBox _mailBox;
+
+        public ContactController(IWorkContext workContext, IMailBox mailBox)
             : base(workContext)
         {
+            _mailBox = mailBox;
         }
 
         public virtual ActionResult Index()
@@ -41,6 +48,9 @@ namespace VirtualGallery.Web.Controllers
             {
                 return FailedJson("Unable to send feedback", fixUploadIE: true);
             }
+
+            _mailBox.Send(new Message(AppSettings.MailFrom, model.FromEmail, model.Body) { From = model.FromEmail });
+
             return SuccessJson();
         }
     }

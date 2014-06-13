@@ -117,6 +117,39 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Common_Feedback" xml:space="preserve">
+    <value>Обратная связь</value>
+  </data>
+  <data name="Common_Send" xml:space="preserve">
+    <value>Отправить</value>
+  </data>
+  <data name="Contact_Address" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="Contact_Address_i" xml:space="preserve">
+    <value>г. Санкт-Петербург, ул. Торжковская, д. 7 (ст. м. Черная Речка)</value>
+  </data>
+  <data name="Contact_Body" xml:space="preserve">
+    <value>Сообщение</value>
+  </data>
+  <data name="Contact_Business_Hours" xml:space="preserve">
+    <value>Часы работы</value>
+  </data>
+  <data name="Contact_Business_Hours_i" xml:space="preserve">
+    <value>ежедневно c 10:00 до 22:00</value>
+  </data>
+  <data name="Contact_FromEmail" xml:space="preserve">
+    <value>Ваша почта</value>
+  </data>
+  <data name="Contact_Mail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Contact_Phone" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="Contact_Phone_i" xml:space="preserve">
+    <value>(812) 242-11-95</value>
+  </data>
   <data name="Contact_Where_We_Are" xml:space="preserve">
     <value>Как нас Найти?</value>
   </data>

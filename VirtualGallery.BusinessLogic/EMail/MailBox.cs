@@ -40,12 +40,14 @@ namespace VirtualGallery.BusinessLogic.EMail
          
         private MailMessage CreateMailMessage(Message message)
         {
-            return CreateMailMessage(message.To, message.Subject, message.Body);
+            return CreateMailMessage(message.To, 
+                string.IsNullOrEmpty(message.From) ? _from : message.From, 
+                message.Subject, message.Body);
         }
 
-        private MailMessage CreateMailMessage(string to, string subject, string body)
+        private MailMessage CreateMailMessage(string to, string from, string subject, string body)
         {
-            return new MailMessage(new MailAddress(_from), new MailAddress(to))
+            return new MailMessage(new MailAddress(from), new MailAddress(to))
             {
                 Subject = subject,
                 Body = body,

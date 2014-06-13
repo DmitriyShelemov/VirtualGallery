@@ -5,7 +5,7 @@
         public Message()
         {
         }
-        protected Message(string mail, string subject, string body)
+        public Message(string mail, string subject, string body)
         {
             To = mail;
             Subject = subject;
@@ -15,6 +15,8 @@
         public string Body { get; set; }
 
         public string Subject { get; set; }
+
+        public string From { get; set; }
 
         public string To { get; set; }
 

@@ -113,6 +113,14 @@ namespace VirtualGallery.Infrastructure.Localization
 			public const string Contact_Body = "Contact_Body";
 			public const string Contact_FromEmail = "Contact_FromEmail";
 			public const string Common_Validation_Email = "Common_Validation_Email";
+			public const string Common_Feedback = "Common_Feedback";
+			public const string Contact_Address = "Contact_Address";
+			public const string Contact_Address_i = "Contact_Address_i";
+			public const string Contact_Business_Hours = "Contact_Business_Hours";
+			public const string Contact_Business_Hours_i = "Contact_Business_Hours_i";
+			public const string Contact_Mail = "Contact_Mail";
+			public const string Contact_Phone = "Contact_Phone";
+			public const string Contact_Phone_i = "Contact_Phone_i";
 		 		    	
 		}
 
@@ -279,6 +287,38 @@ namespace VirtualGallery.Infrastructure.Localization
 		public static string Common_Validation_Email
 		{
 			get{ return GetString(Names.Common_Validation_Email);}
+		}
+		public static string Common_Feedback
+		{
+			get{ return GetString(Names.Common_Feedback);}
+		}
+		public static string Contact_Address
+		{
+			get{ return GetString(Names.Contact_Address);}
+		}
+		public static string Contact_Address_i
+		{
+			get{ return GetString(Names.Contact_Address_i);}
+		}
+		public static string Contact_Business_Hours
+		{
+			get{ return GetString(Names.Contact_Business_Hours);}
+		}
+		public static string Contact_Business_Hours_i
+		{
+			get{ return GetString(Names.Contact_Business_Hours_i);}
+		}
+		public static string Contact_Mail
+		{
+			get{ return GetString(Names.Contact_Mail);}
+		}
+		public static string Contact_Phone
+		{
+			get{ return GetString(Names.Contact_Phone);}
+		}
+		public static string Contact_Phone_i
+		{
+			get{ return GetString(Names.Contact_Phone_i);}
 		}
 		 		    	
 	}

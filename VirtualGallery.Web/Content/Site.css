@@ -950,7 +950,7 @@ a#addCategory ~ .category-preview {
 }
 
 .category-preview .picture-container {
-    margin: 0 auto;
+    margin-left: 2%;
 }
 
 .category-preview .picture-item {

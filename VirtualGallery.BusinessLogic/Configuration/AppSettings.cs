@@ -13,7 +13,7 @@ namespace VirtualGallery.BusinessLogic.Configuration
             {
                 if (string.IsNullOrEmpty(_mailFrom))
                 {
-                    _mailFrom = ConfigurationManager.AppSettings["MailFrom"];
+                    _mailFrom = GetSettingAsString("MailFrom", "dmitryshelemov@gmail.com");
                 }
 
                 return _mailFrom;

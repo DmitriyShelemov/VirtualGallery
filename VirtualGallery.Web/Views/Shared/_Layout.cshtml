@@ -15,6 +15,7 @@
             @Html.Partial(MVC.Shared.Views._MainMenu, Model.SelectedTab)
             <aside>
                 @Html.Partial(MVC.Shared.Views._AsideMenu, Model.SelectedTab)
+                @RenderSection("Aside", false)
             </aside>
             <main>
                 @RenderBody()

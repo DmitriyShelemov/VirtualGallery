@@ -63,7 +63,8 @@
                 dataType: "json",
                 cache: false,
                 url: "@Url.Action(MVC.Home.ActionNames.TopPicture, new {id = -1, top = -2})"
-                            .replace("-1", $this.parents(".picture-buttons").prev(".picture-preview").attr("data-id")).replace("-2", true),
+                            .replace("-1", $this.parents(".picture-buttons")
+                            .prev().prev(".picture-preview").attr("data-id")).replace("-2", true),
             })
                 .done(function (json) {
                     if (json.Success) {
@@ -80,7 +81,8 @@
                 dataType: "json",
                 cache: false,
                 url: "@Url.Action(MVC.Home.ActionNames.TopPicture, new {id = -1, top = -2})"
-                            .replace("-1", $this.parents(".picture-buttons").prev(".picture-preview").attr("data-id")).replace("-2", false),
+                            .replace("-1", $this.parents(".picture-buttons")
+                            .prev().prev(".picture-preview").attr("data-id")).replace("-2", false),
             })
                 .done(function (json) {
                     if (json.Success) {

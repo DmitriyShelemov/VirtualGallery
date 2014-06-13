@@ -243,4 +243,28 @@
   <data name="Common_Validation_Email" xml:space="preserve">
     <value>The field is not a valid e-mail address</value>
   </data>
+  <data name="Common_Feedback" xml:space="preserve">
+    <value>Send Feedback</value>
+  </data>
+  <data name="Contact_Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Contact_Address_i" xml:space="preserve">
+    <value>г. Санкт-Петербург, ул. Торжковская, д. 7 (ст. м. Черная Речка)</value>
+  </data>
+  <data name="Contact_Business_Hours" xml:space="preserve">
+    <value>Business hours</value>
+  </data>
+  <data name="Contact_Business_Hours_i" xml:space="preserve">
+    <value>ежедневно c 10:00 до 22:00</value>
+  </data>
+  <data name="Contact_Mail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Contact_Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="Contact_Phone_i" xml:space="preserve">
+    <value>(812) 242-11-95</value>
+  </data>
 </root>
