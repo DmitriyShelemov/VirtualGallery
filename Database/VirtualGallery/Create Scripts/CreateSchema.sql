@@ -39,3 +39,16 @@ CREATE TABLE [dbo].[Pictures] (
     CONSTRAINT [FK_dbo.Pictures_dbo.StoredFiles_FileId] FOREIGN KEY ([FileId]) REFERENCES [dbo].[StoredFiles] ([Id]),
     CONSTRAINT [FK_dbo.Pictures_dbo.StoredFiles_ThumbnailId] FOREIGN KEY ([ThumbnailId]) REFERENCES [dbo].[StoredFiles] ([Id])
 )
+
+------------------------------------------------------------------------------
+
+CREATE TABLE [dbo].[Preferences] (    
+	[Id]		INT				IDENTITY (1, 1) NOT NULL CONSTRAINT [PK_Preferences] PRIMARY KEY CLUSTERED ([Id] ASC),
+	[Intro]		NVARCHAR (MAX)	NULL,
+	[About]		NVARCHAR (MAX)	NULL,
+	[PhotoId]	INT				NULL
+)
+
+ALTER TABLE [dbo].[Preferences] 
+	ADD CONSTRAINT [FK_Preferences_PhotoId] FOREIGN KEY ([PhotoId])
+	REFERENCES [dbo].[StoredFiles] ([Id]) 

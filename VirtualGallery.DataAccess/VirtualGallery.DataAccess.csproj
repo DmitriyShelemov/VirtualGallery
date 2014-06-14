@@ -53,6 +53,7 @@
     <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Repository\Categories\CategoryRepository.cs" />
     <Compile Include="Repository\Pictures\PictureRepository.cs" />
+    <Compile Include="Repository\Preferences\PreferenceRepository.cs" />
     <Compile Include="Repository\StoredFiles\StoredFileRepository.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWorkFactory.cs" />

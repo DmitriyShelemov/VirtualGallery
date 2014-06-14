@@ -134,6 +134,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -145,6 +148,7 @@
     </Compile>
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\DeliveryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -182,6 +186,7 @@
     <Compile Include="Infrastructure\Presentation\BaseController.cs" />
     <Compile Include="Infrastructure\State\SessionStateManager.cs" />
     <Compile Include="Infrastructure\WorkContext\WebWorkContext.cs" />
+    <Compile Include="Models\About\PhotoUploadButtonModel.cs" />
     <Compile Include="Models\Auth\LoginModel.cs" />
     <Compile Include="Models\BasePageModel.cs" />
     <Compile Include="Models\Contact\ContactPageModel.cs" />
@@ -342,6 +347,7 @@
     <Content Include="Views\Contact\_Feedback.cshtml" />
     <Content Include="Views\Shared\_Captcha.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\About\_AddPhotoButton.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

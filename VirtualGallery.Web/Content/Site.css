@@ -512,11 +512,11 @@ input.book-text + a {
 
 .menu-tabs,
 .aside-menu,
-main > .left-side
+main > .left-side,
+.photo-placeholder,
+.photo-container
  {
-    transform:skew(-2deg,-8deg);
-    -ms-transform:skew(-2deg,-8deg); /* IE 9 */
-    -webkit-transform:skew(-2deg,-8deg); /* Opera, Chrome, and Safari */
+
 }
 
 .menu-tabs li {
@@ -619,15 +619,9 @@ main > .right-side {
     margin-top: -6%;
     width: 45%;
     height: 115%;
-    transform:skew(2deg,8deg);
-    -ms-transform:skew(2deg,8deg); /* IE 9 */
-    -webkit-transform:skew(2deg,8deg); /* Opera, Chrome, and Safari */
 }
 
 main > .right-side.scrollable > .scroll-bar.vertical {    
-    transform:skew(2deg,8deg);
-    -ms-transform:skew(2deg,8deg); /* IE 9 */
-    -webkit-transform:skew(2deg,8deg); /* Opera, Chrome, and Safari */
     background: url('Img/scroll-blot.png') transparent repeat-y;
     width: 16px;
     z-index: 10;
@@ -989,4 +983,28 @@ a#addCategory ~ .category-preview {
 
 .category-preview .prices .picture-buttons-bottom {
     margin-top: 87px;
+}
+
+.bordered-map {
+    height: 70%; 
+    width: 100%; 
+    margin: 5% auto; 
+    border: burlywood 2px dotted;
+}
+
+.photo-placeholder {
+    height: 300px; 
+    width: 200px;
+    border: burlywood 2px solid;
+    background-color: darkgray;
+    color: burlywood;
+}
+
+.photo-container {
+    max-height: 300px; 
+    max-width: 200px;
+}
+
+.photo-container > img {
+    width: 100%;
 }

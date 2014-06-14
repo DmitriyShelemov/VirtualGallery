@@ -6,5 +6,9 @@
         {
             SelectedTab = MainMenuKey.About;
         }
+
+        public string PhotoUrl { get; set; }
+
+        public string About { get; set; }
     }
 }

@@ -56,6 +56,10 @@
     <Compile Include="Categories\Interfaces\ICategoryService.cs" />
     <Compile Include="Categories\Interfaces\ICategoryRepository.cs" />
     <Compile Include="Configuration\AppSettings.cs" />
+    <Compile Include="Preferences\Interfaces\IPreferenceRepository.cs" />
+    <Compile Include="Preferences\Interfaces\IPreferenceService.cs" />
+    <Compile Include="Preferences\Preference.cs" />
+    <Compile Include="Preferences\PreferenceService.cs" />
     <Compile Include="EMail\Interfaces\IMailBox.cs" />
     <Compile Include="EMail\Interfaces\IMessageQueue.cs" />
     <Compile Include="EMail\Interfaces\ISmtpClientFactory.cs" />

@@ -10,7 +10,7 @@
         <a class="aside-menu-item @(Model == MainMenuKey.Decor ? "active" : string.Empty)" href="#">@Localization.Side_Decor</a>
     </li>
     <li>
-        <a class="aside-menu-item @(Model == MainMenuKey.About ? "active" : string.Empty)" href="#">@Localization.Side_About</a>
+        <a class="aside-menu-item @(Model == MainMenuKey.About ? "active" : string.Empty)" href="@Url.Action(MVC.About.Index())">@Localization.Side_About</a>
     </li>
     <li>
         <a class="aside-menu-item @(Model == MainMenuKey.Contact ? "active" : string.Empty)" href="@Url.Action(MVC.Contact.Index())">@Localization.Side_Contact</a>

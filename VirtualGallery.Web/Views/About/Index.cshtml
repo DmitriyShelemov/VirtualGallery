@@ -1,35 +1,31 @@
 ﻿@using System.Collections.Specialized
 @using VirtualGallery.BusinessLogic.Configuration
 @using VirtualGallery.Infrastructure.Localization
-@model VirtualGallery.Web.Models.About.AboutPageModel
+@using VirtualGallery.Web.Models.About
+@model AboutPageModel
 @{
     Layout = MVC.Shared.Views._Layout;
 }
 
-
 @section Aside{
-        
+    
+    @if (!string.IsNullOrEmpty(Model.PhotoUrl))
+    {
+        <div class="photo-container"><img src='@Model.PhotoUrl'/></div>
+    }
+    else
+    {
+        <div class="photo-placeholder"></div>
+    }
+
+    @if (ViewBag.AllowEdit)
+    {
+        @Html.Partial(MVC.About.Views._AddPhotoButton, new PhotoUploadButtonModel())
+    }
 }
 
 <div class="left-side">
-
-    @Html.Action(MVC.Contact.SendFeedback())
-    <p>
-        <b>@(Localization.Contact_Address):</b> @(Localization.Contact_Address_i)
-    </p>
-    <p>
-        <b>@(Localization.Contact_Phone):</b> @(Localization.Contact_Phone_i)
-    </p>
-    <p>
-        <b>@(Localization.Contact_Mail):</b> <a href="mailto:@(AppSettings.MailFrom)" target="_top">@(AppSettings.MailFrom)</a>
-    </p>
-    <p>
-        <b>@(Localization.Contact_Business_Hours):</b> @(Localization.Contact_Business_Hours_i)
-    </p>
+    @Model.About
 </div>
 <div class="right-side">
-    <div class="main-header" style="margin-top: 5%;">@Localization.Contact_Where_We_Are</div>
-    <div id="map" style="height: 70%; width: 100%; margin: 5% auto; border: burlywood 2px dotted;">
-        <script type="text/javascript" charset="utf-8" src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=o0PhGpqM3JDsh7xRxnMN48pECc5wBQg1"></script>
-    </div>
 </div>

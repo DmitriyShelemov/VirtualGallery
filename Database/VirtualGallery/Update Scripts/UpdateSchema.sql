@@ -27,6 +27,20 @@ BEGIN
 END
 GO
 
+IF NOT  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Preferences]') AND type in (N'U'))
+BEGIN
+	CREATE TABLE [dbo].[Preferences] (    
+		[Id]		INT				IDENTITY (1, 1) NOT NULL CONSTRAINT [PK_Preferences] PRIMARY KEY CLUSTERED ([Id] ASC),
+		[Intro]		NVARCHAR (MAX)	NULL,
+		[About]		NVARCHAR (MAX)	NULL,
+		[PhotoId]	INT				NULL
+	)
+
+	ALTER TABLE [dbo].[Preferences] 
+		ADD CONSTRAINT [FK_Preferences_PhotoId] FOREIGN KEY ([PhotoId])
+		REFERENCES [dbo].[StoredFiles] ([Id]) 
+END
+
 COMMIT TRANSACTION
 
   

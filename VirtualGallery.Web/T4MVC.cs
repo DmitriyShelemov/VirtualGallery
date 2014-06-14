@@ -25,6 +25,7 @@ using T4MVC;
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public static partial class MVC
 {
+    public static VirtualGallery.Web.Controllers.AboutController About = new VirtualGallery.Web.Controllers.T4MVC_AboutController();
     public static VirtualGallery.Web.Controllers.AuthController Auth = new VirtualGallery.Web.Controllers.T4MVC_AuthController();
     public static VirtualGallery.Web.Controllers.ContactController Contact = new VirtualGallery.Web.Controllers.T4MVC_ContactController();
     public static VirtualGallery.Web.Controllers.DeliveryController Delivery = new VirtualGallery.Web.Controllers.T4MVC_DeliveryController();

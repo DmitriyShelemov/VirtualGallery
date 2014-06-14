@@ -11,6 +11,8 @@ using VirtualGallery.BusinessLogic.EMail;
 using VirtualGallery.BusinessLogic.EMail.Interfaces;
 using VirtualGallery.BusinessLogic.Pictures;
 using VirtualGallery.BusinessLogic.Pictures.Interfaces;
+using VirtualGallery.BusinessLogic.Preferences;
+using VirtualGallery.BusinessLogic.Preferences.Interfaces;
 using VirtualGallery.BusinessLogic.StoredFiles;
 using VirtualGallery.BusinessLogic.StoredFiles.Interfaces;
 using VirtualGallery.BusinessLogic.UnitOfWork;
@@ -19,6 +21,7 @@ using VirtualGallery.DataAccess;
 using VirtualGallery.DataAccess.Repository;
 using VirtualGallery.DataAccess.Repository.Categories;
 using VirtualGallery.DataAccess.Repository.Pictures;
+using VirtualGallery.DataAccess.Repository.Preferences;
 using VirtualGallery.DataAccess.Repository.StoredFiles;
 using VirtualGallery.DataAccess.UnitOfWork;
 using VirtualGallery.Web.Infrastructure.DataAccess;
@@ -64,6 +67,8 @@ namespace VirtualGallery.Web.Infrastructure.Dependency
             InstancePerRequest(builder.RegisterType<WebWorkContext>().As<IWorkContext>());
             
             // Services
+
+            InstancePerRequest(builder.RegisterType<PreferenceService>().As<IPreferenceService>());
             InstancePerRequest(builder.RegisterType<CategoryService>().As<ICategoryService>());
             InstancePerRequest(builder.RegisterType<PictureService>().As<IPictureService>());
             InstancePerRequest(builder.RegisterType<FileStorage>().As<IFileStorage>());
@@ -76,6 +81,7 @@ namespace VirtualGallery.Web.Infrastructure.Dependency
             InstancePerRequest(builder.RegisterGeneric(typeof(BaseRepository<,>)).As(typeof(IBaseRepository<,>)));
             InstancePerRequest(builder.RegisterType<CategoryRepository>().As<ICategoryRepository>());
             InstancePerRequest(builder.RegisterType<PictureRepository>().As<IPictureRepository>());
+            InstancePerRequest(builder.RegisterType<PreferenceRepository>().As<IPreferenceRepository>());
             InstancePerRequest(builder.RegisterType<StoredFileRepository>().As<IStoredFileRepository>());
 
             //Mailing

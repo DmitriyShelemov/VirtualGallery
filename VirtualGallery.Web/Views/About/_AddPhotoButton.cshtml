@@ -1,0 +1,85 @@
+﻿@using VirtualGallery.BusinessLogic.Preferences
+@using VirtualGallery.Infrastructure.Localization
+@using VirtualGallery.Web.Extensions.HtmlHelpers
+@using VirtualGallery.Web.Models.About
+@model PhotoUploadButtonModel
+
+@{
+    const string acceptTypes = "image/gif,image/jpeg,image/png,image/bmp";
+    var fileTypeErrorMessage = string.Format(Localization.Picture_TypeNotSupported_Template, Localization.Picture_SupportedTypes_Image);
+
+}
+
+<div class="photo-buttons">
+    @Html.UploadButtonFor(model => model.File, 
+        "<i class=\"fa fa-upload fa-2-2\"></i>", 
+        new {
+            data_url = Url.Action(MVC.About.ActionNames.Upload, MVC.About.Name),
+            accept = acceptTypes
+        },
+        new { 
+            @class = "btn-upload",
+            rel="tooltip",
+            title = Localization.Picture_Import_tooltip 
+        })
+</div>
+@Scripts.Render("~/bundles/fileupload")
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var showFileSizeError = function(fileName) {
+            var message = "@Localization.Picture_BigFileSize".replace("{0}", fileName);
+            alert(message);
+        };
+
+        var showFileTypeError = function(fileName) {
+            var message = "@fileTypeErrorMessage".replace("{0}", fileName);
+            alert(message);
+        };
+
+        var $container = $(".photo-buttons");
+        var lastUploadedFile = null;
+        var photoLoaded = function (index, item) {
+            lastUploadedFile = item;
+            window.location.refresh();
+        };
+
+        $('#File').fileupload({
+            dataType: 'json',
+            dropZone: $container,
+            pasteZone: $container,
+            singleFileUploads: true,
+            acceptFileTypes: /(\.|\/)(bmp|gif|jpe?g|png)$/i,
+            send: function (e, data) {
+
+                if (!data.forceUpload) {
+
+                    var file = data.files[0];
+                    var fileName = file.name;
+                    if (typeof fileName !== "undefined" && !data.acceptFileTypes.test(fileName)) {
+                        showFileTypeError(fileName);
+                        return false;
+                    }
+
+                    if (typeof file.size !== "undefined" && file.size > @Preference.MaxFileSize) {
+                        showFileSizeError(fileName);
+                        return false;
+                    }
+                }
+                return true;
+            },
+            done: function(e, data) {
+                if (data.result && typeof data.result.Success !== "undefined" && data.result.Success === false) {
+                    alert(data.result.ErrorMessage);
+                    return;
+                }
+
+                $.each(data.result.Data, photoLoaded);
+            }
+        });
+
+        $('#File').closest('label').on('click, mousedown, mouseup', function () {
+            $('#File').closest('label').tooltip("hide");
+        });
+    });
+</script>

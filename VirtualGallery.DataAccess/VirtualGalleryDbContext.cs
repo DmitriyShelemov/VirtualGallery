@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using VirtualGallery.BusinessLogic.Categories;
 using VirtualGallery.BusinessLogic.Pictures;
+using VirtualGallery.BusinessLogic.Preferences;
 
 namespace VirtualGallery.DataAccess
 {
@@ -22,6 +23,8 @@ namespace VirtualGallery.DataAccess
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<Picture> Pictures { get; set; }
+
+        public DbSet<Preference> Preferences { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
