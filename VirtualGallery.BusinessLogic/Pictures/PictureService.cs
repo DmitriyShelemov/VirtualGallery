@@ -98,6 +98,19 @@ namespace VirtualGallery.BusinessLogic.Pictures
             return _pictureRepository.GetById(id);
         }
 
+        public IList<Picture> GetByIds(params int[] ids)
+        {
+            var identifiers = ids.ToList();
+
+            return _pictureRepository.GetAll(new GenericFilter<Picture>(p => identifiers.Contains(p.Id))
+            {
+                Sorting = new Sorting<Picture>
+                {
+                    OrderByFilter = q => q.OrderBy(c => c.Name)
+                }
+            });
+        }
+
         private void ValidateFileType(string fileName)
         {
             if (!new Regex("\\.(?i:bmp|gif|jpe?g|png)$").Match(fileName).Success)

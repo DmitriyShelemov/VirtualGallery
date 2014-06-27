@@ -39,5 +39,9 @@ namespace VirtualGallery.BusinessLogic.Pictures
         public decimal PriceEuro { get; set; }
 
         public decimal PriceDollar { get; set; }
+
+        public bool Reserved { get; set; }
+
+        public bool Sold { get; set; }
     }
 }

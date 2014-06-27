@@ -267,4 +267,22 @@
   <data name="Contact_Phone_i" xml:space="preserve">
     <value>(812) 242-11-95</value>
   </data>
+  <data name="Common_Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Common_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Common_Buy" xml:space="preserve">
+    <value>Buy</value>
+  </data>
+  <data name="Common_Delivery_Type" xml:space="preserve">
+    <value>Delivery Type</value>
+  </data>
+  <data name="Delivery_Type_Express" xml:space="preserve">
+    <value>Express</value>
+  </data>
+  <data name="Delivery_Type_SelfTake" xml:space="preserve">
+    <value>SelfTake</value>
+  </data>
 </root>

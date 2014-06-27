@@ -6,6 +6,7 @@ using VirtualGallery.BusinessLogic.Categories.Interfaces;
 using VirtualGallery.BusinessLogic.Exceptions;
 using VirtualGallery.BusinessLogic.Pictures;
 using VirtualGallery.BusinessLogic.Pictures.Interfaces;
+using VirtualGallery.BusinessLogic.Preferences.Interfaces;
 using VirtualGallery.BusinessLogic.WorkContext;
 using VirtualGallery.Infrastructure.Localization;
 using VirtualGallery.Web.Extensions;
@@ -21,22 +22,40 @@ namespace VirtualGallery.Web.Controllers
 
         private readonly IPictureService _pictureService;
 
+        private readonly IPreferenceService _preferenceService;
+
         public HomeController(ICategoryService categoryService, 
-            IPictureService pictureService, 
+            IPictureService pictureService,
+            IPreferenceService preferenceService, 
             IWorkContext workContext)
             : base(workContext)
         {
             _categoryService = categoryService;
             _pictureService = pictureService;
+            _preferenceService = preferenceService;
         }
 
         public virtual ActionResult Index()
         {
+            ViewBag.AllowEdit = CurrentUser != null;
+            var pref = _preferenceService.Get();
+
             return View(new HomePageModel
             {
                 Title = Localization.Nav_Main_Title,
-                Description = Localization.Home_Description
+                Description = string.IsNullOrEmpty(pref.Intro) ? Localization.Home_Description : pref.Intro
             });
+        }
+
+        [GalleryAuthorize]
+        [AjaxOnly]
+        public virtual ActionResult SetIntro(HtmlModel model)
+        {
+            var pref = _preferenceService.Get();
+            pref.Intro = model.Text;
+            _preferenceService.Update(pref);
+
+            return SuccessJson(null, true);
         }
 
         [AjaxOrChildActionOnly]
@@ -55,7 +74,7 @@ namespace VirtualGallery.Web.Controllers
                     Pictures = new PicturesModel
                     {
                         ContainerId = c.Id,
-                        Items = c.Pictures.Where(p => p.Topic).ToList().Select(p => GetPictureModel(p, p.Name)).ToList()
+                        Items = c.Pictures.Where(p => !p.Sold && !p.Reserved && p.Topic).ToList().Select(p => GetPictureModel(p, p.Name)).ToList()
                     }
                     
                 }).ToList()
@@ -84,7 +103,7 @@ namespace VirtualGallery.Web.Controllers
                     Pictures = new PicturesModel
                     {
                         ContainerId = category.Id,
-                        Items = category.Pictures.ToList().Select(p => GetPictureModel(p)).ToList()
+                        Items = category.Pictures.Where(p => !p.Sold && !p.Reserved).ToList().Select(p => GetPictureModel(p)).ToList()
                     }
                 }
             };

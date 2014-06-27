@@ -10,6 +10,7 @@
 </div>
 
 <script type="text/javascript">
+
     $(document).ready(function() {
         var $pictureContainer = $('.picture-container[data-id="@Model.ContainerId"]');
         $pictureContainer.on('click', 'a.picture-preview', function (e) {
@@ -19,11 +20,11 @@
                 $dialog.detach().remove();
             }
             $.ajax({
-                type: "GET",
-                cache: false,
-                url: "@Url.Action(MVC.Home.ActionNames.PreviewPicture, new { id = -1 })"
-                                .replace("-1", $this.attr("data-id")),
-            })
+                    type: "GET",
+                    cache: false,
+                    url: "@Url.Action(MVC.Home.ActionNames.PreviewPicture, new { id = -1 })"
+                        .replace("-1", $this.attr("data-id")),
+                })
                 .done(function (data) {
                     if (typeof (data) === "string") {
                         $('.dialogs').append(data);
@@ -52,8 +53,26 @@
         if (window.location.hash == '#@MainMenuKey.Prices') {
             $pictureContainer.addClass("prices");
         }
+
+        $pictureContainer.on("click", ".buyPicture", function () {
+            var $preview = $(this).parents(".picture-buttons-bottom")
+                            .prev(".picture-preview");
+            if (ShoppingCart.add($preview.attr("data-id"))) {
+                $preview.addClass("in-cart");
+            } else {
+                alert("Already in!");
+            }
+        });
+
+        $.each(ShoppingCart.gets(), function(index, item) {
+            var $preview = $("[data-id='" + item + "'].picture-preview");
+            if ($preview.length) {
+                $preview.addClass("in-cart");
+            }
+        });
+
         
-@if (ViewBag.AllowEdit)
+        @if (ViewBag.AllowEdit)
 {
     <text>
         $pictureContainer.on("click", ".topPicture", function () {

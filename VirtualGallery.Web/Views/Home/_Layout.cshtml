@@ -2,17 +2,38 @@
 @{
     Layout = MVC.Shared.Views._Layout;
 }
-<div class="left-side">
-    <section id="essay">
-        @Html.Raw(Model.Description)
-    </section>
-</div>
-<div class="right-side">
-    @RenderBody()
-</div>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $(".right-side").customScrollbar({ updateOnWindowResize: true });
-    });
-</script>
+@section LeftSide{
+    <section id="essay">
+        @if (ViewBag.AllowEdit)
+        {
+
+            <div id="introText" contenteditable="true" style="min-height: 200px;">
+                @Html.Raw(Model.Description)
+            </div>
+            <a id="saveIntro" style="float: right;"><i class="fa fa-bottom fa-save fa-1"></i></a>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    var $introText = $("#introText");
+                    $("#saveIntro").click(function() {
+                        $.ajax({
+                            type: "POST",
+                            dataType: "json",
+                            cache: false,
+                            url: "@Url.Action(MVC.Home.SetIntro())",
+                            data: { Text: $introText.html() }
+                        });
+                    });
+                });
+            </script>
+        }
+        else
+        {
+            @Html.Raw(Model.Description)
+        }
+    </section>
+}
+
+@section RightSide{
+    @RenderBody()
+}

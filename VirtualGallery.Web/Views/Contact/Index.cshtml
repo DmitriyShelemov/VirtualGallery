@@ -4,25 +4,88 @@
 @{
     Layout = MVC.Shared.Views._Layout;
 }
-<div class="left-side">
 
+@section LeftSide{
     @Html.Action(MVC.Contact.SendFeedback())
     <p>
-        <b>@(Localization.Contact_Address):</b> @(Localization.Contact_Address_i)
+        <b>@(Localization.Contact_Address):</b> 
+        
+        @if (ViewBag.AllowEdit)
+        {
+            <span id="addressText" contenteditable="true" style="min-height: 30px;">
+                @Model.Contacts.Address
+            </span>
+        }
+        else
+        {
+            @Model.Contacts.Address
+        }
     </p>
     <p>
-        <b>@(Localization.Contact_Phone):</b> @(Localization.Contact_Phone_i)
+        <b>@(Localization.Contact_Phone):</b>  
+        
+        @if (ViewBag.AllowEdit)
+        {
+            <span id="phoneText" contenteditable="true" style="min-height: 30px;">
+                @Model.Contacts.Phone
+            </span>
+        }
+        else
+        {
+            @Model.Contacts.Phone
+        }
     </p>
     <p>
         <b>@(Localization.Contact_Mail):</b> <a href="mailto:@(AppSettings.MailFrom)" target="_top">@(AppSettings.MailFrom)</a>
     </p>
     <p>
-        <b>@(Localization.Contact_Business_Hours):</b> @(Localization.Contact_Business_Hours_i)
+        <b>@(Localization.Contact_Business_Hours):</b>  
+        
+        @if (ViewBag.AllowEdit)
+        {
+            <span id="workTimeText" contenteditable="true" style="min-height: 30px;">
+                @Model.Contacts.WorkTime
+            </span>
+        }
+        else
+        {
+            @Model.Contacts.WorkTime
+        }
     </p>
-</div>
-<div class="right-side">
+    @if (ViewBag.AllowEdit)
+    {
+        <p>
+            <b>Yandex Map URL:</b>  
+            <span id="MapUrl" contenteditable="true" style="min-height: 30px;">
+                @Model.Contacts.MapUrl
+            </span>
+        </p>
+        
+        <a id="saveIntro" style="float: right;"><i class="fa fa-bottom fa-save fa-1"></i></a>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#saveIntro").click(function() {
+                    $.ajax({
+                        type: "POST",
+                        dataType: "json",
+                        cache: false,
+                        url: "@Url.Action(MVC.Contact.SetContacts())",
+                        data: {
+                            Address: $("#addressText").text(),
+                            Phone: $("#phoneText").text(),
+                            WorkTime: $("#workTimeText").text(),
+                            MapUrl: $("#MapUrl").text()
+                        }
+                    });
+                });
+            });
+        </script>
+    }
+}
+
+@section RightSide{
     <div class="main-header" style="margin-top: 5%;">@Localization.Contact_Where_We_Are</div>
     <div id="map" class="bordered-map">
-        <script type="text/javascript" charset="utf-8" src="//api-maps.yandex.ru/services/constructor/1.0/js/?sid=o0PhGpqM3JDsh7xRxnMN48pECc5wBQg1"></script>
+        <script type="text/javascript" charset="utf-8" src="@Html.Raw(Model.Contacts.MapUrl)"></script>
     </div>
-</div>
+}

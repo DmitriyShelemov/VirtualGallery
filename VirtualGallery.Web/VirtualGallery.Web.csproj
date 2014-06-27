@@ -186,6 +186,7 @@
     <Compile Include="Infrastructure\Presentation\BaseController.cs" />
     <Compile Include="Infrastructure\State\SessionStateManager.cs" />
     <Compile Include="Infrastructure\WorkContext\WebWorkContext.cs" />
+    <Compile Include="Models\Contact\ContactsModel.cs" />
     <Compile Include="Models\About\PhotoUploadButtonModel.cs" />
     <Compile Include="Models\Auth\LoginModel.cs" />
     <Compile Include="Models\BasePageModel.cs" />
@@ -196,13 +197,18 @@
     <Compile Include="Models\Home\CategoryModel.cs" />
     <Compile Include="Models\Home\CategoryListModel.cs" />
     <Compile Include="Models\Home\CategoryPageModel.cs" />
+    <Compile Include="Models\Home\HtmlModel.cs" />
     <Compile Include="Models\Home\PicturesModel.cs" />
     <Compile Include="Models\Home\PictureModel.cs" />
     <Compile Include="Models\Home\PictureUploadButtonModel.cs" />
-    <Compile Include="Models\ShoppingCart\ShoppingCartPageModel.cs" />
     <Compile Include="Models\Delivery\DeliveryPageModel.cs" />
     <Compile Include="Models\Home\HomePageModel.cs" />
     <Compile Include="Models\MainMenuKey.cs" />
+    <Compile Include="Models\BasePictureModel.cs" />
+    <Compile Include="Models\ShoppingCart\CartModel.cs" />
+    <Compile Include="Models\ShoppingCart\LotModel.cs" />
+    <Compile Include="Models\ShoppingCart\OrderModel.cs" />
+    <Compile Include="Models\ShoppingCart\CartPictureModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -279,6 +285,7 @@
     <None Include="Scripts\jquery\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\common\bootstrap.js" />
     <Content Include="Scripts\common\bootstrap.min.js" />
+    <Content Include="Scripts\ShoppingCart.js" />
     <Content Include="Scripts\fileupload\jquery.attachfile.js" />
     <Content Include="Scripts\fileupload\jquery.fileupload-fp.js" />
     <Content Include="Scripts\fileupload\jquery.fileupload.js" />
@@ -296,6 +303,7 @@
     <Content Include="Scripts\jquery\jquery-2.1.0.min.js" />
     <Content Include="Scripts\jquery\jquery-2.1.0.min.map" />
     <None Include="Scripts\jquery\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery\jquery.cookie.js" />
     <Content Include="Scripts\jquery\jquery.custom-scrollbar.js" />
     <Content Include="Scripts\jquery\jquery.reveal.js" />
     <Content Include="Scripts\jquery\jquery.textchange.js" />
@@ -329,7 +337,6 @@
     <Content Include="Views\Home\_Gallery.cshtml" />
     <Content Include="Views\Shared\_MainMenu.cshtml" />
     <Content Include="Views\Delivery\Index.cshtml" />
-    <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\Shared\_AsideMenu.cshtml" />
     <Content Include="Views\Home\_Categories.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
@@ -348,6 +355,7 @@
     <Content Include="Views\Shared\_Captcha.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\About\_AddPhotoButton.cshtml" />
+    <Content Include="Views\ShoppingCart\_ShoppingCartDialog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

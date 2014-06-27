@@ -54,6 +54,12 @@ namespace VirtualGallery.Web.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult SetContacts()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SetContacts);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ContactController Actions { get { return MVC.Contact; } }
@@ -71,6 +77,7 @@ namespace VirtualGallery.Web.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
+            public readonly string SetContacts = "SetContacts";
             public readonly string SendFeedback = "SendFeedback";
         }
 
@@ -78,10 +85,19 @@ namespace VirtualGallery.Web.Controllers
         public class ActionNameConstants
         {
             public const string Index = "Index";
+            public const string SetContacts = "SetContacts";
             public const string SendFeedback = "SendFeedback";
         }
 
 
+        static readonly ActionParamsClass_SetContacts s_params_SetContacts = new ActionParamsClass_SetContacts();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_SetContacts SetContactsParams { get { return s_params_SetContacts; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_SetContacts
+        {
+            public readonly string model = "model";
+        }
         static readonly ActionParamsClass_SendFeedback s_params_SendFeedback = new ActionParamsClass_SendFeedback();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionParamsClass_SendFeedback SendFeedbackParams { get { return s_params_SendFeedback; } }
@@ -121,6 +137,18 @@ namespace VirtualGallery.Web.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             IndexOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void SetContactsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, VirtualGallery.Web.Models.Contact.ContactsModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult SetContacts(VirtualGallery.Web.Models.Contact.ContactsModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SetContacts);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            SetContactsOverride(callInfo, model);
             return callInfo;
         }
 

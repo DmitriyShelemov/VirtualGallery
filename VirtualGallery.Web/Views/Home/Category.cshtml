@@ -33,11 +33,13 @@
     </div>
 }
 
-@Html.Partial(MVC.Home.Views._Pictures, Model.Category.Pictures)
-
-
+<div id="pictureList" style="height:82%;">
+    @Html.Partial(MVC.Home.Views._Pictures, Model.Category.Pictures)
+</div>
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
+        $("#pictureList").customScrollbar({ updateOnWindowResize: true });
+
         var $headerText = $(".main-header > span");
         var $headerBrush = $(".main-header > img");
         var $categoryName = $("#categoryName");

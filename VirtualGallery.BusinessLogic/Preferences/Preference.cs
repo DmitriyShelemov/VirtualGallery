@@ -1,5 +1,4 @@
-﻿using VirtualGallery.BusinessLogic.Categories;
-using VirtualGallery.BusinessLogic.StoredFiles;
+﻿using VirtualGallery.BusinessLogic.StoredFiles;
 
 namespace VirtualGallery.BusinessLogic.Preferences
 {
@@ -12,6 +11,16 @@ namespace VirtualGallery.BusinessLogic.Preferences
         public string Intro { get; set; }
 
         public string About { get; set; }
+
+        public string About2 { get; set; }
+
+        public string Address { get; set; }
+
+        public string Phone { get; set; }
+
+        public string MapUrl { get; set; }
+
+        public string WorkTime { get; set; }
 
         public int PhotoId { get; set; }
 

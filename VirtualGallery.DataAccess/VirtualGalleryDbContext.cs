@@ -4,6 +4,7 @@ using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Reflection;
 using VirtualGallery.BusinessLogic.Categories;
+using VirtualGallery.BusinessLogic.Orders;
 using VirtualGallery.BusinessLogic.Pictures;
 using VirtualGallery.BusinessLogic.Preferences;
 
@@ -25,6 +26,10 @@ namespace VirtualGallery.DataAccess
         public DbSet<Picture> Pictures { get; set; }
 
         public DbSet<Preference> Preferences { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<Lot> Lots { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -2,14 +2,11 @@
 @model VirtualGallery.Web.Models.BasePageModel
 
 @Html.Partial(MVC.Shared.Views._ConditionalComments)
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" style="height: 100%;">
 	@Html.Partial(MVC.Shared.Views._LayoutHead)
     <body class="common">
         <div class="book">
             <img src="@Links.Content.Img.book_png" alt="book.png"/>
-@*            <div class="koffee-cup">
-                <img src="@Links.Content.Img.koffee_cup_png" alt="koffee-cup.png"/>
-            </div>*@
         </div>
         <div class="content">
             @Html.Partial(MVC.Shared.Views._MainMenu, Model.SelectedTab)
@@ -18,7 +15,12 @@
                 @RenderSection("Aside", false)
             </aside>
             <main>
-                @RenderBody()
+                <div class="left-side">
+                    @RenderSection("LeftSide", false)
+                </div>
+                <div class="right-side">
+                    @RenderSection("RightSide", false)
+                </div>
             </main>
             <script type="text/javascript">
                 $(function () {
@@ -83,6 +85,23 @@
                     });
 
                     $(document).ajaxStop(hideAllShownTooltips);
+                });
+
+                $(document).ready(function () {
+                    var $book = $(".book"),
+                        $content = $(".content"),
+                        busy = false;
+                    var resize = function () {
+                        if (!busy) {
+                            busy = true;
+                            $content.height($book.height() - $content.offset().top * 2);
+                            $(window).resize();
+                            busy = false;
+                        }
+                    };
+
+                    $(window).resize(resize);
+                    setTimeout(resize, 100);
                 });
             </script>
             @RenderSection("scripts", required: false)

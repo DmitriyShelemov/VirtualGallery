@@ -117,8 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Common_Buy" xml:space="preserve">
+    <value>Купить</value>
+  </data>
+  <data name="Common_Delivery_Type" xml:space="preserve">
+    <value>Тип доставки</value>
+  </data>
+  <data name="Common_Details" xml:space="preserve">
+    <value>Пожелания(адрес, удобное время доставки...)</value>
+  </data>
   <data name="Common_Feedback" xml:space="preserve">
     <value>Обратная связь</value>
+  </data>
+  <data name="Common_Name" xml:space="preserve">
+    <value>Имя</value>
   </data>
   <data name="Common_Send" xml:space="preserve">
     <value>Отправить</value>
@@ -142,7 +154,7 @@
     <value>Ваша почта</value>
   </data>
   <data name="Contact_Mail" xml:space="preserve">
-    <value>Email</value>
+    <value>Ваша эл.почта</value>
   </data>
   <data name="Contact_Phone" xml:space="preserve">
     <value>Телефон</value>
@@ -152,6 +164,12 @@
   </data>
   <data name="Contact_Where_We_Are" xml:space="preserve">
     <value>Как нас Найти?</value>
+  </data>
+  <data name="Delivery_Type_Express" xml:space="preserve">
+    <value>Курьером</value>
+  </data>
+  <data name="Delivery_Type_SelfTake" xml:space="preserve">
+    <value>Самовывоз</value>
   </data>
   <data name="Home_Description" xml:space="preserve">
     <value>&lt;p&gt;Дорогие друзья, иногда мы решаем сложную задачу по поиску креативного подарка для наших друзей и близких, хотелось бы предложить вам 

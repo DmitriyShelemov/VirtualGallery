@@ -1,11 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
-using VirtualGallery.BusinessLogic.Categories;
-using VirtualGallery.BusinessLogic.Categories.Interfaces;
-using VirtualGallery.BusinessLogic.Exceptions;
+﻿using System.Web.Mvc;
 using VirtualGallery.BusinessLogic.Pictures;
-using VirtualGallery.BusinessLogic.Pictures.Interfaces;
 using VirtualGallery.BusinessLogic.Preferences.Interfaces;
 using VirtualGallery.BusinessLogic.WorkContext;
 using VirtualGallery.Infrastructure.Localization;
@@ -36,8 +30,31 @@ namespace VirtualGallery.Web.Controllers
             {
                 Title = Localization.Nav_Main_Title,
                 About = pref.About,
+                About2 = pref.About2,
                 PhotoUrl = pref.Photo != null ? pref.Photo.ResolveFilePath() : string.Empty
             });
+        }
+
+        [GalleryAuthorize]
+        [AjaxOnly]
+        public virtual ActionResult SetAbout(HtmlModel model)
+        {
+            var pref = _preferenceService.Get();
+            pref.About = model.Text;
+            _preferenceService.Update(pref);
+
+            return SuccessJson(null, true);
+        }
+
+        [GalleryAuthorize]
+        [AjaxOnly]
+        public virtual ActionResult SetAbout2(HtmlModel model)
+        {
+            var pref = _preferenceService.Get();
+            pref.About2 = model.Text;
+            _preferenceService.Update(pref);
+
+            return SuccessJson(null, true);
         }
 
         [GalleryAuthorize]

@@ -56,6 +56,13 @@
     <Compile Include="Categories\Interfaces\ICategoryService.cs" />
     <Compile Include="Categories\Interfaces\ICategoryRepository.cs" />
     <Compile Include="Configuration\AppSettings.cs" />
+    <Compile Include="Orders\ShoppingCartService.cs" />
+    <Compile Include="Orders\DeliveryType.cs" />
+    <Compile Include="Orders\Interfaces\ILotRepository.cs" />
+    <Compile Include="Orders\Interfaces\IOrderRepository.cs" />
+    <Compile Include="Orders\Interfaces\IShoppingCartService.cs" />
+    <Compile Include="Orders\Order.cs" />
+    <Compile Include="Orders\Lot.cs" />
     <Compile Include="Preferences\Interfaces\IPreferenceRepository.cs" />
     <Compile Include="Preferences\Interfaces\IPreferenceService.cs" />
     <Compile Include="Preferences\Preference.cs" />

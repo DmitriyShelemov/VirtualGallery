@@ -121,6 +121,12 @@ namespace VirtualGallery.Infrastructure.Localization
 			public const string Contact_Mail = "Contact_Mail";
 			public const string Contact_Phone = "Contact_Phone";
 			public const string Contact_Phone_i = "Contact_Phone_i";
+			public const string Common_Details = "Common_Details";
+			public const string Common_Name = "Common_Name";
+			public const string Common_Buy = "Common_Buy";
+			public const string Common_Delivery_Type = "Common_Delivery_Type";
+			public const string Delivery_Type_Express = "Delivery_Type_Express";
+			public const string Delivery_Type_SelfTake = "Delivery_Type_SelfTake";
 		 		    	
 		}
 
@@ -319,6 +325,30 @@ namespace VirtualGallery.Infrastructure.Localization
 		public static string Contact_Phone_i
 		{
 			get{ return GetString(Names.Contact_Phone_i);}
+		}
+		public static string Common_Details
+		{
+			get{ return GetString(Names.Common_Details);}
+		}
+		public static string Common_Name
+		{
+			get{ return GetString(Names.Common_Name);}
+		}
+		public static string Common_Buy
+		{
+			get{ return GetString(Names.Common_Buy);}
+		}
+		public static string Common_Delivery_Type
+		{
+			get{ return GetString(Names.Common_Delivery_Type);}
+		}
+		public static string Delivery_Type_Express
+		{
+			get{ return GetString(Names.Delivery_Type_Express);}
+		}
+		public static string Delivery_Type_SelfTake
+		{
+			get{ return GetString(Names.Delivery_Type_SelfTake);}
 		}
 		 		    	
 	}

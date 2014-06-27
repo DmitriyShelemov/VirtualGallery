@@ -8,7 +8,12 @@
 body.common {
     background: url('Img/bg.jpg') repeat scroll;
     background-size: 100%;
+    height: 100%;
     position: relative;
+}
+
+body.common.min {
+    min-width: 0;
 }
 
 header, footer, nav, section {
@@ -51,6 +56,28 @@ textarea {
     margin: 0.5em 0 0 0;
 }
 
+.inline-block {
+    display:inline-block;
+}
+
+.input-large {
+    width: 100%;
+}
+
+.panel-left {
+    float: left;
+    width: 50%;
+    margin-left: -40px;
+    padding-left: 40px;
+}
+
+.panel-right {
+    margin-left: 40px;
+    float: left;
+    width: 50%;
+}
+
+
 /* Styles for validation helpers
 -----------------------------------------------------------*/
 .field-validation-error {
@@ -82,6 +109,15 @@ textarea {
 
 .control-group + .control-group {
     margin-top: -5px;
+}
+
+.inline > input, .inline > label {
+float: left;
+padding-right: 20px;
+}
+
+.inline > input[type="radio"] + label {
+    padding-left: 5px;
 }
 
 a,
@@ -422,48 +458,6 @@ label {
     float: right;
 }
 
-@media only screen and (max-width: 530px) {
-	.login-page {
-		left: 0;
-		min-width: 419px;
-		width: 100%;
-		padding: 0;
-		border: none;
-	}
-
-    .login-page footer {
-        float: none;
-        margin-right: 0;
-        margin-left: 0;
-        width: 100%;
-    }
-
-	.login-page .login-row .login-content .icon-surpass-login, 
-	.login-page .login-row .login-content .validation-summary-errors,
-	.login-page .login-row .login-content .field-validation-error {
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	.login-page .login-row .login-content .control-group,
-	.login-page .login-row .login-content .login-form-content {
-		text-align: center;
-	}
-
-	.login-page .login-row .login-content label {
-		margin-left: -185px;
-	}
-
-	.login-page .login-row .login-content .login-form-content .btn {
-		margin-left: -180px;
-	}
-
-	.login-page .login-row .login-content .field-validation-error {
-		display: block;
-		width: 260px;
-		margin-bottom: 30px;
-	}
-}
 
 /*#endregion*/
 
@@ -503,20 +497,16 @@ input.book-text + a {
 }
 
 .content {
-    position: relative;
-    width: 81%;
-    margin: 30px auto;
-    padding-top: 3%;
-    margin-left: 8%;
+    position: absolute;
+    width: 100%;
+    margin-top: 4%;
+    padding: 0 8% 0 6%;
 }
 
-.menu-tabs,
-.aside-menu,
-main > .left-side,
-.photo-placeholder,
-.photo-container
- {
-
+.menu-tabs {
+    width: 46%;
+    margin: 0;
+    padding-left: 2%;
 }
 
 .menu-tabs li {
@@ -525,7 +515,7 @@ main > .left-side,
 }
 
 .menu-tabs > li + li {
-    margin-left: 2%;
+    margin-left: 6%;
 }
 
 .menu-tab,
@@ -568,8 +558,8 @@ aside {
     position: relative;
     float: left;
     z-index: 1;
-    margin-top: 12%;
-    padding-left: 2%;
+    margin-top: 2%;
+    width: 20%;
 }
 
 .aside-menu {
@@ -602,32 +592,32 @@ aside {
 
 main {
     position: relative;
-    padding-left: 2%;
-    margin-top: 6%;
+    height: 100%;
+    padding-top: 2%;
+    padding-bottom: 6%;
 }
 
 main > .left-side {
-    width: 42%;
+    width: 46%;
     text-align: justify;
 }
 
 main > .right-side {
     position: absolute;
-    top: 0;
-    left: 55%;
+    top: -7%;
+    left: 54%;
     padding-left: 10px;
-    margin-top: -6%;
-    width: 45%;
-    height: 115%;
+    width: 46%;
+    height:100%
 }
 
-main > .right-side.scrollable > .scroll-bar.vertical {    
+main .scrollable > .scroll-bar.vertical {    
     background: url('Img/scroll-blot.png') transparent repeat-y;
     width: 16px;
     z-index: 10;
 }
 
-main > .right-side.scrollable > .scroll-bar.vertical > .thumb {
+main .scrollable > .scroll-bar.vertical > .thumb {
     background-color: black;
     opacity: 0.4;
     border-radius: 8px;
@@ -643,36 +633,6 @@ main > .right-side.scrollable > .scroll-bar.vertical > .thumb {
 .main-header .brush {
     width: 20%;
     margin-top: -6%;
-}
-
-@media screen and (max-width: 1090px) {
-    main > .left-side {
-        font-size: 12px;
-    }
-
-    .main-header {
-        font-size: 24px;
-    }
-}
-
-@media screen and (max-width: 1020px) {
-    main > .left-side {
-        font-size: 10px;
-    }
-
-    .main-header {
-        font-size: 22px;
-    }
-}
-
-@media screen and (max-width: 900px) {
-    main > .left-side {
-        font-size: 9px;
-    }
-
-    .main-header {
-        font-size: 20px;
-    }
 }
 
 .btn-upload input {
@@ -885,6 +845,10 @@ main > .right-side.scrollable > .scroll-bar.vertical > .thumb {
     position: relative;
 }
 
+.picture-preview.in-cart .picture-item {
+    background-color: gray;
+}
+
 .prices .picture-item {
     height: 125px;
 }
@@ -986,7 +950,7 @@ a#addCategory ~ .category-preview {
 }
 
 .bordered-map {
-    height: 70%; 
+    height: 82%; 
     width: 100%; 
     margin: 5% auto; 
     border: burlywood 2px dotted;
@@ -1007,4 +971,64 @@ a#addCategory ~ .category-preview {
 
 .photo-container > img {
     width: 100%;
+}
+
+
+
+
+
+
+
+
+
+.modal-shopping-cart {
+    background-color: lightgoldenrodyellow;
+    top: 30px;
+    left: 30px;
+    right: 30px;
+    width: auto;
+    margin-left: 0;
+    min-width: 400px;
+    min-height: 300px;
+}
+
+.modal-shopping-cart > h2 {
+    text-align: center;
+}
+
+.modal-shopping-cart > h2 {
+    word-wrap: break-word;
+}
+
+.modal-shopping-cart .input-large {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.modal-shopping-cart img {
+    height: 50px;    
+    -webkit-transition: -webkit-transform 1s,opacity 1s,background 1s,width 1s,height 1s,font-size 1s;
+    -webkit-border-radius: 5px;
+    -o-transition-property: width,height,-o-transform,background,font-size,opacity;
+    -o-transition-duration: 1s,1s,1s,1s,1s,1s;
+    -moz-transition-property: width,height,-o-transform,background,font-size,opacity;
+    -moz-transition-duration: 1s,1s,1s,1s,1s,1s;
+    transition-property: width,height,transform,background,font-size,opacity;
+    transition-duration: 1s,1s,1s,1s,1s,1s;
+}
+
+.modal-shopping-cart img:hover {
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+    height: 150px;
+}
+
+.modal-shopping-cart > form > table td {
+    vertical-align: middle;
+}
+
+.modal-shopping-cart > form > #buy {
+    float: right;
 }

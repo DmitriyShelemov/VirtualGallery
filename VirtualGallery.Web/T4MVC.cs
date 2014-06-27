@@ -126,6 +126,7 @@ namespace Links
             public static readonly string jquery_2_1_0_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-2.1.0.min.js") ? Url("jquery-2.1.0.min.js") : Url("jquery-2.1.0.js");
             public static readonly string jquery_2_1_0_min_js = Url("jquery-2.1.0.min.js");
             public static readonly string jquery_2_1_0_min_map = Url("jquery-2.1.0.min.map");
+            public static readonly string jquery_cookie_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.cookie.min.js") ? Url("jquery.cookie.min.js") : Url("jquery.cookie.js");
             public static readonly string jquery_custom_scrollbar_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.custom-scrollbar.min.js") ? Url("jquery.custom-scrollbar.min.js") : Url("jquery.custom-scrollbar.js");
             public static readonly string jquery_reveal_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.reveal.min.js") ? Url("jquery.reveal.min.js") : Url("jquery.reveal.js");
             public static readonly string jquery_textchange_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.textchange.min.js") ? Url("jquery.textchange.min.js") : Url("jquery.textchange.js");
@@ -139,6 +140,7 @@ namespace Links
             public static readonly string jquery_validate_unobtrusive_min_js = Url("jquery.validate.unobtrusive.min.js");
         }
     
+        public static readonly string ShoppingCart_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ShoppingCart.min.js") ? Url("ShoppingCart.min.js") : Url("ShoppingCart.js");
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]

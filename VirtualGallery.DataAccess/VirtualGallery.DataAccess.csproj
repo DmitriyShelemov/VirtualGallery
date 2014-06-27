@@ -52,6 +52,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Repository\Categories\CategoryRepository.cs" />
+    <Compile Include="Repository\Orders\LotRepository.cs" />
+    <Compile Include="Repository\Orders\OrderRepository.cs" />
     <Compile Include="Repository\Pictures\PictureRepository.cs" />
     <Compile Include="Repository\Preferences\PreferenceRepository.cs" />
     <Compile Include="Repository\StoredFiles\StoredFileRepository.cs" />

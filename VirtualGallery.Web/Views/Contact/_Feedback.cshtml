@@ -2,9 +2,10 @@
 @using VirtualGallery.Infrastructure.Localization
 @model VirtualGallery.Web.Models.Contact.FeedbackModel
 
-<div style="margin-left: 42%;">
+<div style="margin-left: 44%;">
     @using (Html.BeginForm(MVC.Contact.SendFeedback(), FormMethod.Post))
     {
+        @Html.AntiForgeryToken()
         @Html.Label(Localization.Common_Feedback)
         @Html.LabelFor(m => m.FromEmail)
         @Html.TextBoxFor(m => m.FromEmail, new { style = "width:100%" })

@@ -9,6 +9,8 @@ using VirtualGallery.BusinessLogic.Categories;
 using VirtualGallery.BusinessLogic.Categories.Interfaces;
 using VirtualGallery.BusinessLogic.EMail;
 using VirtualGallery.BusinessLogic.EMail.Interfaces;
+using VirtualGallery.BusinessLogic.Orders;
+using VirtualGallery.BusinessLogic.Orders.Interfaces;
 using VirtualGallery.BusinessLogic.Pictures;
 using VirtualGallery.BusinessLogic.Pictures.Interfaces;
 using VirtualGallery.BusinessLogic.Preferences;
@@ -20,6 +22,7 @@ using VirtualGallery.BusinessLogic.WorkContext;
 using VirtualGallery.DataAccess;
 using VirtualGallery.DataAccess.Repository;
 using VirtualGallery.DataAccess.Repository.Categories;
+using VirtualGallery.DataAccess.Repository.Orders;
 using VirtualGallery.DataAccess.Repository.Pictures;
 using VirtualGallery.DataAccess.Repository.Preferences;
 using VirtualGallery.DataAccess.Repository.StoredFiles;
@@ -67,10 +70,10 @@ namespace VirtualGallery.Web.Infrastructure.Dependency
             InstancePerRequest(builder.RegisterType<WebWorkContext>().As<IWorkContext>());
             
             // Services
-
             InstancePerRequest(builder.RegisterType<PreferenceService>().As<IPreferenceService>());
             InstancePerRequest(builder.RegisterType<CategoryService>().As<ICategoryService>());
             InstancePerRequest(builder.RegisterType<PictureService>().As<IPictureService>());
+            InstancePerRequest(builder.RegisterType<ShoppingCartService>().As<IShoppingCartService>());
             InstancePerRequest(builder.RegisterType<FileStorage>().As<IFileStorage>());
 
             // DataAccess
@@ -83,6 +86,8 @@ namespace VirtualGallery.Web.Infrastructure.Dependency
             InstancePerRequest(builder.RegisterType<PictureRepository>().As<IPictureRepository>());
             InstancePerRequest(builder.RegisterType<PreferenceRepository>().As<IPreferenceRepository>());
             InstancePerRequest(builder.RegisterType<StoredFileRepository>().As<IStoredFileRepository>());
+            InstancePerRequest(builder.RegisterType<OrderRepository>().As<IOrderRepository>());
+            InstancePerRequest(builder.RegisterType<LotRepository>().As<ILotRepository>());
 
             //Mailing
             SingleInstance(builder.RegisterType<MessageQueue>().As<IMessageQueue>());

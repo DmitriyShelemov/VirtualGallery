@@ -13,14 +13,19 @@
     </li>
     <li>
         <a class="menu-tab @(Model == MainMenuKey.ShoppingCart ? "active" : string.Empty)" 
-           href="@Url.Action(MVC.ShoppingCart.Index())">@Localization.Nav_ShoppingCart</a>
+           href="#@MainMenuKey.ShoppingCart">@Localization.Nav_ShoppingCart</a>
     </li>
 </ul>
 <div class="clear"></div>
 
 <script type="text/javascript">
+    var shoppingCartSelector = ".menu-tabs a[href='#@MainMenuKey.ShoppingCart'].menu-tab";
+    var ShoppingCart = new ShoppingCart(shoppingCartSelector, "@Localization.Nav_ShoppingCart");
+    ShoppingCart.refresh();
+
     $(document).ready(function () {
         var $mainMenus = $(".menu-tabs .menu-tab");
+
         var selectMenu = function ($menu) {
             $mainMenus.removeClass("active");
             $menu.addClass("active");
@@ -30,9 +35,45 @@
             selectMenu($(this));
         });
 
+        $(shoppingCartSelector).click(function (e) {
+            if (!ShoppingCart.gets().length) {
+                e.preventDefault();
+                return false;
+            }
+
+            var $dialog = $('#shoppingCart'), $this = $(this);
+            if ($dialog) {
+                $dialog.detach().remove();
+            }
+
+            var data = {};
+            $.each(ShoppingCart.gets(), function(index, item) {
+                data["Pictures[" + index + "]"] = item;
+            });
+
+            $.ajax({
+                type: "POST",
+                cache: false,
+                url: "@Url.Action(MVC.ShoppingCart.ActionNames.CartDialog, MVC.ShoppingCart.Name)",
+                data: data
+            })
+            .done(function (result) {
+                if (typeof (result) === "string") {
+                    $('.dialogs').append(result);
+                    $('#shoppingCart').reveal($this.data());
+                } else {
+                    alert(result.ErrorMessage);
+                }
+            });
+        });
 
         if (window.location.hash == '#@MainMenuKey.Prices') {
             selectMenu($mainMenus.filter("a[href='#@MainMenuKey.Prices']"));
         }
+
+        if (window.location.hash == '#@MainMenuKey.ShoppingCart') {
+            $(shoppingCartSelector).click();
+        }
+
     });
 </script>

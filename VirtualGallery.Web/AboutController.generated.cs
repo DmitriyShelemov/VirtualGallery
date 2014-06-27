@@ -56,6 +56,18 @@ namespace VirtualGallery.Web.Controllers
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult SetAbout()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SetAbout);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult SetAbout2()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SetAbout2);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.ActionResult Upload()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Upload);
@@ -77,6 +89,8 @@ namespace VirtualGallery.Web.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
+            public readonly string SetAbout = "SetAbout";
+            public readonly string SetAbout2 = "SetAbout2";
             public readonly string Upload = "Upload";
         }
 
@@ -84,10 +98,28 @@ namespace VirtualGallery.Web.Controllers
         public class ActionNameConstants
         {
             public const string Index = "Index";
+            public const string SetAbout = "SetAbout";
+            public const string SetAbout2 = "SetAbout2";
             public const string Upload = "Upload";
         }
 
 
+        static readonly ActionParamsClass_SetAbout s_params_SetAbout = new ActionParamsClass_SetAbout();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_SetAbout SetAboutParams { get { return s_params_SetAbout; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_SetAbout
+        {
+            public readonly string model = "model";
+        }
+        static readonly ActionParamsClass_SetAbout2 s_params_SetAbout2 = new ActionParamsClass_SetAbout2();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_SetAbout2 SetAbout2Params { get { return s_params_SetAbout2; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_SetAbout2
+        {
+            public readonly string model = "model";
+        }
         static readonly ActionParamsClass_Upload s_params_Upload = new ActionParamsClass_Upload();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionParamsClass_Upload UploadParams { get { return s_params_Upload; } }
@@ -127,6 +159,30 @@ namespace VirtualGallery.Web.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             IndexOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void SetAboutOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, VirtualGallery.Web.Models.Home.HtmlModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult SetAbout(VirtualGallery.Web.Models.Home.HtmlModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SetAbout);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            SetAboutOverride(callInfo, model);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void SetAbout2Override(T4MVC_System_Web_Mvc_ActionResult callInfo, VirtualGallery.Web.Models.Home.HtmlModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult SetAbout2(VirtualGallery.Web.Models.Home.HtmlModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SetAbout2);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            SetAbout2Override(callInfo, model);
             return callInfo;
         }
 

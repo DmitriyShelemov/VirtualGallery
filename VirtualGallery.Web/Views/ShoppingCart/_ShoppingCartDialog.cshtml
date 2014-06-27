@@ -1,0 +1,158 @@
+﻿@using System.Linq.Expressions
+@using VirtualGallery.Infrastructure.Localization
+@using VirtualGallery.Web.Extensions
+@using VirtualGallery.Web.Extensions.HtmlHelpers
+@using VirtualGallery.Web.Models.ShoppingCart
+@model OrderModel
+
+@{
+    Expression<Func<OrderModel, int>> pictureIdExp = m => (new LotModel()).PictureId;
+    var pictureIdName = ExpressionHelper.GetExpressionText(pictureIdExp);
+}
+
+<div id="shoppingCart" class="reveal-modal modal-shopping-cart">
+    <h2>@Localization.Nav_ShoppingCart</h2>
+    @using (Html.BeginForm(MVC.ShoppingCart.MakeOrder()))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="panel-left">
+            <div class="control-group" style="margin-bottom: 0;">
+                @Html.LabelFor(m => m.DeliveryType)
+                <div class="inline">
+                    @Html.RadioButtonListFor(m => m.DeliveryType, Model.DeliveryType.ToSelectList())
+                    @Model.SelfTakeAddress
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="control-group">
+                @Html.LabelFor(m => m.Email, new { @class = "inline-block" }) <i style="color: red;">*</i>
+                @Html.TextBoxFor(m => m.Email, new { @class = "input-large", maxlength = 128 })
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+            <div class="control-group">
+                @Html.LabelFor(m => m.Phone, new { @class = "inline-block" }) <i style="color: red;">*</i>
+                @Html.TextBoxFor(m => m.Phone, new { @class = "input-large", maxlength = 128 })
+                @Html.ValidationMessageFor(m => m.Phone)
+            </div>
+        </div>
+        <div class="panel-right">
+            <div class="control-group">
+                @Html.LabelFor(m => m.Name)
+                @Html.TextBoxFor(m => m.Name, new { @class = "input-large", maxlength = 128 })
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
+            <div class="control-group">
+                @Html.LabelFor(m => m.Details)
+                @Html.TextAreaFor(m => m.Details, new { @class = "input-large", style = "height: 107px;", maxlength = 1024 })
+                @Html.ValidationMessageFor(m => m.Details)
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <table class="table table-condensed table-hover">
+            <tbody>
+                @foreach (var lot in Model.Lots)
+                {
+                    <tr>
+                        <td>
+                            <img src='@lot.Picture.ThumbnailUrl'/>
+                        </td>
+                        <td>
+                            @if (lot.Picture.Reserved || lot.Picture.Sold) {
+                                <i class='fa fa-bottom fa-exclamation-circle fa-2' style="color: red;" rel="tooltip" title="@Localization.Hardcoded("Reserved or Sold. Please remove before accept an order.")"></i>
+                            }
+                        </td>
+                        <td colspan="@(string.IsNullOrWhiteSpace(@lot.Picture.Details) ? 2 : 1)">
+                            @lot.Picture.Name
+                            @if (!string.IsNullOrWhiteSpace(@lot.Picture.Description))
+                            {
+                                <small>(@lot.Picture.Description)</small>
+                            }
+                        </td>
+                        @if (!string.IsNullOrWhiteSpace(@lot.Picture.Details))
+                        {
+                            <td>
+                                @lot.Picture.Details
+                            </td>
+                        }
+                        <td style="display:table-cell;">
+                            @lot.Picture.Price
+                            <input id="Lots[@(Model.Lots.IndexOf(lot))]_PictureId" name="Lots[@(Model.Lots.IndexOf(lot))].PictureId" type="hidden" value="@lot.PictureId">
+                        </td>
+                        <td style="display:table-cell;">
+                            <a href='#exclude'><i class='fa fa-bottom fa-times fa-1'></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="clearfix"></div>
+        <button id="buy" type="submit" class="btn btn-large btn-primary"><i class='fa fa-check fa-1'></i>&nbsp;@Localization.Common_Buy</button>
+    }
+    
+    <div class='buttons-reveal-modal'>
+        <a class="close-reveal-modal"><i class='fa fa-times fa-1'></i></a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var $dialog = $(".modal-shopping-cart"),
+            $email = $("#Email", $dialog),
+            $phone = $("#Phone", $dialog),
+            $name = $("#Name", $dialog),
+            $details = $("#Details", $dialog);
+
+        $email.val(ShoppingCart.getField("email"));
+        $phone.val(ShoppingCart.getField("phone"));
+        $name.val(ShoppingCart.getField("name"));
+        $details.val(ShoppingCart.getField("details"));
+
+        $("body").addClass("min");
+        var closeDialog = function () {
+            $("body").removeClass("min");
+            window.history.back();
+            setTimeout(function () { window.location.reload(); }, 100);
+        };
+
+        $dialog.on("reveal:close", closeDialog);
+
+        var $form = $dialog.find("form:first");
+        $.validator.unobtrusive.parse($form);
+
+
+        $("table a[href='#exclude']", $dialog).click(function (e) {
+            e.preventDefault();
+            var row = $(this).parents("tr:first");
+            ShoppingCart.remove(row.find("input[type='hidden']").val());
+            row.remove();
+        });
+        
+        $form.submit(function () {
+
+            if ($form.valid()) {
+                
+                ShoppingCart.setField("email", $email.val());
+                ShoppingCart.setField("phone", $phone.val());
+                ShoppingCart.setField("name", $name.val());
+                ShoppingCart.setField("details", $details.val());
+
+                var data = $form.serialize();
+                $.ajax({
+                    type: "POST",
+                    cache: false,
+                    url: "@Url.Action(MVC.ShoppingCart.ActionNames.MakeOrder)",
+                    data: data
+                })
+                .done(function (result) {
+                    if (result.Success) {
+                        ShoppingCart.cleanup();
+                        closeDialog();
+                    }
+                });
+            }
+
+            return false;
+        });
+    });
+</script>

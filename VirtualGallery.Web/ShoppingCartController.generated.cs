@@ -54,6 +54,18 @@ namespace VirtualGallery.Web.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult CartDialog()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CartDialog);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult MakeOrder()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.MakeOrder);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ShoppingCartController Actions { get { return MVC.ShoppingCart; } }
@@ -70,16 +82,34 @@ namespace VirtualGallery.Web.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
-            public readonly string Index = "Index";
+            public readonly string CartDialog = "CartDialog";
+            public readonly string MakeOrder = "MakeOrder";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
-            public const string Index = "Index";
+            public const string CartDialog = "CartDialog";
+            public const string MakeOrder = "MakeOrder";
         }
 
 
+        static readonly ActionParamsClass_CartDialog s_params_CartDialog = new ActionParamsClass_CartDialog();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_CartDialog CartDialogParams { get { return s_params_CartDialog; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_CartDialog
+        {
+            public readonly string model = "model";
+        }
+        static readonly ActionParamsClass_MakeOrder s_params_MakeOrder = new ActionParamsClass_MakeOrder();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_MakeOrder MakeOrderParams { get { return s_params_MakeOrder; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_MakeOrder
+        {
+            public readonly string model = "model";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -90,9 +120,9 @@ namespace VirtualGallery.Web.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string Index = "Index";
+                public readonly string _ShoppingCartDialog = "_ShoppingCartDialog";
             }
-            public readonly string Index = "~/Views/ShoppingCart/Index.cshtml";
+            public readonly string _ShoppingCartDialog = "~/Views/ShoppingCart/_ShoppingCartDialog.cshtml";
         }
     }
 
@@ -102,13 +132,26 @@ namespace VirtualGallery.Web.Controllers
         public T4MVC_ShoppingCartController() : base(Dummy.Instance) { }
 
         [NonAction]
-        partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void CartDialogOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, VirtualGallery.Web.Models.ShoppingCart.CartModel model);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Index()
+        public override System.Web.Mvc.ActionResult CartDialog(VirtualGallery.Web.Models.ShoppingCart.CartModel model)
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
-            IndexOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CartDialog);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            CartDialogOverride(callInfo, model);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void MakeOrderOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, VirtualGallery.Web.Models.ShoppingCart.OrderModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult MakeOrder(VirtualGallery.Web.Models.ShoppingCart.OrderModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.MakeOrder);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            MakeOrderOverride(callInfo, model);
             return callInfo;
         }
 

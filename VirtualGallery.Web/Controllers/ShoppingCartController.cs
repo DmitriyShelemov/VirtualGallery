@@ -1,5 +1,14 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using VirtualGallery.BusinessLogic.Orders;
+using VirtualGallery.BusinessLogic.Orders.Interfaces;
+using VirtualGallery.BusinessLogic.Pictures;
+using VirtualGallery.BusinessLogic.Pictures.Interfaces;
+using VirtualGallery.BusinessLogic.Preferences.Interfaces;
 using VirtualGallery.BusinessLogic.WorkContext;
+using VirtualGallery.Infrastructure.Localization;
+using VirtualGallery.Web.Extensions;
 using VirtualGallery.Web.Infrastructure.Presentation;
 using VirtualGallery.Web.Models.ShoppingCart;
 
@@ -7,15 +16,105 @@ namespace VirtualGallery.Web.Controllers
 {
     public partial class ShoppingCartController : BaseController
     {
-        public ShoppingCartController(IWorkContext workContext)
+        private readonly IShoppingCartService _shoppingCartService;
+
+        private readonly IPictureService _pictureService;
+
+        private readonly IPreferenceService _preferenceService;
+
+        public ShoppingCartController(IWorkContext workContext,
+            IShoppingCartService shoppingCartService,
+            IPictureService pictureService,
+            IPreferenceService preferenceService)
             : base(workContext)
         {
+            _shoppingCartService = shoppingCartService;
+            _pictureService = pictureService;
+            _preferenceService = preferenceService;
         }
 
-        public virtual ActionResult Index()
+        [AjaxOnly]
+        [HttpPost]
+        public virtual ActionResult CartDialog(CartModel model)
         {
-            return View(new ShoppingCartPageModel());
+            var pictures = (model.Pictures != null && model.Pictures.Any()) 
+                ? _pictureService.GetByIds(model.Pictures.ToArray()) : new List<Picture>();
+
+            ViewBag.AllowEdit = CurrentUser != null;
+
+            var pref = _preferenceService.Get();
+
+            var orderModel = new OrderModel
+            {
+                SelfTakeAddress = pref.Address,
+                Lots = pictures.Select(p => new LotModel
+                {
+                    PictureId = p.Id,
+                    Picture = new CartPictureModel
+                    {
+                        Id = p.Id,
+                        Details = p.Details,
+                        Description = p.Description,
+                        Name = p.Name,
+                        Reserved = p.Reserved,
+                        Sold = p.Sold,
+                        ThumbnailUrl = p.Thumbnail.ResolveFilePath(),
+                        Price = GetPicturePrice(p)
+                    }
+                }).ToList()
+            };
+
+            return View(MVC.ShoppingCart.Views._ShoppingCartDialog, orderModel);
         }
 
+        [AjaxOnly]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult MakeOrder(OrderModel model)
+        {
+            if (model == null)
+                return FailedJson(Localization.Hardcoded("Can't create an order."));
+
+            if (!ModelState.IsValid)
+            {
+                return FailedJson(Localization.Hardcoded("Can't create an order."), fixUploadIE: true);
+            }
+
+            var pictures = (model.Lots != null && model.Lots.Any())
+                ? _pictureService.GetByIds(model.Lots.Select(l => l.PictureId).ToArray()) : new List<Picture>();
+
+            if (model.Lots == null 
+                || pictures.Count != model.Lots.Count 
+                || pictures.Any(p => p.Reserved || p.Sold))
+                return FailedJson(Localization.Hardcoded("Can't create an order."));
+
+            var order = new Order
+            {
+                From = model.Name,
+                Email =  model.Email,
+                Phone = model.Phone,
+                DeliveryType = model.DeliveryType,
+                Details = model.Details,
+                Lots = pictures.Select(p => new Lot { Picture = p }).ToList()
+            };
+
+            _shoppingCartService.Add(order);
+
+            return SuccessJson();
+        }
+
+        private static string GetPicturePrice(Picture p)
+        {
+            switch (Localization.GetCurrentLocalization().LanguageKey)
+            {
+                case LanguageKey.English:
+                    return string.Format("{0:C}", p.PriceEuro);
+                case LanguageKey.TestLocalization:
+                    return string.Format("{0:C}", p.PriceDollar);
+                case LanguageKey.Russian:
+                default:
+                    return string.Format("{0:C}", p.PriceRouble);
+            }
+        }
     }
 }

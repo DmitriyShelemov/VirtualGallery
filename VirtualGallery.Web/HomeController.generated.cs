@@ -56,6 +56,12 @@ namespace VirtualGallery.Web.Controllers
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult SetIntro()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SetIntro);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.ActionResult GetCategories()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetCategories);
@@ -125,6 +131,7 @@ namespace VirtualGallery.Web.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
+            public readonly string SetIntro = "SetIntro";
             public readonly string GetCategories = "GetCategories";
             public readonly string Category = "Category";
             public readonly string AddCategory = "AddCategory";
@@ -140,6 +147,7 @@ namespace VirtualGallery.Web.Controllers
         public class ActionNameConstants
         {
             public const string Index = "Index";
+            public const string SetIntro = "SetIntro";
             public const string GetCategories = "GetCategories";
             public const string Category = "Category";
             public const string AddCategory = "AddCategory";
@@ -152,6 +160,14 @@ namespace VirtualGallery.Web.Controllers
         }
 
 
+        static readonly ActionParamsClass_SetIntro s_params_SetIntro = new ActionParamsClass_SetIntro();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_SetIntro SetIntroParams { get { return s_params_SetIntro; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_SetIntro
+        {
+            public readonly string model = "model";
+        }
         static readonly ActionParamsClass_GetCategories s_params_GetCategories = new ActionParamsClass_GetCategories();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionParamsClass_GetCategories GetCategoriesParams { get { return s_params_GetCategories; } }
@@ -274,6 +290,18 @@ namespace VirtualGallery.Web.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             IndexOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void SetIntroOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, VirtualGallery.Web.Models.Home.HtmlModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult SetIntro(VirtualGallery.Web.Models.Home.HtmlModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SetIntro);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            SetIntroOverride(callInfo, model);
             return callInfo;
         }
 

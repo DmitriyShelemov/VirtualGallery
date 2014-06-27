@@ -12,7 +12,8 @@ namespace VirtualGallery.Web
                 .IncludeDirectory("~/Scripts/common", "*.js")
                 .IncludeDirectory("~/Scripts/jquery", "*.js")
                 .IncludeDirectory("~/Scripts/graphic", "*.js")
-                .IncludeDirectory("~/Scripts/graphic/entities", "*.js"));
+                .IncludeDirectory("~/Scripts/graphic/entities", "*.js")
+                .Include("~/Scripts/ShoppingCart.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/fileupload")
                         .Include(

@@ -1,7 +1,4 @@
-﻿@using System.Collections.Specialized
-@using VirtualGallery.BusinessLogic.Configuration
-@using VirtualGallery.Infrastructure.Localization
-@using VirtualGallery.Web.Models.About
+﻿@using VirtualGallery.Web.Models.About
 @model AboutPageModel
 @{
     Layout = MVC.Shared.Views._Layout;
@@ -24,8 +21,62 @@
     }
 }
 
-<div class="left-side">
-    @Model.About
-</div>
-<div class="right-side">
-</div>
+@section LeftSide{
+    <section id="essay">
+        @if (ViewBag.AllowEdit)
+        {
+
+            <div id="aboutText" contenteditable="true" style="min-height: 200px;">
+                @Html.Raw(Model.About)
+            </div>
+            <a id="saveAbout" style="float: right;"><i class="fa fa-bottom fa-save fa-1"></i></a>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#saveAbout").click(function() {
+                        $.ajax({
+                            type: "POST",
+                            dataType: "json",
+                            cache: false,
+                            url: "@Url.Action(MVC.About.SetAbout())",
+                            data: { Text: $("#aboutText").html() }
+                        });
+                    });
+                });
+            </script>
+        }
+        else
+        {
+            @Html.Raw(Model.About)
+        }
+    </section>
+}
+
+@section RightSide{
+    <section id="essay2">
+        @if (ViewBag.AllowEdit)
+        {
+
+            <div id="about2Text" contenteditable="true" style="min-height: 200px;">
+                @Html.Raw(Model.About2)
+            </div>
+            <a id="saveAbout2" style="float: right;"><i class="fa fa-bottom fa-save fa-1"></i></a>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#saveAbout2").click(function () {
+                        $.ajax({
+                            type: "POST",
+                            dataType: "json",
+                            cache: false,
+                            url: "@Url.Action(MVC.About.SetAbout2())",
+                            data: { Text: $("#about2Text").html() }
+                        });
+                    });
+                });
+            </script>
+        }
+        else
+        {
+            @Html.Raw(Model.About)
+        }
+    </section>
+}

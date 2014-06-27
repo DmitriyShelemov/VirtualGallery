@@ -6,5 +6,7 @@
         {
             SelectedTab = MainMenuKey.Contact;
         }
+
+        public ContactsModel Contacts { get; set; }
     }
 }

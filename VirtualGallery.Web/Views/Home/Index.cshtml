@@ -4,4 +4,11 @@
 }
 
 <div class="main-header">@Html.Raw(Model.Title)<img class="brush" src="@Links.Content.Img.brush_png"/></div>
-@Html.Action(MVC.Home.GetCategories(0))
+<div id="categoryList" style="height:82%;">
+    @Html.Action(MVC.Home.GetCategories(0))
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#categoryList").customScrollbar({ updateOnWindowResize: true });
+    });
+</script>

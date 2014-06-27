@@ -14,5 +14,7 @@ namespace VirtualGallery.BusinessLogic.Pictures.Interfaces
         IList<Picture> Get(int page);
 
         Picture GetById(int id);
+
+        IList<Picture> GetByIds(params int[] ids);
     }
 }
