@@ -8,6 +8,7 @@ CREATE TABLE [dbo].[Categories] (
     [Description]   NVARCHAR (MAX) NULL,
     [CreateDate]    DATETIME       NOT NULL,
     [UpdateDate]    DATETIME       NOT NULL,
+    [Deleted]		BIT            NOT NULL DEFAULT 0,
     CONSTRAINT [PK_dbo.Categories] PRIMARY KEY CLUSTERED ([Id] ASC)
 )
 

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Net;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web.Mvc;
 using System.Web.Security;
 using VirtualGallery.BusinessLogic.Configuration;
@@ -41,13 +43,16 @@ namespace VirtualGallery.Web.Controllers
         [ValidateAntiForgeryToken]
         public virtual ActionResult Login(LoginModel model)
         {
-            if (ModelState.IsValid 
-                && model.UserName == AppSettings.AdminName 
-                && model.Password == AppSettings.AdminPwd)
+            using (var cryptoProvider = new MD5CryptoServiceProvider())
             {
-                FormsAuthentication.SetAuthCookie(model.UserName, true);
-                WorkContext.LoginAs(new UserInfo { UserName = AppSettings.AdminName });
-                return RedirectToLocal(model.ReturnUrl);
+                if (ModelState.IsValid
+                    && model.UserName == AppSettings.AdminName
+                    && Convert.ToBase64String(cryptoProvider.ComputeHash(Encoding.Unicode.GetBytes(model.Password))) == AppSettings.AdminPwd)
+                {
+                    FormsAuthentication.SetAuthCookie(model.UserName, true);
+                    WorkContext.LoginAs(new UserInfo { UserName = AppSettings.AdminName });
+                    return RedirectToLocal(model.ReturnUrl);
+                }
             }
             
             // If we got this far, something failed, redisplay form

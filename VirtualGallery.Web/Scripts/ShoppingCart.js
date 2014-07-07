@@ -40,7 +40,7 @@
 
         var data = getData();
         if (data.lots.indexOf(pictureId) > -1) {
-            data.lots.pop(pictureId);
+            data.lots.splice(data.lots.indexOf(pictureId), 1);
             $.cookie(cookieName, JSON.stringify(data), { expires: 365, path: '/' });
 
             return true;

@@ -43,6 +43,7 @@ namespace T4MVC
                 public readonly string _LayoutHead = "_LayoutHead";
                 public readonly string _LoginLayout = "_LoginLayout";
                 public readonly string _MainMenu = "_MainMenu";
+                public readonly string _YaMetrika = "_YaMetrika";
                 public readonly string Error = "Error";
             }
             public readonly string _AsideMenu = "~/Views/Shared/_AsideMenu.cshtml";
@@ -52,6 +53,7 @@ namespace T4MVC
             public readonly string _LayoutHead = "~/Views/Shared/_LayoutHead.cshtml";
             public readonly string _LoginLayout = "~/Views/Shared/_LoginLayout.cshtml";
             public readonly string _MainMenu = "~/Views/Shared/_MainMenu.cshtml";
+            public readonly string _YaMetrika = "~/Views/Shared/_YaMetrika.cshtml";
             public readonly string Error = "~/Views/Shared/Error.cshtml";
         }
     }

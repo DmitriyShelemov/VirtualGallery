@@ -17,5 +17,7 @@ namespace VirtualGallery.BusinessLogic.Categories
         public DateTime UpdateDate { get; set; }
 
         public virtual IList<Picture> Pictures { get; set; }
+
+        public bool Deleted { get; set; }
     }
 }

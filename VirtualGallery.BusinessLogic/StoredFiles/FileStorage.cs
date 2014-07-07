@@ -20,7 +20,7 @@ namespace VirtualGallery.BusinessLogic.StoredFiles
 		{
 		    _unitOfWorkFactory = unitOfWorkFactory;
 			_fileStorageBaseUrl = AppSettings.FileStorageBaseUrl;
-			_fileStorageBasePath = AppSettings.FileStorageBasePath;
+            _fileStorageBasePath = !string.IsNullOrEmpty(AppSettings.FileStorageBasePath) ? AppSettings.FileStorageBasePath : HttpContext.Current.Request.MapPath(_fileStorageBaseUrl);
 		    _storedFileRepository = storedFileRepository;
 		}
 

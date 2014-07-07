@@ -285,4 +285,7 @@
   <data name="Delivery_Type_SelfTake" xml:space="preserve">
     <value>SelfTake</value>
   </data>
+  <data name="Common_Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
 </root>

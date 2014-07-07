@@ -23,7 +23,7 @@ namespace VirtualGallery.Web
                             );
 
             bundles.Add(new StyleBundle("~/Content/bootstrapcss").IncludeDirectory("~/Content/bootstrap", "*.css"));
-            bundles.Add(new StyleBundle("~/Content/fontawesome/css").IncludeDirectory("~/Content/fontawesome/css", "*.css"));
+            bundles.Add(new StyleBundle("~/Content/FontAwesome/css/fontAwesomeCss").Include("~/Content/FontAwesome/css/*.css"));
             bundles.Add(new StyleBundle("~/Content/maincss").Include("~/Content/Site.css"));
         }
     }

@@ -206,6 +206,7 @@
     <Compile Include="Models\MainMenuKey.cs" />
     <Compile Include="Models\BasePictureModel.cs" />
     <Compile Include="Models\ShoppingCart\CartModel.cs" />
+    <Compile Include="Models\ShoppingCart\BaseOrderModel.cs" />
     <Compile Include="Models\ShoppingCart\LotModel.cs" />
     <Compile Include="Models\ShoppingCart\OrderModel.cs" />
     <Compile Include="Models\ShoppingCart\CartPictureModel.cs" />
@@ -230,11 +231,10 @@
     <Content Include="Content\FontAwesome\css\font-awesome.css" />
     <Content Include="Content\FontAwesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Img\aside-brush.png" />
-    <Content Include="Content\Img\ink-blot.png" />
-    <Content Include="Content\Img\koffee-cup.png" />
-    <Content Include="Content\Img\book.png" />
+    <Content Include="Content\Img\book.jpg" />
     <Content Include="Content\Img\bg.jpg" />
     <Content Include="Content\Img\brush.png" />
+    <Content Include="Content\Img\koffee-cup.png" />
     <Content Include="Content\Img\modal-gloss.png" />
     <Content Include="Content\Img\ornament.png" />
     <Content Include="Content\Img\scroll-blot.png" />
@@ -281,7 +281,7 @@
     <Content Include="Content\FontAwesome\scss\_spinning.scss" />
     <Content Include="Content\FontAwesome\scss\_stacked.scss" />
     <Content Include="Content\FontAwesome\scss\_variables.scss" />
-    <Content Include="Content\Img\ink-blot.psd" />
+    <None Include="Properties\PublishProfiles\Test.pubxml" />
     <None Include="Scripts\jquery\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\common\bootstrap.js" />
     <Content Include="Scripts\common\bootstrap.min.js" />
@@ -356,6 +356,8 @@
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\About\_AddPhotoButton.cshtml" />
     <Content Include="Views\ShoppingCart\_ShoppingCartDialog.cshtml" />
+    <Content Include="Views\ShoppingCart\_OrdersDialog.cshtml" />
+    <Content Include="Views\Shared\_YaMetrika.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

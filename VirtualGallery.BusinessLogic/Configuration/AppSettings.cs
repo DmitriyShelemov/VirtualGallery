@@ -35,6 +35,11 @@ namespace VirtualGallery.BusinessLogic.Configuration
             get { return GetSettingAsString("AdminPwd", "Password"); }
         }
 
+        public static string YaMetrika
+        {
+            get { return GetSettingAsString("YaMetrika", "0"); }
+        }
+
         public static string FileStorageBaseUrl
         {
             get { return GetSettingAsString("FileStorageBaseUrl", "~/files"); }
@@ -42,7 +47,7 @@ namespace VirtualGallery.BusinessLogic.Configuration
 
         public static string FileStorageBasePath
         {
-            get { return GetSettingAsString("FileStorageBasePath", ".\\files"); }
+            get { return GetSettingAsString("FileStorageBasePath", ""); }
         }
 
         public static int PageSize

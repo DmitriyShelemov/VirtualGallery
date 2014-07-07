@@ -1,0 +1,101 @@
+﻿@using System.Linq.Expressions
+@using VirtualGallery.Infrastructure.Localization
+@using VirtualGallery.Web.Extensions
+@using VirtualGallery.Web.Extensions.HtmlHelpers
+@using VirtualGallery.Web.Models.ShoppingCart
+@model IList<OrderModel>
+
+@{
+    var fakeOrder = new OrderModel();
+}
+
+<div id="shoppingCart" class="reveal-modal modal-shopping-cart">
+    <h2>@Localization.Hardcoded("Order list")</h2>
+    <table class="table table-condensed table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.LabelFor(m => fakeOrder.CreateDate)
+                </th>
+                <th>
+                    @Html.LabelFor(m => fakeOrder.Phone)
+                </th>
+                <th>
+                    @Html.LabelFor(m => fakeOrder.Email)
+                </th>
+                <th>
+                    @Html.LabelFor(m => fakeOrder.Name)
+                </th>
+                <th style="display:table-cell;">
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                var rowStyle = "new";
+                rowStyle = "active";
+                rowStyle = "deleted";
+                
+                <tr class="@rowStyle">
+                    <td>
+                        @order.CreateDate
+                    </td>
+                    <td>
+                        @order.Phone
+                    </td>
+                    <td>
+                        <a href="mailto:@(order.Email)">@order.Email</a>
+                    </td>
+                    <td>
+                        @order.Name
+                    </td>
+                    <td style="display:table-cell;">
+                        @Html.HiddenFor(m => order.Id)
+                        <a href='#exclude'><i class='fa fa-bottom fa-times fa-1'></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>    
+    <div class='buttons-reveal-modal'>
+        <a class="close-reveal-modal"><i class='fa fa-times fa-1'></i></a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var $dialog = $(".modal-shopping-cart");
+
+        $("body").addClass("min");
+        var closeDialog = function () {
+            $("body").removeClass("min");
+            window.history.back();
+            setTimeout(function () { window.location.reload(); }, 100);
+        };
+
+        $dialog.on("reveal:close", closeDialog);
+
+        var $form = $dialog.find("form:first");
+        $.validator.unobtrusive.parse($form);
+
+
+        $("table a[href='#exclude']", $dialog).click(function (e) {
+            e.preventDefault();
+            var row = $(this).parents("tr:first");
+
+
+            $.ajax({
+                type: "GET",
+                cache: false,
+                url: "@Url.Action(MVC.ShoppingCart.ActionNames.DropOrder, MVC.ShoppingCart.Name, new { orderId = -1 })"
+                        .replace("-1", $(this).prev("input").val())
+            })
+            .done(function (result) {
+                if (result.Success) {
+                    row.remove();
+                }
+            });
+        });
+    });
+</script>

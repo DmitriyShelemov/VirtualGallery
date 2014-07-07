@@ -249,10 +249,8 @@ namespace Links
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
             public static readonly string aside_brush_png = Url("aside-brush.png");
             public static readonly string bg_jpg = Url("bg.jpg");
-            public static readonly string book_png = Url("book.png");
+            public static readonly string book_jpg = Url("book.jpg");
             public static readonly string brush_png = Url("brush.png");
-            public static readonly string ink_blot_png = Url("ink-blot.png");
-            public static readonly string ink_blot_psd = Url("ink-blot.psd");
             public static readonly string koffee_cup_png = Url("koffee-cup.png");
             public static readonly string modal_gloss_png = Url("modal-gloss.png");
             public static readonly string ornament_png = Url("ornament.png");

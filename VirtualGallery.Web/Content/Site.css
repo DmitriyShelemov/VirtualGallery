@@ -1,5 +1,7 @@
 ﻿body {
     min-width: 870px;
+    max-width: 1280px;
+    margin: 0 auto;
     font-size: 14px;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     color: #232323;
@@ -170,6 +172,7 @@ label {
 
 .scrollable .viewport .overview {
   position: absolute;
+  width:100%;
 }
 
 .scrollable .scroll-bar {
@@ -467,10 +470,18 @@ label {
     top: 0;
 }
 
-.book > img {
+.book > img:first-child {
     display: block;
     width: 100%;
     margin: 0px auto;
+}
+
+img.koffee-cup {
+    width: 20%;
+    position: relative;
+    top: 100%;
+    left: 11%;
+    margin-top: -15%;
 }
 
 input.book-text {
@@ -481,19 +492,6 @@ input.book-text {
 
 input.book-text + a {
     margin-left: 5px;
-}
-
-.koffee-cup {
-    position: absolute;
-    width: 57%;
-    top: 0;
-    left: 30%;
-}
-
-.koffee-cup > img {
-    display: block;
-    width: 100%;
-    margin: 0px auto;
 }
 
 .content {
@@ -627,12 +625,14 @@ main .scrollable > .scroll-bar.vertical > .thumb {
 
 .main-header {
     padding-left: 10%;
+    margin-top: 2%;
     font-size: 26px;
 }
 
 .main-header .brush {
     width: 20%;
-    margin-top: -6%;
+    float: right;
+    margin-top: -3%;
 }
 
 .btn-upload input {
@@ -670,6 +670,8 @@ main .scrollable > .scroll-bar.vertical > .thumb {
     float: left;
     margin-top: 10px;  
     margin-right: -5px;
+    z-index: 100;
+    position: relative;
 }
 
 .picture-container {
@@ -908,7 +910,7 @@ a#addCategory ~ .category-preview {
 }
 
 .category-preview .picture-container {
-    margin-left: 2%;
+    margin: 0 auto;
 }
 
 .category-preview .picture-item {

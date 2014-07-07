@@ -127,6 +127,7 @@ namespace VirtualGallery.Infrastructure.Localization
 			public const string Common_Delivery_Type = "Common_Delivery_Type";
 			public const string Delivery_Type_Express = "Delivery_Type_Express";
 			public const string Delivery_Type_SelfTake = "Delivery_Type_SelfTake";
+			public const string Common_Date = "Common_Date";
 		 		    	
 		}
 
@@ -349,6 +350,10 @@ namespace VirtualGallery.Infrastructure.Localization
 		public static string Delivery_Type_SelfTake
 		{
 			get{ return GetString(Names.Delivery_Type_SelfTake);}
+		}
+		public static string Common_Date
+		{
+			get{ return GetString(Names.Common_Date);}
 		}
 		 		    	
 	}

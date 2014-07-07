@@ -1,7 +1,6 @@
 ﻿@using VirtualGallery.Infrastructure.Localization
 @using VirtualGallery.Web.Models
 @model MainMenuKey
-
 <ul class="menu-tabs">
     <li>
         <a class="menu-tab @(Model == MainMenuKey.Main ? "active" : string.Empty)" 
@@ -35,6 +34,35 @@
             selectMenu($(this));
         });
 
+        @if (ViewBag.AllowEdit) {
+            <text>
+
+                $(shoppingCartSelector).click(function (e) {
+
+                    var $dialog = $('#shoppingCart'), $this = $(this);
+                    if ($dialog) {
+                        $dialog.detach().remove();
+                    }
+
+                    $.ajax({
+                        type: "GET",
+                        cache: false,
+                        url: "@Url.Action(MVC.ShoppingCart.ActionNames.Orders, MVC.ShoppingCart.Name)"
+                    })
+                    .done(function (result) {
+                        if (typeof (result) === "string") {
+                            $('.dialogs').append(result);
+                            $('#shoppingCart').reveal($this.data());
+                        } else {
+                            alert(result.ErrorMessage);
+                        }
+                    });
+                });
+            </text>
+        }
+        else {
+            <text>
+
         $(shoppingCartSelector).click(function (e) {
             if (!ShoppingCart.gets().length) {
                 e.preventDefault();
@@ -47,7 +75,7 @@
             }
 
             var data = {};
-            $.each(ShoppingCart.gets(), function(index, item) {
+            $.each(ShoppingCart.gets(), function (index, item) {
                 data["Pictures[" + index + "]"] = item;
             });
 
@@ -55,17 +83,19 @@
                 type: "POST",
                 cache: false,
                 url: "@Url.Action(MVC.ShoppingCart.ActionNames.CartDialog, MVC.ShoppingCart.Name)",
-                data: data
-            })
-            .done(function (result) {
-                if (typeof (result) === "string") {
-                    $('.dialogs').append(result);
-                    $('#shoppingCart').reveal($this.data());
-                } else {
-                    alert(result.ErrorMessage);
-                }
-            });
-        });
+                        data: data
+                    })
+                    .done(function (result) {
+                        if (typeof (result) === "string") {
+                            $('.dialogs').append(result);
+                            $('#shoppingCart').reveal($this.data());
+                        } else {
+                            alert(result.ErrorMessage);
+                        }
+                    });
+                });
+            </text>
+        }
 
         if (window.location.hash == '#@MainMenuKey.Prices') {
             selectMenu($mainMenus.filter("a[href='#@MainMenuKey.Prices']"));

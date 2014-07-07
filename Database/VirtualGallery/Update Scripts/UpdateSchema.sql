@@ -109,6 +109,12 @@ BEGIN
 END
 GO
 
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE name = N'Deleted' AND object_id = OBJECT_ID(N'[dbo].[Categories]'))
+BEGIN		
+	ALTER TABLE [dbo].[Categories] ADD [Deleted] BIT NOT NULL DEFAULT 0
+END
+GO
+
 COMMIT TRANSACTION
 
   

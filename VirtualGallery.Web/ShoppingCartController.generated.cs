@@ -66,6 +66,12 @@ namespace VirtualGallery.Web.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.MakeOrder);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult DropOrder()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DropOrder);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ShoppingCartController Actions { get { return MVC.ShoppingCart; } }
@@ -84,6 +90,8 @@ namespace VirtualGallery.Web.Controllers
         {
             public readonly string CartDialog = "CartDialog";
             public readonly string MakeOrder = "MakeOrder";
+            public readonly string Orders = "Orders";
+            public readonly string DropOrder = "DropOrder";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -91,6 +99,8 @@ namespace VirtualGallery.Web.Controllers
         {
             public const string CartDialog = "CartDialog";
             public const string MakeOrder = "MakeOrder";
+            public const string Orders = "Orders";
+            public const string DropOrder = "DropOrder";
         }
 
 
@@ -110,6 +120,14 @@ namespace VirtualGallery.Web.Controllers
         {
             public readonly string model = "model";
         }
+        static readonly ActionParamsClass_DropOrder s_params_DropOrder = new ActionParamsClass_DropOrder();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_DropOrder DropOrderParams { get { return s_params_DropOrder; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_DropOrder
+        {
+            public readonly string orderId = "orderId";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -120,8 +138,10 @@ namespace VirtualGallery.Web.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _OrdersDialog = "_OrdersDialog";
                 public readonly string _ShoppingCartDialog = "_ShoppingCartDialog";
             }
+            public readonly string _OrdersDialog = "~/Views/ShoppingCart/_OrdersDialog.cshtml";
             public readonly string _ShoppingCartDialog = "~/Views/ShoppingCart/_ShoppingCartDialog.cshtml";
         }
     }
@@ -152,6 +172,29 @@ namespace VirtualGallery.Web.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.MakeOrder);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             MakeOrderOverride(callInfo, model);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void OrdersOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Orders()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Orders);
+            OrdersOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DropOrderOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int orderId);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult DropOrder(int orderId)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DropOrder);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "orderId", orderId);
+            DropOrderOverride(callInfo, orderId);
             return callInfo;
         }
 

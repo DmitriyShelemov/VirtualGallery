@@ -50,14 +50,15 @@ namespace VirtualGallery.BusinessLogic.Categories
         {
             using (var unitOfWork = _unitOfWorkFactory.Create())
             {
-                _categoryRepository.Delete(category);
+                category.Deleted = true;
+                _categoryRepository.Update(category);
                 unitOfWork.Commit();
             }
         }
         
         public IList<Category> Get(int page)
         {
-            return _categoryRepository.GetAll(new GenericFilter<Category>
+            return _categoryRepository.GetAll(new GenericFilter<Category>(c => !c.Deleted)
             {
                 Sorting = new Sorting<Category>
                 {

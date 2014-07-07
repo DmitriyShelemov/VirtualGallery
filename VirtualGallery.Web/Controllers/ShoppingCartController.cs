@@ -9,6 +9,7 @@ using VirtualGallery.BusinessLogic.Preferences.Interfaces;
 using VirtualGallery.BusinessLogic.WorkContext;
 using VirtualGallery.Infrastructure.Localization;
 using VirtualGallery.Web.Extensions;
+using VirtualGallery.Web.Infrastructure.Filters;
 using VirtualGallery.Web.Infrastructure.Presentation;
 using VirtualGallery.Web.Models.ShoppingCart;
 
@@ -100,6 +101,38 @@ namespace VirtualGallery.Web.Controllers
 
             _shoppingCartService.Add(order);
 
+            return SuccessJson();
+        }
+        
+        [AjaxOnly]
+        [HttpGet]
+        [GalleryAuthorize]
+        public virtual ActionResult Orders()
+        {
+            ViewBag.AllowEdit = CurrentUser != null;
+
+            var orders = _shoppingCartService.Get().ToList();
+            var ordersModel = orders.Select(o => new OrderModel
+            {
+                Id = o.Id,
+                Name = o.From,
+                Email = o.Email,
+                Phone = o.Phone,
+                DeliveryType = o.DeliveryType,
+                Details = o.Details,
+                CreateDate = o.CreateDate
+            }).ToList();
+
+            return View(MVC.ShoppingCart.Views._OrdersDialog, ordersModel);
+        }
+        
+        [AjaxOnly]
+        [HttpGet]
+        [GalleryAuthorize]
+        public virtual ActionResult DropOrder(int orderId)
+        {
+            ViewBag.AllowEdit = CurrentUser != null;
+            _shoppingCartService.Remove(_shoppingCartService.GetById(orderId));            
             return SuccessJson();
         }
 
