@@ -41,7 +41,7 @@
         var lastUploadedFile = null;
         var photoLoaded = function (index, item) {
             lastUploadedFile = item;
-            window.location.refresh();
+            window.location.reload();
         };
 
         $('#File').fileupload({

@@ -136,6 +136,15 @@ namespace VirtualGallery.Web.Controllers
             return SuccessJson();
         }
 
+        [AjaxOnly]
+        public virtual ActionResult DecorDialog()
+        {
+            ViewBag.AllowEdit = CurrentUser != null;
+
+            var pref = _preferenceService.Get();
+            return View(MVC.ShoppingCart.Views._DecorDialog, new DecorModel());
+        }
+
         private static string GetPicturePrice(Picture p)
         {
             switch (Localization.GetCurrentLocalization().LanguageKey)

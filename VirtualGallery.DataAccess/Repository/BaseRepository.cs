@@ -29,6 +29,11 @@ namespace VirtualGallery.DataAccess.Repository
             }
         }
 
+        protected virtual IQueryable<TEntity> GetAllActiveQuery()
+        {
+            return _dbSet;
+        }
+
         protected IDbContextProvider DbContextProvider { get; set; }
 
         /// <summary>
@@ -46,6 +51,20 @@ namespace VirtualGallery.DataAccess.Repository
         }
 
         /// <summary>
+        /// Adds the specified entities range
+        /// </summary>
+        /// <param name="entities"></param>
+        public virtual void AddRange(IEnumerable<TEntity> entities)
+        {
+            if (entities == null)
+            {
+                throw new ArgumentNullException("entities");
+            }
+
+            _dbSet.AddRange(entities);
+        }
+
+        /// <summary>
         /// Deletes the specified entity
         /// </summary>
         /// <param name="entity"></param>
@@ -55,12 +74,21 @@ namespace VirtualGallery.DataAccess.Repository
         }
 
         /// <summary>
+        /// Deletes the specified entities range
+        /// </summary>
+        /// <param name="entities"></param>
+        public virtual void DeleteRange(IEnumerable<TEntity> entities)
+        {
+            _dbSet.RemoveRange(entities);
+        }
+
+        /// <summary>
         ///  Gets all entities
         /// </summary>
         /// <returns></returns>
         public virtual IList<TEntity> GetAll()
         {
-            return _all ?? (_all = GetAll(null));
+            return GetAllActiveQuery().ToList();
         }
 
         /// <summary>
@@ -69,7 +97,7 @@ namespace VirtualGallery.DataAccess.Repository
         /// <returns></returns>
         public virtual IList<TEntity> GetAll(GenericFilter<TEntity> filter)
         {
-            return ApplyFilter(_dbSet, filter).ToList();
+            return ApplyFilter(GetAllActiveQuery(), filter).ToList();
         }
 
         /// <summary>
@@ -101,6 +129,32 @@ namespace VirtualGallery.DataAccess.Repository
                     _dbSet.Attach(entity);
                     entry.State = EntityState.Modified;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Updates the specified entities range
+        /// </summary>
+        /// <param name="entities"></param>
+        public virtual void UpdateRange(IEnumerable<TEntity> entities)
+        {
+            if (entities == null)
+            {
+                throw new ArgumentNullException("entities");
+            }
+
+            var entitiesList = entities.ToList();
+            var entries = DbContext.ChangeTracker.Entries<TEntity>().Where(e => entitiesList.Any(ent => ent == e.Entity)).ToList();
+            foreach (var entity in entitiesList)
+            {
+                var entry = entries.FirstOrDefault(e => e.Entity == entity);
+
+                if (entry != null && entry.State != EntityState.Detached)
+                    continue;
+
+                entry = DbContext.Entry(entity);
+                _dbSet.Attach(entity);
+                entry.State = EntityState.Modified;
             }
         }
 
@@ -183,7 +237,7 @@ namespace VirtualGallery.DataAccess.Repository
         /// <returns></returns>
         protected int Count(Expression<Func<TEntity, bool>> predicate = null)
         {
-            return predicate != null ? _dbSet.Where(predicate).Count() : _dbSet.Count();
+            return predicate != null ? GetAllActiveQuery().Where(predicate).Count() : GetAllActiveQuery().Count();
         }
 
         /// <summary>
@@ -192,7 +246,7 @@ namespace VirtualGallery.DataAccess.Repository
         /// <returns></returns>
         protected IList<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
-            return _dbSet.Where(predicate).ToList();
+            return GetAllActiveQuery().Where(predicate).ToList();
         }
 
         /// <summary>
@@ -202,7 +256,7 @@ namespace VirtualGallery.DataAccess.Repository
         /// <returns></returns>
         protected TEntity GetSingle(Expression<Func<TEntity, bool>> predicate)
         {
-            return _dbSet.FirstOrDefault(predicate);
+            return GetAllActiveQuery().FirstOrDefault(predicate);
         }
 
         /// <summary>

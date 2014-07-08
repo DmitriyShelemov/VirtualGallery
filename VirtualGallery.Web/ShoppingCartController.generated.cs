@@ -92,6 +92,7 @@ namespace VirtualGallery.Web.Controllers
             public readonly string MakeOrder = "MakeOrder";
             public readonly string Orders = "Orders";
             public readonly string DropOrder = "DropOrder";
+            public readonly string DecorDialog = "DecorDialog";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -101,6 +102,7 @@ namespace VirtualGallery.Web.Controllers
             public const string MakeOrder = "MakeOrder";
             public const string Orders = "Orders";
             public const string DropOrder = "DropOrder";
+            public const string DecorDialog = "DecorDialog";
         }
 
 
@@ -138,9 +140,11 @@ namespace VirtualGallery.Web.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _DecorDialog = "_DecorDialog";
                 public readonly string _OrdersDialog = "_OrdersDialog";
                 public readonly string _ShoppingCartDialog = "_ShoppingCartDialog";
             }
+            public readonly string _DecorDialog = "~/Views/ShoppingCart/_DecorDialog.cshtml";
             public readonly string _OrdersDialog = "~/Views/ShoppingCart/_OrdersDialog.cshtml";
             public readonly string _ShoppingCartDialog = "~/Views/ShoppingCart/_ShoppingCartDialog.cshtml";
         }
@@ -195,6 +199,17 @@ namespace VirtualGallery.Web.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DropOrder);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "orderId", orderId);
             DropOrderOverride(callInfo, orderId);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DecorDialogOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult DecorDialog()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DecorDialog);
+            DecorDialogOverride(callInfo);
             return callInfo;
         }
 

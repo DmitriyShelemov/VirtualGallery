@@ -10,6 +10,8 @@ namespace VirtualGallery.BusinessLogic.Categories.Interfaces
 
         void Remove(Category category);
 
+        void Move(Category category, bool up);
+
         IList<Category> Get(int page);
 
         Category GetById(int categoryId);

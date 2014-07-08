@@ -4,6 +4,7 @@
 
 CREATE TABLE [dbo].[Categories] (
     [Id]			INT	IDENTITY (1, 1) NOT NULL,
+    [Order]			INT NOT NULL DEFAULT 0,
     [Name]			NVARCHAR (MAX) NULL,
     [Description]   NVARCHAR (MAX) NULL,
     [CreateDate]    DATETIME       NOT NULL,
@@ -79,6 +80,7 @@ CREATE TABLE [dbo].[Lots] (
     [Id]			INT	IDENTITY (1, 1) NOT NULL,
     [PictureId]		INT            NOT NULL,
     [OrderId]		INT            NOT NULL,
+    [Decor]			INT            NOT NULL,
     CONSTRAINT [PK_dbo.Lots] PRIMARY KEY CLUSTERED ([Id] ASC),
     CONSTRAINT [FK_dbo.Lots_dbo.Orders_OrderId] FOREIGN KEY ([OrderId]) REFERENCES [dbo].[Orders] ([Id]) ON DELETE CASCADE,
     CONSTRAINT [FK_dbo.Lots_dbo.Pictures_PictureId] FOREIGN KEY ([PictureId]) REFERENCES [dbo].[Pictures] ([Id])

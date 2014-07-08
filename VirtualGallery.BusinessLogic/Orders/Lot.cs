@@ -8,6 +8,8 @@ namespace VirtualGallery.BusinessLogic.Orders
 
         public int PictureId { get; set; }
 
+        public DecorationType Decor { get; set; }
+
         public virtual Picture Picture { get; set; }
 
         public int OrderId { get; set; }

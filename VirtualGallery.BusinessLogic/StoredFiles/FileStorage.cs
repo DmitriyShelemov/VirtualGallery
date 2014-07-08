@@ -131,13 +131,18 @@ namespace VirtualGallery.BusinessLogic.StoredFiles
                 };
         }
 
-        private void DeleteFileInternal(StoredFile file)
+        public static void DeleteFile(string physicalPath)
         {
-            string physicalPath = GetFilePhysicalPath(file);
             if (File.Exists(physicalPath))
             {
                 File.Delete(physicalPath);
             }
+        }
+
+        private void DeleteFileInternal(StoredFile file)
+        {
+            string physicalPath = GetFilePhysicalPath(file);
+            DeleteFile(physicalPath);
         }
     }
 }

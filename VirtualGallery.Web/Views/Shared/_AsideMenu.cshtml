@@ -7,7 +7,7 @@
         <a class="aside-menu-item @(Model == MainMenuKey.Delivery ? "active" : string.Empty)" href="@Url.Action(MVC.Delivery.Index())">@Localization.Side_Delivery</a>
     </li>
     <li>
-        <a class="aside-menu-item @(Model == MainMenuKey.Decor ? "active" : string.Empty)" href="#">@Localization.Side_Decor</a>
+        <a class="aside-menu-item @(Model == MainMenuKey.Decor ? "active" : string.Empty)" href="#@MainMenuKey.Decor">@Localization.Side_Decor</a>
     </li>
     <li>
         <a class="aside-menu-item @(Model == MainMenuKey.About ? "active" : string.Empty)" href="@Url.Action(MVC.About.Index())">@Localization.Side_About</a>
@@ -16,3 +16,44 @@
         <a class="aside-menu-item @(Model == MainMenuKey.Contact ? "active" : string.Empty)" href="@Url.Action(MVC.Contact.Index())">@Localization.Side_Contact</a>
     </li>
 </ul>
+<script type="text/javascript">
+    var decorMenuSelector = ".aside-menu a[href='#@MainMenuKey.Decor'].aside-menu-item";
+
+    $(document).ready(function () {
+        var $mainMenus = $(".aside-menu .aside-menu-item");
+
+        var selectMenu = function ($menu) {
+            $mainMenus.removeClass("active");
+            $menu.addClass("active");
+        };
+
+        $mainMenus.click(function() {
+            selectMenu($(this));
+        });
+
+        $(decorMenuSelector).click(function (e) {
+            var $dialog = $('#@MainMenuKey.Decor'), $this = $(this);
+            if ($dialog) {
+                $dialog.detach().remove();
+            }
+
+            $.ajax({
+                type: "GET",
+                cache: true,
+                url: "@Url.Action(MVC.ShoppingCart.ActionNames.DecorDialog, MVC.ShoppingCart.Name)"
+            })
+            .done(function (result) {
+                if (typeof (result) === "string") {
+                    $('.dialogs').append(result);
+                    $('#@MainMenuKey.Decor').reveal($this.data());
+                } else {
+                    alert(result.ErrorMessage);
+                }
+            });
+        });
+
+        if (window.location.hash == '#@MainMenuKey.Decor') {
+            $(decorMenuSelector).click();
+        }
+    });
+</script>

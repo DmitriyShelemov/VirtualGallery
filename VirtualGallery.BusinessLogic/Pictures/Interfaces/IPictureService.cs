@@ -11,6 +11,8 @@ namespace VirtualGallery.BusinessLogic.Pictures.Interfaces
 
         void Remove(Picture picture);
 
+        void CleanUp();
+
         IList<Picture> Get(int page);
 
         Picture GetById(int id);

@@ -86,15 +86,16 @@ namespace VirtualGallery.Web.Controllers
         public virtual ActionResult Category(int categoryId)
         {
             var category = _categoryService.GetById(categoryId);
-            if (category == null)
+            if (category == null || category.Deleted)
                 return RedirectToAction(MVC.Home.Index());
 
             ViewBag.AllowEdit = CurrentUser != null;
+            var pref = _preferenceService.Get();
 
             var model = new CategoryPageModel
             {
                 Title = category.Name,
-                Description = Localization.Home_Description,
+                Description = string.IsNullOrEmpty(pref.Intro) ? Localization.Home_Description : pref.Intro,
                 Category = new CategoryModel
                 {
                     Id = category.Id,
@@ -144,6 +145,19 @@ namespace VirtualGallery.Web.Controllers
                 return FailedJson("Category not found");
 
             _categoryService.Remove(category);
+
+            return SuccessJson(category.Id);
+        }
+
+        [GalleryAuthorize]
+        [AjaxOnly]
+        public virtual ActionResult MoveCategory(int id, bool up)
+        {
+            var category = _categoryService.GetById(id);
+            if (category == null)
+                return FailedJson("Category not found");
+
+            _categoryService.Move(category, up);
 
             return SuccessJson(category.Id);
         }

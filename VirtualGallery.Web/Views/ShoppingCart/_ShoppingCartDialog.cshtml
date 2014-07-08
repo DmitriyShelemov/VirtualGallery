@@ -2,6 +2,7 @@
 @using VirtualGallery.Infrastructure.Localization
 @using VirtualGallery.Web.Extensions
 @using VirtualGallery.Web.Extensions.HtmlHelpers
+@using VirtualGallery.Web.Models
 @using VirtualGallery.Web.Models.ShoppingCart
 @model OrderModel
 
@@ -10,7 +11,7 @@
     var pictureIdName = ExpressionHelper.GetExpressionText(pictureIdExp);
 }
 
-<div id="shoppingCart" class="reveal-modal modal-shopping-cart">
+<div id="@MainMenuKey.ShoppingCart" class="reveal-modal modal-full-size">
     <h2>@Localization.Nav_ShoppingCart</h2>
     @using (Html.BeginForm(MVC.ShoppingCart.MakeOrder()))
     {
@@ -58,7 +59,8 @@
                             <img src='@lot.Picture.ThumbnailUrl'/>
                         </td>
                         <td>
-                            @if (lot.Picture.Reserved || lot.Picture.Sold) {
+                            @if (lot.Picture.Reserved || lot.Picture.Sold)
+                            {
                                 <i class='fa fa-bottom fa-exclamation-circle fa-2' style="color: red;" rel="tooltip" title="@Localization.Hardcoded("Reserved or Sold. Please remove before accept an order.")"></i>
                             }
                         </td>
@@ -97,7 +99,7 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        var $dialog = $(".modal-shopping-cart"),
+        var $dialog = $("#@MainMenuKey.ShoppingCart"),
             $email = $("#Email", $dialog),
             $phone = $("#Phone", $dialog),
             $name = $("#Name", $dialog),

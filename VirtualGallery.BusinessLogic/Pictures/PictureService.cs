@@ -79,6 +79,25 @@ namespace VirtualGallery.BusinessLogic.Pictures
             }
         }
 
+        public void CleanUp()
+        {
+            var picturesToClean = _pictureRepository.GetAll(
+                new GenericFilter<Picture>(p => !p.Sold && !p.Reserved && p.Category.Deleted)).ToList();
+
+            var filesToRemove = picturesToClean.Where(p => p.File != null).ToList()
+                                .Select(p => _fileStorage.GetFilePhysicalPath(p.File)).ToList();
+            filesToRemove.AddRange(picturesToClean.Where(p => p.File != null).ToList()
+                                .Select(p => _fileStorage.GetFilePhysicalPath(p.Thumbnail)).ToList());
+
+            using (var unitOfWork = _unitOfWorkFactory.Create())
+            {
+                _pictureRepository.DeleteRange(picturesToClean);
+                unitOfWork.Commit();
+            }
+
+            filesToRemove.ForEach(FileStorage.DeleteFile);
+        }
+
         public IList<Picture> Get(int page)
         {
             return _pictureRepository.GetAll(new GenericFilter<Picture>

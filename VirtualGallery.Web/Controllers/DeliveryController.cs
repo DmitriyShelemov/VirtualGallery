@@ -18,6 +18,7 @@ namespace VirtualGallery.Web.Controllers
 
         public virtual ActionResult Index()
         {
+            ViewBag.AllowEdit = CurrentUser != null;
             return View(new DeliveryPageModel());
         }
 

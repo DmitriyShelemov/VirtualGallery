@@ -32,15 +32,33 @@ namespace VirtualGallery.BusinessLogic
         void Add(TEntity entity);
 
         /// <summary>
+        /// Adds the specified entities range
+        /// </summary>
+        /// <param name="entities"></param>
+        void AddRange(IEnumerable<TEntity> entities);
+
+        /// <summary>
         /// Updates the specified entity
         /// </summary>
         /// <param name="entity"></param>
         void Update(TEntity entity);
 
         /// <summary>
+        /// Updates the specified entities range
+        /// </summary>
+        /// <param name="entities"></param>
+        void UpdateRange(IEnumerable<TEntity> entities);
+
+        /// <summary>
         /// Deletes the specified entity
         /// </summary>
         /// <param name="entity"></param>
         void Delete(TEntity entity);
+
+        /// <summary>
+        /// Deletes the specified entities range
+        /// </summary>
+        /// <param name="entities"></param>
+        void DeleteRange(IEnumerable<TEntity> entities);
     }
 }

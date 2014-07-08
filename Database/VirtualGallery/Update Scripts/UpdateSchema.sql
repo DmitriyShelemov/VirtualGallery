@@ -115,6 +115,18 @@ BEGIN
 END
 GO
 
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE name = N'Order' AND object_id = OBJECT_ID(N'[dbo].[Categories]'))
+BEGIN		
+	ALTER TABLE [dbo].[Categories] ADD [Order] INT NOT NULL DEFAULT 0
+END
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE name = N'Decor' AND object_id = OBJECT_ID(N'[dbo].[Lots]'))
+BEGIN		
+	ALTER TABLE [dbo].[Lots] ADD [Decor] INT NOT NULL DEFAULT 0
+END
+GO
+
 COMMIT TRANSACTION
 
   

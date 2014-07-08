@@ -1,4 +1,5 @@
-﻿using VirtualGallery.BusinessLogic.Pictures;
+﻿using VirtualGallery.BusinessLogic.Orders;
+using VirtualGallery.BusinessLogic.Pictures;
 
 namespace VirtualGallery.Web.Models.ShoppingCart
 {
@@ -7,6 +8,8 @@ namespace VirtualGallery.Web.Models.ShoppingCart
         public int Id { get; set; }
 
         public int PictureId { get; set; }
+
+        public DecorationType Decor { get; set; }
 
         public CartPictureModel Picture { get; set; }
     }

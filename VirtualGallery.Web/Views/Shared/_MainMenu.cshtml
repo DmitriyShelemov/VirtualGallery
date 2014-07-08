@@ -39,7 +39,7 @@
 
                 $(shoppingCartSelector).click(function (e) {
 
-                    var $dialog = $('#shoppingCart'), $this = $(this);
+                    var $dialog = $('#@MainMenuKey.ShoppingCart'), $this = $(this);
                     if ($dialog) {
                         $dialog.detach().remove();
                     }
@@ -52,7 +52,7 @@
                     .done(function (result) {
                         if (typeof (result) === "string") {
                             $('.dialogs').append(result);
-                            $('#shoppingCart').reveal($this.data());
+                            $('#@MainMenuKey.ShoppingCart').reveal($this.data());
                         } else {
                             alert(result.ErrorMessage);
                         }
@@ -69,7 +69,7 @@
                 return false;
             }
 
-            var $dialog = $('#shoppingCart'), $this = $(this);
+            var $dialog = $('#@MainMenuKey.ShoppingCart'), $this = $(this);
             if ($dialog) {
                 $dialog.detach().remove();
             }
@@ -88,7 +88,7 @@
                     .done(function (result) {
                         if (typeof (result) === "string") {
                             $('.dialogs').append(result);
-                            $('#shoppingCart').reveal($this.data());
+                            $('#@MainMenuKey.ShoppingCart').reveal($this.data());
                         } else {
                             alert(result.ErrorMessage);
                         }

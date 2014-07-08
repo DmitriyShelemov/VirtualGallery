@@ -9,13 +9,31 @@
 
 body.common {
     background: url('Img/bg.jpg') repeat scroll;
-    background-size: 100%;
+    background-position: center top;
+    background-size: 1280px;
     height: 100%;
     position: relative;
 }
 
+@media screen and (max-width: 1280px){
+    body.common {
+        background-size: 100%;
+    }
+}
+
+@media screen and (max-width: 870px){
+    body.common {
+        background-size: 870px;
+        background-position: left top;
+    }
+}
+
 body.common.min {
     min-width: 0;
+}
+
+body > center ~ div {
+    height: 30px !important;
 }
 
 header, footer, nav, section {
@@ -463,6 +481,42 @@ label {
 
 
 /*#endregion*/
+
+#essay {
+    font-size: 110%;
+}
+
+
+
+@media screen and (max-width: 1280px){
+    #essay {
+        font-size: 110%;
+    }
+}
+
+@media screen and (max-width: 1180px){
+    #essay {
+        font-size: 95%;
+    }
+}
+
+@media screen and (max-width: 1080px){
+    #essay {
+        font-size: 82%;
+    }
+}
+
+@media screen and (max-width: 980px){
+    #essay {
+        font-size: 76%;
+    }
+}
+
+@media screen and (max-width: 870px){
+    #essay {
+        font-size: 65%;
+    }
+}
 
 .book {
     position: absolute;
@@ -975,15 +1029,20 @@ a#addCategory ~ .category-preview {
     width: 100%;
 }
 
+.decor-type {
+    background-color: #BBBBA5;
+    box-shadow: 2px 3px 10px black;
+    width: 24%;
+    margin-left: 7%;
+    min-height: 300px;
+    float: left;
+    padding: 10px 10px 0 10px;
+    font-size: 12px;
+    border-radius: 3px;
+    position: relative;
+}
 
-
-
-
-
-
-
-
-.modal-shopping-cart {
+.modal-full-size {
     background-color: lightgoldenrodyellow;
     top: 30px;
     left: 30px;
@@ -994,20 +1053,20 @@ a#addCategory ~ .category-preview {
     min-height: 300px;
 }
 
-.modal-shopping-cart > h2 {
+.modal-full-size > h2 {
     text-align: center;
 }
 
-.modal-shopping-cart > h2 {
+.modal-full-size > h2 {
     word-wrap: break-word;
 }
 
-.modal-shopping-cart .input-large {
+.modal-full-size .input-large {
     border: 1px solid #ddd;
     border-radius: 3px;
 }
 
-.modal-shopping-cart img {
+.modal-full-size img {
     height: 50px;    
     -webkit-transition: -webkit-transform 1s,opacity 1s,background 1s,width 1s,height 1s,font-size 1s;
     -webkit-border-radius: 5px;
@@ -1019,7 +1078,7 @@ a#addCategory ~ .category-preview {
     transition-duration: 1s,1s,1s,1s,1s,1s;
 }
 
-.modal-shopping-cart img:hover {
+.modal-full-size img:hover {
     -moz-transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
     -o-transform: rotate(360deg);
@@ -1027,10 +1086,10 @@ a#addCategory ~ .category-preview {
     height: 150px;
 }
 
-.modal-shopping-cart > form > table td {
+.modal-full-size > form > table td {
     vertical-align: middle;
 }
 
-.modal-shopping-cart > form > #buy {
+.modal-full-size > form > #buy {
     float: right;
 }

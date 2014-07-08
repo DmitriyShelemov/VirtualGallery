@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Data.Entity;
 using VirtualGallery.BusinessLogic.Pictures;
 using VirtualGallery.BusinessLogic.Pictures.Interfaces;
 
@@ -10,6 +11,11 @@ namespace VirtualGallery.DataAccess.Repository.Pictures
         public PictureRepository(IDbContextProvider dbContextProvider) 
             : base(dbContextProvider)
         {
+        }
+
+        protected override IQueryable<Picture> GetAllActiveQuery()
+        {
+            return base.GetAllActiveQuery().Include(p => p.File).Include(p => p.Thumbnail);
         }
 
         public string GetUniqueName(int categoryId, string name, string currentName = null)

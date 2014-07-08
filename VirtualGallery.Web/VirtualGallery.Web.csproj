@@ -193,6 +193,7 @@
     <Compile Include="Models\Contact\ContactPageModel.cs" />
     <Compile Include="Models\About\AboutPageModel.cs" />
     <Compile Include="Models\Contact\FeedbackModel.cs" />
+    <Compile Include="Models\ShoppingCart\DecorModel.cs" />
     <Compile Include="Models\ErrorModel.cs" />
     <Compile Include="Models\Home\CategoryModel.cs" />
     <Compile Include="Models\Home\CategoryListModel.cs" />
@@ -358,6 +359,7 @@
     <Content Include="Views\ShoppingCart\_ShoppingCartDialog.cshtml" />
     <Content Include="Views\ShoppingCart\_OrdersDialog.cshtml" />
     <Content Include="Views\Shared\_YaMetrika.cshtml" />
+    <Content Include="Views\ShoppingCart\_DecorDialog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

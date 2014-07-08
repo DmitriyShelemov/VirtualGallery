@@ -92,6 +92,12 @@ namespace VirtualGallery.Web.Controllers
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult MoveCategory()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.MoveCategory);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.ActionResult Upload()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Upload);
@@ -137,6 +143,7 @@ namespace VirtualGallery.Web.Controllers
             public readonly string AddCategory = "AddCategory";
             public readonly string EditCategory = "EditCategory";
             public readonly string DropCategory = "DropCategory";
+            public readonly string MoveCategory = "MoveCategory";
             public readonly string Upload = "Upload";
             public readonly string TopPicture = "TopPicture";
             public readonly string PreviewPicture = "PreviewPicture";
@@ -153,6 +160,7 @@ namespace VirtualGallery.Web.Controllers
             public const string AddCategory = "AddCategory";
             public const string EditCategory = "EditCategory";
             public const string DropCategory = "DropCategory";
+            public const string MoveCategory = "MoveCategory";
             public const string Upload = "Upload";
             public const string TopPicture = "TopPicture";
             public const string PreviewPicture = "PreviewPicture";
@@ -208,6 +216,15 @@ namespace VirtualGallery.Web.Controllers
         public class ActionParamsClass_DropCategory
         {
             public readonly string id = "id";
+        }
+        static readonly ActionParamsClass_MoveCategory s_params_MoveCategory = new ActionParamsClass_MoveCategory();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_MoveCategory MoveCategoryParams { get { return s_params_MoveCategory; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_MoveCategory
+        {
+            public readonly string id = "id";
+            public readonly string up = "up";
         }
         static readonly ActionParamsClass_Upload s_params_Upload = new ActionParamsClass_Upload();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -363,6 +380,19 @@ namespace VirtualGallery.Web.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DropCategory);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             DropCategoryOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void MoveCategoryOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id, bool up);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult MoveCategory(int id, bool up)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.MoveCategory);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "up", up);
+            MoveCategoryOverride(callInfo, id, up);
             return callInfo;
         }
 
