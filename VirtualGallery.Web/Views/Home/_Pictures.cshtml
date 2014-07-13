@@ -36,11 +36,17 @@
         });
 
         $pictureContainer.on("mouseenter", ".picture-item > img", function () {
-            $(this).animate({opacity: 0.2}, 400);
+            var $details = $($(this).parent()).find(".picture-details");
+            $(this).animate({ opacity: 0.2 }, 400, function () {
+                $details.show();
+            });
         });
 
         $pictureContainer.on("mouseleave", ".picture-item", function () {
-            $(this).find("img").animate({ opacity: 1}, 400);
+            var $details = $(this).find(".picture-details");
+            $(this).find("img").animate({ opacity: 1 }, 400, function () {
+                $details.hide();
+            });
         });
         
         $(".menu-tabs a[href='#@MainMenuKey.Prices'].menu-tab")

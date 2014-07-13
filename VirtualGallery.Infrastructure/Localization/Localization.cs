@@ -128,6 +128,9 @@ namespace VirtualGallery.Infrastructure.Localization
 			public const string Delivery_Type_Express = "Delivery_Type_Express";
 			public const string Delivery_Type_SelfTake = "Delivery_Type_SelfTake";
 			public const string Common_Date = "Common_Date";
+			public const string Decoration_Type_Frame = "Decoration_Type_Frame";
+			public const string Decoration_Type_Lux = "Decoration_Type_Lux";
+			public const string Decoration_Type_Simple = "Decoration_Type_Simple";
 		 		    	
 		}
 
@@ -354,6 +357,18 @@ namespace VirtualGallery.Infrastructure.Localization
 		public static string Common_Date
 		{
 			get{ return GetString(Names.Common_Date);}
+		}
+		public static string Decoration_Type_Frame
+		{
+			get{ return GetString(Names.Decoration_Type_Frame);}
+		}
+		public static string Decoration_Type_Lux
+		{
+			get{ return GetString(Names.Decoration_Type_Lux);}
+		}
+		public static string Decoration_Type_Simple
+		{
+			get{ return GetString(Names.Decoration_Type_Simple);}
 		}
 		 		    	
 	}

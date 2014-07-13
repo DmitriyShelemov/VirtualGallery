@@ -1,0 +1,21 @@
+﻿@using VirtualGallery.Web.Extensions
+@using VirtualGallery.Web.Models.ShoppingCart
+@model DecorTypeModel
+
+
+<div class='decor-type' title='@Model.Type.ToLocalizedString()'>   
+    <img src='@Model.ImageUrl'/> 
+    <div style="text-align: center;">
+        <h3>@Model.Type.ToLocalizedString()</h3>
+    </div>
+    @if (ViewBag.AllowEdit)
+    {
+        <div id="@Model.TextId" contenteditable="true" style="min-height: 30px;">
+            @Html.Raw(Model.Text ?? "Default text")
+        </div>
+    }
+    else
+    {
+        <div class="decor-type-desc">@Html.Raw(Model.Text)</div>
+    }
+</div>

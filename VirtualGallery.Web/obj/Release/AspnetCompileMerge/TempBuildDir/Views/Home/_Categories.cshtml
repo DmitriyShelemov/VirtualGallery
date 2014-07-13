@@ -1,0 +1,74 @@
+﻿@using VirtualGallery.Web.Models
+@model VirtualGallery.Web.Models.Home.CategoryListModel
+
+@if (ViewBag.AllowEdit)
+{
+    @Html.Partial(MVC.Home.Views._AddCategoryButton)
+}
+
+@foreach (var category in Model.Categories)
+{
+    <section id="@category.Id" class="category-preview">
+        <a href="@Url.Action(MVC.Home.Category(category.Id))" title="@category.Description">@category.Name</a>
+        
+        @if (ViewBag.AllowEdit)
+        {
+            <a class="dropCategory"><i class="fa fa-trash-o"></i></a>
+            <a class="moveUpCategory"><i class="fa fa-hand-o-up"></i></a>
+            <a class="moveDownCategory"><i class="fa fa-hand-o-down"></i></a>
+        }
+
+        @Html.Partial(MVC.Home.Views._Pictures, category.Pictures)
+        <div><img class="ornament" src="@Links.Content.Img.ornament_png"/></div>
+    </section>
+}
+
+@if (ViewBag.AllowEdit)
+{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(document).on("click", ".dropCategory", function () {
+            var $this = $(this);
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                cache: false,
+                url: "@Url.Action(MVC.Home.ActionNames.DropCategory, new { id = -1 })".replace("-1", $this.closest("section").attr("id")),
+            })
+                .done(function (json) {
+                    if (json.Success) {
+                        $this.closest("section").remove();
+                    }
+                });
+        });
+        $(document).on("click", ".moveUpCategory", function () {
+            var $this = $(this);
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                cache: false,
+                url: "@Url.Action(MVC.Home.ActionNames.MoveCategory, new { id = -1, up = true })".replace("-1", $this.closest("section").attr("id")),
+            })
+                .done(function (json) {
+                    if (json.Success) {
+                        window.location.reload();
+                    }
+                });
+        });
+        $(document).on("click", ".moveDownCategory", function () {
+            var $this = $(this);
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                cache: false,
+                url: "@Url.Action(MVC.Home.ActionNames.MoveCategory, new { id = -1, up = false })".replace("-1", $this.closest("section").attr("id")),
+            })
+                .done(function (json) {
+                    if (json.Success) {
+                        window.location.reload();
+                    }
+                });
+        });
+    });
+</script>
+}

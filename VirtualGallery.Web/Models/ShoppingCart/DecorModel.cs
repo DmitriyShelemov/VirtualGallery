@@ -4,10 +4,13 @@ namespace VirtualGallery.Web.Models.ShoppingCart
 {
     public class DecorModel
     {
-        public string Box { get; set; }
+        [AllowHtml]
+        public string SimpleBoxText { get; set; }
 
-        public string Phone { get; set; }
+        [AllowHtml]
+        public string FrameText { get; set; }
 
-        public string WorkTime { get; set; }
+        [AllowHtml]
+        public string LuxText { get; set; }
     }
 }

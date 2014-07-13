@@ -130,6 +130,14 @@ namespace VirtualGallery.Web.Controllers
         {
             public readonly string orderId = "orderId";
         }
+        static readonly ActionParamsClass_DecorDialog s_params_DecorDialog = new ActionParamsClass_DecorDialog();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_DecorDialog DecorDialogParams { get { return s_params_DecorDialog; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_DecorDialog
+        {
+            public readonly string model = "model";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -141,10 +149,12 @@ namespace VirtualGallery.Web.Controllers
             public class _ViewNamesClass
             {
                 public readonly string _DecorDialog = "_DecorDialog";
+                public readonly string _DecorType = "_DecorType";
                 public readonly string _OrdersDialog = "_OrdersDialog";
                 public readonly string _ShoppingCartDialog = "_ShoppingCartDialog";
             }
             public readonly string _DecorDialog = "~/Views/ShoppingCart/_DecorDialog.cshtml";
+            public readonly string _DecorType = "~/Views/ShoppingCart/_DecorType.cshtml";
             public readonly string _OrdersDialog = "~/Views/ShoppingCart/_OrdersDialog.cshtml";
             public readonly string _ShoppingCartDialog = "~/Views/ShoppingCart/_ShoppingCartDialog.cshtml";
         }
@@ -210,6 +220,18 @@ namespace VirtualGallery.Web.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DecorDialog);
             DecorDialogOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DecorDialogOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, VirtualGallery.Web.Models.ShoppingCart.DecorModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult DecorDialog(VirtualGallery.Web.Models.ShoppingCart.DecorModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DecorDialog);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            DecorDialogOverride(callInfo, model);
             return callInfo;
         }
 

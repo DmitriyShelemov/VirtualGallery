@@ -251,6 +251,10 @@ namespace Links
             public static readonly string bg_jpg = Url("bg.jpg");
             public static readonly string book_jpg = Url("book.jpg");
             public static readonly string brush_png = Url("brush.png");
+            public static readonly string courier_jpg = Url("courier.jpg");
+            public static readonly string decorFrame_jpg = Url("decorFrame.jpg");
+            public static readonly string decorLux_jpg = Url("decorLux.jpg");
+            public static readonly string decorSimpleBox_jpg = Url("decorSimpleBox.jpg");
             public static readonly string koffee_cup_png = Url("koffee-cup.png");
             public static readonly string modal_gloss_png = Url("modal-gloss.png");
             public static readonly string ornament_png = Url("ornament.png");

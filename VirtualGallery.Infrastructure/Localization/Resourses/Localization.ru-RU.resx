@@ -139,7 +139,7 @@
     <value>Адрес</value>
   </data>
   <data name="Contact_Address_i" xml:space="preserve">
-    <value>г. Санкт-Петербург, ул. Торжковская, д. 7 (ст. м. Черная Речка)</value>
+    <value>г. Санкт-Петербург, ул. Безымянная, д. 0 (ст. м. Ничья)</value>
   </data>
   <data name="Contact_Body" xml:space="preserve">
     <value>Сообщение</value>
@@ -160,10 +160,19 @@
     <value>Телефон</value>
   </data>
   <data name="Contact_Phone_i" xml:space="preserve">
-    <value>(812) 242-11-95</value>
+    <value>(812) 000-00-00</value>
   </data>
   <data name="Contact_Where_We_Are" xml:space="preserve">
     <value>Как нас Найти?</value>
+  </data>
+  <data name="Decoration_Type_Frame" xml:space="preserve">
+    <value>В рамке</value>
+  </data>
+  <data name="Decoration_Type_Lux" xml:space="preserve">
+    <value>Люкс</value>
+  </data>
+  <data name="Decoration_Type_Simple" xml:space="preserve">
+    <value>В упаковке (бесплатно)</value>
   </data>
   <data name="Delivery_Type_Express" xml:space="preserve">
     <value>Курьером</value>

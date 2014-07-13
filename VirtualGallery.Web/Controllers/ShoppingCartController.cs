@@ -137,12 +137,34 @@ namespace VirtualGallery.Web.Controllers
         }
 
         [AjaxOnly]
+        [HttpGet]
         public virtual ActionResult DecorDialog()
         {
             ViewBag.AllowEdit = CurrentUser != null;
 
             var pref = _preferenceService.Get();
-            return View(MVC.ShoppingCart.Views._DecorDialog, new DecorModel());
+            return View(MVC.ShoppingCart.Views._DecorDialog, new DecorModel
+            {
+                SimpleBoxText = pref.DecorSimpleText,
+                FrameText = pref.DecorFrameText,
+                LuxText = pref.DecorLuxText
+            });
+        }
+
+        [AjaxOnly]
+        [HttpPost]
+        [GalleryAuthorize]
+        public virtual ActionResult DecorDialog(DecorModel model)
+        {
+            ViewBag.AllowEdit = CurrentUser != null;
+
+            var pref = _preferenceService.Get();
+            pref.DecorSimpleText = model.SimpleBoxText;
+            pref.DecorFrameText = model.FrameText;
+            pref.DecorLuxText = model.LuxText;
+            _preferenceService.Update(pref);
+
+            return SuccessJson(null, true);
         }
 
         private static string GetPicturePrice(Picture p)

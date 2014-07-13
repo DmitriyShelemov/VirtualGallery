@@ -3171,9 +3171,9 @@ input[type="button"].btn-block {
 .btn-toolbar > .input-group {
   margin-left: 5px;
 }
-.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+/*.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
   border-radius: 0;
-}
+}*/
 .btn-group > .btn:first-child {
   margin-left: 0;
 }

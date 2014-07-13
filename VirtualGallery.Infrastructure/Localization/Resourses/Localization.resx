@@ -288,4 +288,13 @@
   <data name="Common_Date" xml:space="preserve">
     <value>Date</value>
   </data>
+  <data name="Decoration_Type_Frame" xml:space="preserve">
+    <value>Frame</value>
+  </data>
+  <data name="Decoration_Type_Lux" xml:space="preserve">
+    <value>Lux</value>
+  </data>
+  <data name="Decoration_Type_Simple" xml:space="preserve">
+    <value>Simple</value>
+  </data>
 </root>

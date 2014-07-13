@@ -28,6 +28,7 @@ namespace VirtualGallery.BusinessLogic.EMail
 
         public bool Send(Message message)
         {
+            Logger.Instance.WriteLog("Send " + message.From, LogLevel.Error);
             QueueMessage(message);
             SendQueuedMessages();
             return true;
@@ -35,6 +36,7 @@ namespace VirtualGallery.BusinessLogic.EMail
 
         private void SendQueuedMessages()
         {
+            Logger.Instance.WriteLog("SendQueuedMessages", LogLevel.Error);
             new TaskFactory().StartNew(SendQueuedMessagesTask);
         }
          
@@ -55,9 +57,10 @@ namespace VirtualGallery.BusinessLogic.EMail
             };
         }
 
-        private void QueueMessage(Message messaage)
+        private void QueueMessage(Message message)
         {
-            _messageQueue.Enqueue(messaage);
+            Logger.Instance.WriteLog("QueueMessage " + message.From, LogLevel.Error);
+            _messageQueue.Enqueue(message);
         }
 
         private bool SendMessage(Message message, SmtpClient smtpClient)
@@ -81,12 +84,14 @@ namespace VirtualGallery.BusinessLogic.EMail
 
         private void SendQueuedMessagesTask()
         {
+            Logger.Instance.WriteLog("SendQueuedMessagesTask", LogLevel.Error);
             var queued = _messageQueue.DequeueAll().ToList();
             if (!queued.Any())
             {
                 return;
             }
 
+            Logger.Instance.WriteLog("SendQueuedMessagesTask try" + queued.Count, LogLevel.Error);
             SmtpClient smtpClient;
             try
             {

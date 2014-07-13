@@ -1,0 +1,23 @@
+﻿@using VirtualGallery.Web.Extensions
+@model VirtualGallery.Web.Models.Shared.HorizontalListSelectorModel
+
+<div class="btn-group btn-radio-group btn-group-tooltip">
+    @foreach (var listItem in Model.Items)
+    {
+        var id = string.Format("{0}_{1}", Model.Prefix, listItem.Value);
+        
+        @Html.RadioButton(Model.Prefix, listItem.Value, Model.SelectedValue.Equals(listItem.Value), new { id })
+        <label for="@id" class="btn"  @(Model.DisableTooltip ? null : Html.Raw("rel=\"tooltip\" title=\"" + listItem.Text + "\""))>
+            <b class="@(Model.StylePrefix + listItem.Value.SplitByUpperCaseToLower("-"))">
+                @if (Model.ShowText)
+                {
+                    <span>@listItem.Text</span>
+                }
+            </b>
+        </label>
+    }
+</div>
+
+
+
+

@@ -25,5 +25,11 @@ namespace VirtualGallery.BusinessLogic.Preferences
         public int PhotoId { get; set; }
 
         public virtual StoredFile Photo { get; set; }
+
+        public string DecorSimpleText { get; set; }
+
+        public string DecorFrameText { get; set; }
+
+        public string DecorLuxText { get; set; }
     }
 }

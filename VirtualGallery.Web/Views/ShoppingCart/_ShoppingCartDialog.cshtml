@@ -3,6 +3,7 @@
 @using VirtualGallery.Web.Extensions
 @using VirtualGallery.Web.Extensions.HtmlHelpers
 @using VirtualGallery.Web.Models
+@using VirtualGallery.Web.Models.Shared
 @using VirtualGallery.Web.Models.ShoppingCart
 @model OrderModel
 
@@ -77,6 +78,18 @@
                                 @lot.Picture.Details
                             </td>
                         }
+                        <td style="width: 170px;">
+                            <div class="decor-selector">
+                                @Html.Partial(MVC.Shared.Views._HorizontalListSelector, new HorizontalListSelectorModel
+                                {
+                                    Prefix = "Decor",
+                                    StylePrefix = "icon-decor-",
+                                    ShowText = false,
+                                    SelectedValue = lot.Decor.ToString(),
+                                    Items = lot.Decor.ToSelectList()
+                                })
+                            </div>
+                        </td>
                         <td style="display:table-cell;">
                             @lot.Picture.Price
                             <input id="Lots[@(Model.Lots.IndexOf(lot))]_PictureId" name="Lots[@(Model.Lots.IndexOf(lot))].PictureId" type="hidden" value="@lot.PictureId">

@@ -55,7 +55,10 @@ CREATE TABLE [dbo].[Preferences] (
 	[Address]	NVARCHAR (MAX)	NULL,
 	[WorkTime]	NVARCHAR (MAX)	NULL,
 	[MapUrl]	NVARCHAR (MAX)	NULL,
-	[PhotoId]	INT				NULL
+	[PhotoId]	INT				NULL,
+	[DecorSimpleText]	NVARCHAR (MAX)	NULL,
+	[DecorFrameText]	NVARCHAR (MAX)	NULL,
+	[DecorLuxText]	NVARCHAR (MAX)	NULL
 )
 
 ALTER TABLE [dbo].[Preferences] 

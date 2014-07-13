@@ -39,6 +39,7 @@ namespace T4MVC
                 public readonly string _AsideMenu = "_AsideMenu";
                 public readonly string _Captcha = "_Captcha";
                 public readonly string _ConditionalComments = "_ConditionalComments";
+                public readonly string _HorizontalListSelector = "_HorizontalListSelector";
                 public readonly string _Layout = "_Layout";
                 public readonly string _LayoutHead = "_LayoutHead";
                 public readonly string _LoginLayout = "_LoginLayout";
@@ -49,6 +50,7 @@ namespace T4MVC
             public readonly string _AsideMenu = "~/Views/Shared/_AsideMenu.cshtml";
             public readonly string _Captcha = "~/Views/Shared/_Captcha.cshtml";
             public readonly string _ConditionalComments = "~/Views/Shared/_ConditionalComments.cshtml";
+            public readonly string _HorizontalListSelector = "~/Views/Shared/_HorizontalListSelector.cshtml";
             public readonly string _Layout = "~/Views/Shared/_Layout.cshtml";
             public readonly string _LayoutHead = "~/Views/Shared/_LayoutHead.cshtml";
             public readonly string _LoginLayout = "~/Views/Shared/_LoginLayout.cshtml";

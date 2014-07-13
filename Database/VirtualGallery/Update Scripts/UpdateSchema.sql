@@ -127,6 +127,24 @@ BEGIN
 END
 GO
 
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE name = N'DecorSimpleText' AND object_id = OBJECT_ID(N'[dbo].[Preferences]'))
+BEGIN		
+	ALTER TABLE [dbo].[Preferences] ADD [DecorSimpleText] NVARCHAR (MAX)	NULL
+END
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE name = N'DecorFrameText' AND object_id = OBJECT_ID(N'[dbo].[Preferences]'))
+BEGIN		
+	ALTER TABLE [dbo].[Preferences] ADD [DecorFrameText] NVARCHAR (MAX)	NULL
+END
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE name = N'DecorLuxText' AND object_id = OBJECT_ID(N'[dbo].[Preferences]'))
+BEGIN		
+	ALTER TABLE [dbo].[Preferences] ADD [DecorLuxText] NVARCHAR (MAX)	NULL
+END
+GO
+
 COMMIT TRANSACTION
 
   

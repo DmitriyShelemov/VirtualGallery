@@ -193,6 +193,8 @@
     <Compile Include="Models\Contact\ContactPageModel.cs" />
     <Compile Include="Models\About\AboutPageModel.cs" />
     <Compile Include="Models\Contact\FeedbackModel.cs" />
+    <Compile Include="Models\Shared\HorizontalListSelectorModel.cs" />
+    <Compile Include="Models\ShoppingCart\DecorTypeModel.cs" />
     <Compile Include="Models\ShoppingCart\DecorModel.cs" />
     <Compile Include="Models\ErrorModel.cs" />
     <Compile Include="Models\Home\CategoryModel.cs" />
@@ -231,10 +233,13 @@
     <Content Include="Content\Bootstrap\bootstrap.min.css" />
     <Content Include="Content\FontAwesome\css\font-awesome.css" />
     <Content Include="Content\FontAwesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Img\decorLux.jpg" />
     <Content Include="Content\Img\aside-brush.png" />
     <Content Include="Content\Img\book.jpg" />
     <Content Include="Content\Img\bg.jpg" />
     <Content Include="Content\Img\brush.png" />
+    <Content Include="Content\Img\courier.jpg" />
+    <Content Include="Content\Img\decorFrame.jpg" />
     <Content Include="Content\Img\koffee-cup.png" />
     <Content Include="Content\Img\modal-gloss.png" />
     <Content Include="Content\Img\ornament.png" />
@@ -245,6 +250,7 @@
     <Content Include="Content\Img\Textures\roof.jpg" />
     <Content Include="Content\Img\Textures\stariy-parket.jpg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Img\decorSimpleBox.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
@@ -360,6 +366,8 @@
     <Content Include="Views\ShoppingCart\_OrdersDialog.cshtml" />
     <Content Include="Views\Shared\_YaMetrika.cshtml" />
     <Content Include="Views\ShoppingCart\_DecorDialog.cshtml" />
+    <Content Include="Views\ShoppingCart\_DecorType.cshtml" />
+    <Content Include="Views\Shared\_HorizontalListSelector.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
