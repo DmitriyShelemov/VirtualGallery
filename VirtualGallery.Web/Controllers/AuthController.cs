@@ -66,7 +66,7 @@ namespace VirtualGallery.Web.Controllers
         {
             FormsAuthentication.SignOut();
             WorkContext.Logout();
-            return RedirectToAction(MVC.Auth.Login());
+            return RedirectToAction(MVC.Home.Index());
         }
 
 		private ActionResult RedirectToLocal(string returnUrl)

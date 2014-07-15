@@ -96,7 +96,11 @@ namespace VirtualGallery.Web.Controllers
                 Phone = model.Phone,
                 DeliveryType = model.DeliveryType,
                 Details = model.Details,
-                Lots = pictures.Select(p => new Lot { Picture = p }).ToList()
+                Lots = pictures.Select(p => new Lot
+                {
+                    Picture = p,
+                    Decor = model.Lots.First(l => l.PictureId == p.Id).Decor
+                }).ToList()
             };
 
             _shoppingCartService.Add(order);

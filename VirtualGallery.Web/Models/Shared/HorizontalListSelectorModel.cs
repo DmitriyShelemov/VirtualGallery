@@ -8,7 +8,7 @@ namespace VirtualGallery.Web.Models.Shared
 
         public bool DisableTooltip { get; set; }
 
-		public string Prefix { get; set; }
+        public string Prefix { get; set; }
 
 		public string StylePrefix { get; set; }
 

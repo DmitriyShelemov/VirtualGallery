@@ -1,24 +1,41 @@
-﻿@using System.Linq.Expressions
+﻿@using Links
 @using VirtualGallery.Infrastructure.Localization
-@using VirtualGallery.Web.Extensions
-@using VirtualGallery.Web.Extensions.HtmlHelpers
 @using VirtualGallery.Web.Models
 @using VirtualGallery.Web.Models.ShoppingCart
 @using VirtualGallery.BusinessLogic.Orders
 @model DecorModel
 
-<div id="@MainMenuKey.Decor" class="reveal-modal modal-full-size">
+<div id="@MainMenuKey.Decor" class="reveal-modal modal-screen-size">
     <h2>@Localization.Side_Decor</h2>
     <div>
-        <div class='decor-type' title='@DecorationType.SimpleBox'>
-        </div>
-        <div class='decor-type' title='@DecorationType.Frame'>
-        </div>
-        <div class='decor-type' title='@DecorationType.Lux'>
-        </div>
+        @Html.Partial(MVC.ShoppingCart.Views._DecorType, new DecorTypeModel
+       {
+           Type = DecorationType.SimpleBox,
+           ImageUrl = Content.Img.decorSimpleBox_jpg,
+           TextId = DecorationType.SimpleBox + "Text",
+           Text = Model.SimpleBoxText
+       })
+            @Html.Partial(MVC.ShoppingCart.Views._DecorType, new DecorTypeModel
+       {
+           Type = DecorationType.Frame,
+           ImageUrl = Content.Img.decorFrame_jpg,
+           TextId = DecorationType.Frame + "Text",
+           Text = Model.FrameText
+       })
+            @Html.Partial(MVC.ShoppingCart.Views._DecorType, new DecorTypeModel
+       {
+           Type = DecorationType.Lux,
+           ImageUrl = Content.Img.decorLux_jpg,
+           TextId = DecorationType.Lux + "Text",
+           Text = Model.LuxText
+       })
+        <div class="clearfix"></div>
     </div>
-    <div class="clearfix"></div>
     <div class='buttons-reveal-modal'>
+        @if (ViewBag.AllowEdit)
+        {
+            <a id="saveDecor"><i class="fa fa-bottom fa-save fa-1"></i></a>
+        }
         <a class="close-reveal-modal"><i class='fa fa-times fa-1'></i></a>
     </div>
 </div>
@@ -27,9 +44,21 @@
     $(document).ready(function() {
         var $dialog = $("#@MainMenuKey.Decor");
 
-        $("body").addClass("min");
+        $("#saveDecor", $dialog).click(function () {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                cache: false,
+                url: "@Url.Action(MVC.ShoppingCart.DecorDialog())",
+                        data: {
+                            SimpleBoxText: $("#@(DecorationType.SimpleBox)Text").html(),
+                            FrameText: $("#@(DecorationType.Frame)Text").html(),
+                            LuxText: $("#@(DecorationType.Lux)Text").html()
+                        }
+                    });
+        });
+
         var closeDialog = function () {
-            $("body").removeClass("min");
             window.history.back();
             setTimeout(function () { window.location.reload(); }, 100);
         };

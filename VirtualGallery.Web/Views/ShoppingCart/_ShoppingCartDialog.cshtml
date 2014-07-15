@@ -7,11 +7,6 @@
 @using VirtualGallery.Web.Models.ShoppingCart
 @model OrderModel
 
-@{
-    Expression<Func<OrderModel, int>> pictureIdExp = m => (new LotModel()).PictureId;
-    var pictureIdName = ExpressionHelper.GetExpressionText(pictureIdExp);
-}
-
 <div id="@MainMenuKey.ShoppingCart" class="reveal-modal modal-full-size">
     <h2>@Localization.Nav_ShoppingCart</h2>
     @using (Html.BeginForm(MVC.ShoppingCart.MakeOrder()))
@@ -55,6 +50,8 @@
             <tbody>
                 @foreach (var lot in Model.Lots)
                 {
+                    var lotIndex = Model.Lots.IndexOf(lot);
+                    
                     <tr>
                         <td>
                             <img src='@lot.Picture.ThumbnailUrl'/>
@@ -79,10 +76,14 @@
                             </td>
                         }
                         <td style="width: 170px;">
+                            @if (lotIndex == 0)
+                            {
+                                @Html.Label(Localization.Side_Decor)
+                            }
                             <div class="decor-selector">
                                 @Html.Partial(MVC.Shared.Views._HorizontalListSelector, new HorizontalListSelectorModel
                                 {
-                                    Prefix = "Decor",
+                                    Prefix = "Lots[" + lotIndex + "].Decor",
                                     StylePrefix = "icon-decor-",
                                     ShowText = false,
                                     SelectedValue = lot.Decor.ToString(),
@@ -92,7 +93,7 @@
                         </td>
                         <td style="display:table-cell;">
                             @lot.Picture.Price
-                            <input id="Lots[@(Model.Lots.IndexOf(lot))]_PictureId" name="Lots[@(Model.Lots.IndexOf(lot))].PictureId" type="hidden" value="@lot.PictureId">
+                            <input id="Lots[@lotIndex]_PictureId" name="Lots[@lotIndex].PictureId" type="hidden" value="@lot.PictureId">
                         </td>
                         <td style="display:table-cell;">
                             <a href='#exclude'><i class='fa fa-bottom fa-times fa-1'></i></a>

@@ -961,12 +961,12 @@ main .scrollable > .scroll-bar.vertical > .thumb {
 
 .modal-picture-preview > h2,
 .modal-picture-preview > .picture-desc {
-    text-align: left;
-    white-space: pre;
+    text-align: justify;
+    white-space: pre-line;
 }
 
 .modal-picture-preview > h2 {
-    word-wrap: break-word;
+    text-align: center;
 }
 
 .modal-picture-preview > img {
@@ -1036,7 +1036,7 @@ main .scrollable > .scroll-bar.vertical > .thumb {
     position: absolute;
     display:none;
     text-align: center;
-    white-space: pre;
+    white-space: pre-line;
 }
 
 .picture-item > img {
@@ -1178,19 +1178,14 @@ a#addCategory ~ .category-preview {
     content: ":";
 }
 
-.decor-selector > .btn-radio-group > input + label {
-    padding-left: 14px;
-    padding-right: 14px;
-}
-
 .decor-selector > .btn-radio-group > .btn {
     border-color: rgb(221, 221, 221);
 }
 
 [class^="icon-decor-"],
 [class*=" icon-decor-"] {
-    width: 20px;
-    height: 16px;
+    width: 30px;
+    height: 24px;
     line-height: 20px;
     background-position: top center;
     display: block;
