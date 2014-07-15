@@ -58,7 +58,10 @@ CREATE TABLE [dbo].[Preferences] (
 	[PhotoId]	INT				NULL,
 	[DecorSimpleText]	NVARCHAR (MAX)	NULL,
 	[DecorFrameText]	NVARCHAR (MAX)	NULL,
-	[DecorLuxText]	NVARCHAR (MAX)	NULL
+	[DecorLuxText]	NVARCHAR (MAX)	NULL,
+	[DeliverySummary]	NVARCHAR (MAX)	NULL,
+	[DeliveryExpressSummary]	NVARCHAR (MAX)	NULL,
+	[DeliverySelfTakeSummary]	NVARCHAR (MAX)	NULL
 )
 
 ALTER TABLE [dbo].[Preferences] 

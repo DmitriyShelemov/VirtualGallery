@@ -145,6 +145,24 @@ BEGIN
 END
 GO
 
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE name = N'DeliverySummary' AND object_id = OBJECT_ID(N'[dbo].[Preferences]'))
+BEGIN		
+	ALTER TABLE [dbo].[Preferences] ADD [DeliverySummary] NVARCHAR (MAX)	NULL
+END
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE name = N'DeliveryExpressSummary' AND object_id = OBJECT_ID(N'[dbo].[Preferences]'))
+BEGIN		
+	ALTER TABLE [dbo].[Preferences] ADD [DeliveryExpressSummary] NVARCHAR (MAX)	NULL
+END
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE name = N'DeliverySelfTakeSummary' AND object_id = OBJECT_ID(N'[dbo].[Preferences]'))
+BEGIN		
+	ALTER TABLE [dbo].[Preferences] ADD [DeliverySelfTakeSummary] NVARCHAR (MAX)	NULL
+END
+GO
+
 COMMIT TRANSACTION
 
   

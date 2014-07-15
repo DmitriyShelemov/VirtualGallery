@@ -784,7 +784,7 @@ main > .left-side {
 
 main > .right-side {
     position: absolute;
-    top: -7%;
+    top: -5%;
     left: 54%;
     padding-left: 10px;
     width: 46%;
@@ -1123,6 +1123,11 @@ a#addCategory ~ .category-preview {
     max-width: 200px;
 }
 
+.photo-container.pull-right {
+    float: right;
+    margin-right: 10%;
+}
+
 .photo-container > img {
     width: 100%;
 }
@@ -1269,4 +1274,9 @@ a#addCategory ~ .category-preview {
 
 .modal-full-size > form > #buy {
     float: right;
+}
+
+ul.heading2 {
+    font-size: 24px;
+    margin-top: 6%;
 }

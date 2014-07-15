@@ -6,5 +6,11 @@
         {
             SelectedTab = MainMenuKey.Delivery;
         }
+
+        public string DeliverySummary { get; set; }
+
+        public string DeliveryExpressSummary { get; set; }
+
+        public string DeliverySelfTakeSummary { get; set; }
     }
 }

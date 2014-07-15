@@ -54,6 +54,18 @@ namespace VirtualGallery.Web.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult SetDeliverySummary()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SetDeliverySummary);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult SetDeliveryTypeSummary()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SetDeliveryTypeSummary);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public DeliveryController Actions { get { return MVC.Delivery; } }
@@ -71,15 +83,36 @@ namespace VirtualGallery.Web.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
+            public readonly string SetDeliverySummary = "SetDeliverySummary";
+            public readonly string SetDeliveryTypeSummary = "SetDeliveryTypeSummary";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
+            public const string SetDeliverySummary = "SetDeliverySummary";
+            public const string SetDeliveryTypeSummary = "SetDeliveryTypeSummary";
         }
 
 
+        static readonly ActionParamsClass_SetDeliverySummary s_params_SetDeliverySummary = new ActionParamsClass_SetDeliverySummary();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_SetDeliverySummary SetDeliverySummaryParams { get { return s_params_SetDeliverySummary; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_SetDeliverySummary
+        {
+            public readonly string model = "model";
+        }
+        static readonly ActionParamsClass_SetDeliveryTypeSummary s_params_SetDeliveryTypeSummary = new ActionParamsClass_SetDeliveryTypeSummary();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_SetDeliveryTypeSummary SetDeliveryTypeSummaryParams { get { return s_params_SetDeliveryTypeSummary; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_SetDeliveryTypeSummary
+        {
+            public readonly string deliveryType = "deliveryType";
+            public readonly string model = "model";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -109,6 +142,31 @@ namespace VirtualGallery.Web.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             IndexOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void SetDeliverySummaryOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, VirtualGallery.Web.Models.Home.HtmlModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult SetDeliverySummary(VirtualGallery.Web.Models.Home.HtmlModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SetDeliverySummary);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            SetDeliverySummaryOverride(callInfo, model);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void SetDeliveryTypeSummaryOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, VirtualGallery.BusinessLogic.Orders.DeliveryType deliveryType, VirtualGallery.Web.Models.Home.HtmlModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult SetDeliveryTypeSummary(VirtualGallery.BusinessLogic.Orders.DeliveryType deliveryType, VirtualGallery.Web.Models.Home.HtmlModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.SetDeliveryTypeSummary);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "deliveryType", deliveryType);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            SetDeliveryTypeSummaryOverride(callInfo, deliveryType, model);
             return callInfo;
         }
 

@@ -31,5 +31,11 @@ namespace VirtualGallery.BusinessLogic.Preferences
         public string DecorFrameText { get; set; }
 
         public string DecorLuxText { get; set; }
+
+        public string DeliverySummary { get; set; }
+
+        public string DeliveryExpressSummary { get; set; }
+
+        public string DeliverySelfTakeSummary { get; set; }
     }
 }
