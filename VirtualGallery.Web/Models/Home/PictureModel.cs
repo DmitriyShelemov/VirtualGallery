@@ -7,13 +7,13 @@ namespace VirtualGallery.Web.Models.Home
         public string OriginalUrl { get; set; }
 
         [Required(AllowEmptyStrings = true)]
-        public decimal PriceRouble { get; set; }
+        public int PriceRouble { get; set; }
 
         [Required(AllowEmptyStrings = true)]
-        public decimal PriceEuro { get; set; }
+        public int PriceEuro { get; set; }
 
         [Required(AllowEmptyStrings = true)]
-        public decimal PriceDollar { get; set; }
+        public int PriceDollar { get; set; }
 
         public bool Topic { get; set; }
     }

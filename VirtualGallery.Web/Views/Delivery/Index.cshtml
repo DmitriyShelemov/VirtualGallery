@@ -6,7 +6,7 @@
 }
 
 @section LeftSide{
-    <div class="photo-container pull-right"><img src='@Links.Content.Img.courier_jpg'/></div>
+    <div class="photo-container pull-right" style="width: 45%;"><img src='@Links.Content.Img.courier_jpg'/></div>
     <section id="deliveryCommon">
         @if (ViewBag.AllowEdit)
         {
@@ -91,7 +91,7 @@
                 }
                 else
                 {
-                    @Html.Raw(Model.DeliverySelfTakeSummary)
+                    @Html.Raw(Model.DeliveryExpressSummary)
                 }
             </div>
         </li>

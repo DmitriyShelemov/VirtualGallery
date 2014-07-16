@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using VirtualGallery.BusinessLogic.Categories;
@@ -200,8 +201,11 @@ namespace VirtualGallery.Web.Controllers
                 throw new LocalizedValidationException("Picture not found");
 
             ViewBag.AllowEdit = CurrentUser != null;
-
-            return View(MVC.Home.Views._PicturePreviewDialog, GetPictureModel(picture));
+            var model = GetPictureModel(picture);
+            model.PriceDollar = Convert.ToInt32(picture.PriceDollar);
+            model.PriceEuro = Convert.ToInt32(picture.PriceEuro);
+            model.PriceRouble = Convert.ToInt32(picture.PriceRouble);
+            return View(MVC.Home.Views._PicturePreviewDialog, model);
         }
 
         [GalleryAuthorize]

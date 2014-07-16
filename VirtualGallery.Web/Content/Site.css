@@ -1044,7 +1044,7 @@ main .scrollable > .scroll-bar.vertical > .thumb {
     display: block;
     margin: 0 auto;
     max-width: 112px;
-    max-height: 102px;
+    max-height: 82px;
 }
 
 .picture-item > .picture-name {

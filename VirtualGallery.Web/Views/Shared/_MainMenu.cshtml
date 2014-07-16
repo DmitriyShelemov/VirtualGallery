@@ -8,7 +8,7 @@
     </li>
     <li>
         <a class="menu-tab @(Model == MainMenuKey.Prices ? "active" : string.Empty)" 
-           href="#@MainMenuKey.Prices">@Localization.Nav_Prices</a>
+           href="@(Model != MainMenuKey.Main ? Url.Action(MVC.Home.Index()) : string.Empty)#@MainMenuKey.Prices">@Localization.Nav_Prices</a>
     </li>
     <li>
         <a class="menu-tab @(Model == MainMenuKey.ShoppingCart ? "active" : string.Empty)" 

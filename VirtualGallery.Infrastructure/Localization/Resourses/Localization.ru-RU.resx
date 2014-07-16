@@ -129,6 +129,9 @@
   <data name="Common_Feedback" xml:space="preserve">
     <value>Обратная связь</value>
   </data>
+  <data name="Common_Gallery" xml:space="preserve">
+    <value>ПроАрт. Домашняя Галерея</value>
+  </data>
   <data name="Common_Name" xml:space="preserve">
     <value>Имя</value>
   </data>
@@ -166,7 +169,7 @@
     <value>Как нас Найти?</value>
   </data>
   <data name="Decoration_Type_Frame" xml:space="preserve">
-    <value>В рамке</value>
+    <value>Простая рамка</value>
   </data>
   <data name="Decoration_Type_Lux" xml:space="preserve">
     <value>Люкс</value>
