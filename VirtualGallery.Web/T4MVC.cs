@@ -258,6 +258,10 @@ namespace Links
             public static readonly string koffee_cup_png = Url("koffee-cup.png");
             public static readonly string modal_gloss_png = Url("modal-gloss.png");
             public static readonly string ornament_png = Url("ornament.png");
+            public static readonly string ornamentBottomLeft_png = Url("ornamentBottomLeft.png");
+            public static readonly string ornamentBottomRight_png = Url("ornamentBottomRight.png");
+            public static readonly string ornamentTopLeft_png = Url("ornamentTopLeft.png");
+            public static readonly string ornamentTopRight_png = Url("ornamentTopRight.png");
             public static readonly string scroll_blot_png = Url("scroll-blot.png");
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
             public static class Textures {

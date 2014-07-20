@@ -130,7 +130,7 @@
     <value>Обратная связь</value>
   </data>
   <data name="Common_Gallery" xml:space="preserve">
-    <value>ПроАрт. Домашняя Галерея</value>
+    <value>ПроАрт. Галерея</value>
   </data>
   <data name="Common_Name" xml:space="preserve">
     <value>Имя</value>
@@ -169,13 +169,13 @@
     <value>Как нас Найти?</value>
   </data>
   <data name="Decoration_Type_Frame" xml:space="preserve">
-    <value>Простая рамка</value>
+    <value>Рама, подрамник (дерево, пластик)</value>
   </data>
   <data name="Decoration_Type_Lux" xml:space="preserve">
-    <value>Люкс</value>
+    <value>Багеты</value>
   </data>
   <data name="Decoration_Type_Simple" xml:space="preserve">
-    <value>В упаковке (бесплатно)</value>
+    <value>В упаковке</value>
   </data>
   <data name="Delivery_Type_Express" xml:space="preserve">
     <value>Курьером</value>

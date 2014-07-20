@@ -610,39 +610,31 @@ label {
 
 /*#endregion*/
 
-#essay {
-    font-size: 110%;
-}
-
-
-
-@media screen and (max-width: 1280px){
-    #essay {
-        font-size: 110%;
-    }
+.font-auto {
+    font-size: 100% !important;
 }
 
 @media screen and (max-width: 1180px){
-    #essay {
-        font-size: 95%;
+    .font-auto {
+        font-size: 95% !important;
     }
 }
 
 @media screen and (max-width: 1080px){
-    #essay {
-        font-size: 82%;
+    .font-auto {
+        font-size: 82% !important;
     }
 }
 
 @media screen and (max-width: 980px){
-    #essay {
-        font-size: 76%;
+    .font-auto {
+        font-size: 76% !important;
     }
 }
 
 @media screen and (max-width: 870px){
-    #essay {
-        font-size: 65%;
+    .font-auto {
+        font-size: 65% !important;
     }
 }
 
@@ -1125,7 +1117,10 @@ a#addCategory ~ .category-preview {
 
 .photo-container.pull-right {
     float: right;
-    margin-right: 10%;
+    margin: 4%;
+    margin-top: 0;
+    width: 45%;
+    max-height: inherit;
 }
 
 .photo-container > img {
@@ -1276,7 +1271,45 @@ a#addCategory ~ .category-preview {
     float: right;
 }
 
-ul.heading2 {
+ul.heading2 > li > div:first-child {
     font-size: 24px;
     margin-top: 6%;
+}
+
+.ornament-bordered {
+    position: relative; 
+    padding: 40px;
+}
+
+.ornament-bordered .ornament-top-left,
+.ornament-bordered .ornament-top-right,
+.ornament-bordered .ornament-bottom-left,
+.ornament-bordered .ornament-bottom-right {
+    width: 96px;
+    height: 96px;
+    position: absolute;
+}
+
+.ornament-bordered .ornament-top-left {
+    background-image: url('Img/ornamentTopLeft.png');
+    top: 0;
+    left: 0;
+}
+
+.ornament-bordered .ornament-top-right {
+    background-image: url('Img/ornamentTopRight.png');
+    top: 0;
+    right: 0;
+}
+
+.ornament-bordered .ornament-bottom-left {
+    background-image: url('Img/ornamentBottomLeft.png');
+    bottom: 0;
+    left: 0;
+}
+
+.ornament-bordered .ornament-bottom-right {
+    background-image: url('Img/ornamentBottomRight.png');
+    bottom: 0;
+    right: 0;
 }

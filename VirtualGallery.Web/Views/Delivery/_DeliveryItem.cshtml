@@ -1,0 +1,38 @@
+﻿@model VirtualGallery.Web.Models.Delivery.DeliveryItemModel
+
+<li>
+    <div>@Model.Title</div>
+    <div class="ornament-bordered">
+        <div style="min-height: 60px;" class="font-auto">
+            @if (ViewBag.AllowEdit)
+            {
+                <div id="@(Model.DeliveryType)Summary" contenteditable="true" style="min-height: 60px;">
+                    @Html.Raw(Model.Summary)
+                </div>
+                <a id="save@(Model.DeliveryType)Summary" style="float: right;"><i class="fa fa-bottom fa-save fa-1"></i></a>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $("#save@(Model.DeliveryType)Summary").click(function () {
+                            $.ajax({
+                                type: "POST",
+                                dataType: "json",
+                                cache: false,
+                                url: "@Url.Action(MVC.Delivery.ActionNames.SetDeliveryTypeSummary, MVC.Delivery.Name, new { deliveryType = Model.DeliveryType })",
+                                data: { Text: $("#@(Model.DeliveryType)Summary").html() }
+                            });
+                        });
+                    });
+                </script>
+            }
+            else
+            {
+                @Html.Raw(Model.Summary)
+            }
+        </div>
+        
+        <div class="ornament-top-left"></div>
+        <div class="ornament-top-right"></div>
+        <div class="ornament-bottom-left"></div>
+        <div class="ornament-bottom-right"></div>
+    </div>
+</li>

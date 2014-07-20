@@ -123,8 +123,10 @@ namespace VirtualGallery.Web.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _DeliveryItem = "_DeliveryItem";
                 public readonly string Index = "Index";
             }
+            public readonly string _DeliveryItem = "~/Views/Delivery/_DeliveryItem.cshtml";
             public readonly string Index = "~/Views/Delivery/Index.cshtml";
         }
     }

@@ -1,0 +1,99 @@
+﻿@using VirtualGallery.Web.Extensions
+@using VirtualGallery.BusinessLogic.Orders
+@model VirtualGallery.Web.Models.Delivery.DeliveryPageModel
+@{
+    Layout = MVC.Shared.Views._Layout;
+}
+
+@section LeftSide{
+    <div class="photo-container pull-right" style="width: 45%;"><img src='@Links.Content.Img.courier_jpg'/></div>
+    <section id="deliveryCommon">
+        @if (ViewBag.AllowEdit)
+        {
+            <div id="deliverySummary" contenteditable="true" style="min-height: 200px;">
+                @Html.Raw(Model.DeliverySummary)
+            </div>
+            <a id="saveSummary" style="float: right;"><i class="fa fa-bottom fa-save fa-1"></i></a>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#saveSummary").click(function () {
+                        $.ajax({
+                            type: "POST",
+                            dataType: "json",
+                            cache: false,
+                            url: "@Url.Action(MVC.Delivery.SetDeliverySummary())",
+                            data: { Text: $("#deliverySummary").html() }
+                        });
+                    });
+                });
+            </script>
+        }
+        else
+        {
+            @Html.Raw(Model.DeliverySummary)
+        }
+    </section>
+}
+
+@section RightSide{
+    <ul class="heading2">
+        <li>
+            @DeliveryType.SelfTake.ToLocalizedString()
+            <div style="min-height: 170px;">
+                @if (ViewBag.AllowEdit)
+                {
+                    <div id="deliverySelfTakeSummary" contenteditable="true" style="min-height: 150px;">
+                        @Html.Raw(Model.DeliverySelfTakeSummary)
+                    </div>
+                    <a id="saveSelfTakeSummary" style="float: right;"><i class="fa fa-bottom fa-save fa-1"></i></a>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $("#saveSelfTakeSummary").click(function () {
+                                $.ajax({
+                                    type: "POST",
+                                    dataType: "json",
+                                    cache: false,
+                                    url: "@Url.Action(MVC.Delivery.ActionNames.SetDeliveryTypeSummary, MVC.Delivery.Name, new { deliveryType = DeliveryType.SelfTake })",
+                                    data: { Text: $("#deliverySelfTakeSummary").html() }
+                                });
+                            });
+                        });
+                    </script>
+                }
+                else
+                {
+                    @Html.Raw(Model.DeliverySelfTakeSummary)
+                }
+            </div>
+        </li>
+        <li>
+            @DeliveryType.Express.ToLocalizedString()
+            <div style="min-height: 170px;">
+                @if (ViewBag.AllowEdit)
+                {
+                    <div id="deliveryExpressSummary" contenteditable="true" style="min-height: 150px;">
+                        @Html.Raw(Model.DeliveryExpressSummary)
+                    </div>
+                    <a id="saveExpressSummary" style="float: right;"><i class="fa fa-bottom fa-save fa-1"></i></a>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $("#saveExpressSummary").click(function () {
+                                $.ajax({
+                                    type: "POST",
+                                    dataType: "json",
+                                    cache: false,
+                                    url: "@Url.Action(MVC.Delivery.ActionNames.SetDeliveryTypeSummary, MVC.Delivery.Name, new { deliveryType = DeliveryType.Express })",
+                                    data: { Text: $("#deliveryExpressSummary").html() }
+                                });
+                            });
+                        });
+                    </script>
+                }
+                else
+                {
+                    @Html.Raw(Model.DeliveryExpressSummary)
+                }
+            </div>
+        </li>
+    </ul>
+}

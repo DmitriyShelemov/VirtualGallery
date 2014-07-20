@@ -193,6 +193,7 @@
     <Compile Include="Models\Contact\ContactPageModel.cs" />
     <Compile Include="Models\About\AboutPageModel.cs" />
     <Compile Include="Models\Contact\FeedbackModel.cs" />
+    <Compile Include="Models\Delivery\DeliveryItemModel.cs" />
     <Compile Include="Models\Shared\HorizontalListSelectorModel.cs" />
     <Compile Include="Models\ShoppingCart\DecorTypeModel.cs" />
     <Compile Include="Models\ShoppingCart\DecorModel.cs" />
@@ -233,6 +234,10 @@
     <Content Include="Content\Bootstrap\bootstrap.min.css" />
     <Content Include="Content\FontAwesome\css\font-awesome.css" />
     <Content Include="Content\FontAwesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Img\ornamentBottomLeft.png" />
+    <Content Include="Content\Img\ornamentBottomRight.png" />
+    <Content Include="Content\Img\ornamentTopRight.png" />
+    <Content Include="Content\Img\ornamentTopLeft.png" />
     <Content Include="Content\Img\decorLux.jpg" />
     <Content Include="Content\Img\aside-brush.png" />
     <Content Include="Content\Img\book.jpg" />
@@ -251,6 +256,7 @@
     <Content Include="Content\Img\Textures\stariy-parket.jpg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Img\decorSimpleBox.jpg" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
@@ -368,6 +374,7 @@
     <Content Include="Views\ShoppingCart\_DecorDialog.cshtml" />
     <Content Include="Views\ShoppingCart\_DecorType.cshtml" />
     <Content Include="Views\Shared\_HorizontalListSelector.cshtml" />
+    <Content Include="Views\Delivery\_DeliveryItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
