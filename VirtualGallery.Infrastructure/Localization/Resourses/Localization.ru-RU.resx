@@ -169,7 +169,7 @@
     <value>Как нас Найти?</value>
   </data>
   <data name="Decoration_Type_Frame" xml:space="preserve">
-    <value>Рама, подрамник (дерево, пластик)</value>
+    <value>Рама, подрамник&lt;br /&gt;(дерево, пластик)</value>
   </data>
   <data name="Decoration_Type_Lux" xml:space="preserve">
     <value>Багеты</value>

@@ -9,11 +9,11 @@
     var pictureDesc = ExpressionHelper.GetExpressionText(pictureDescExp);
     Expression<Func<PictureModel, string>> pictureDetailsExp = m => m.Details;
     var pictureDetails = ExpressionHelper.GetExpressionText(pictureDetailsExp);
-    Expression<Func<PictureModel, decimal>> priceRoubleExp = m => m.PriceRouble;
+    Expression<Func<PictureModel, int>> priceRoubleExp = m => m.PriceRouble;
     var priceRouble = ExpressionHelper.GetExpressionText(priceRoubleExp);
-    Expression<Func<PictureModel, decimal>> priceEuroExp = m => m.PriceEuro;
+    Expression<Func<PictureModel, int>> priceEuroExp = m => m.PriceEuro;
     var priceEuro = ExpressionHelper.GetExpressionText(priceEuroExp);
-    Expression<Func<PictureModel, decimal>> priceDollarExp = m => m.PriceDollar;
+    Expression<Func<PictureModel, int>> priceDollarExp = m => m.PriceDollar;
     var priceDollar = ExpressionHelper.GetExpressionText(priceDollarExp);
 }
 <div id="picturePreview" class="reveal-modal modal-picture-preview">

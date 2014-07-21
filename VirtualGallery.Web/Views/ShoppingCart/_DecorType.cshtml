@@ -6,7 +6,7 @@
 <div class='decor-type' title='@Model.Type.ToLocalizedString()'>   
     <img src='@Model.ImageUrl'/> 
     <div style="text-align: center;">
-        <h3>@Model.Type.ToLocalizedString()</h3>
+        <h3>@Html.Raw(Model.Type.ToLocalizedString())</h3>
     </div>
     @if (ViewBag.AllowEdit)
     {

@@ -9,7 +9,7 @@
                 <div id="@(Model.DeliveryType)Summary" contenteditable="true" style="min-height: 60px;">
                     @Html.Raw(Model.Summary)
                 </div>
-                <a id="save@(Model.DeliveryType)Summary" style="float: right;"><i class="fa fa-bottom fa-save fa-1"></i></a>
+                <a id="save@(Model.DeliveryType)Summary" style="float: right; margin-right: 50px;"><i class="fa fa-bottom fa-save fa-1"></i></a>
                 <script type="text/javascript">
                     $(document).ready(function () {
                         $("#save@(Model.DeliveryType)Summary").click(function () {
