@@ -1,9 +1,14 @@
-﻿using Autofac;
+﻿using System.Web.Hosting;
+using System.Web.Routing;
+using Autofac;
 using Autofac.Builder;
 using Autofac.Integration.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using MvcSiteMapProvider.Loader;
+using MvcSiteMapProvider.Web.Mvc;
+using MvcSiteMapProvider.Xml;
 using VirtualGallery.BusinessLogic;
 using VirtualGallery.BusinessLogic.Categories;
 using VirtualGallery.BusinessLogic.Categories.Interfaces;
@@ -28,6 +33,7 @@ using VirtualGallery.DataAccess.Repository.Preferences;
 using VirtualGallery.DataAccess.Repository.StoredFiles;
 using VirtualGallery.DataAccess.UnitOfWork;
 using VirtualGallery.Web.Infrastructure.DataAccess;
+using VirtualGallery.Web.Infrastructure.Dependency.Autofac.Modules;
 using VirtualGallery.Web.Infrastructure.WorkContext;
 
 namespace VirtualGallery.Web.Infrastructure.Dependency
@@ -110,8 +116,14 @@ namespace VirtualGallery.Web.Infrastructure.Dependency
             var builder = new ContainerBuilder();
             RegisterEndpoints(builder);
             RegisterServices(builder);
-            Container = builder.Build();
+            // Register modules
+            builder.RegisterModule(new MvcSiteMapProviderModule()); // Required
+            builder.RegisterModule(new MvcModule()); // Required by MVC. Typically already part of your setup (double check the contents of the module).
 
+            Container = builder.Build();
+            // Setup global sitemap loader (required)
+            MvcSiteMapProvider.SiteMaps.Loader = Container.Resolve<ISiteMapLoader>();
+            //SiteMapLoader
             return Container;
         }
     }

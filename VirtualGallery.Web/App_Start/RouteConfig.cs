@@ -12,11 +12,22 @@ namespace VirtualGallery.Web
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            //routes.MapRoute(
+            //    name: "SiteMap",
+            //    url: "sitemap.xml",
+            //    defaults: new { controller = MVC.CustomXmlSiteMap.Name, action = MVC.CustomXmlSiteMap.ActionNames.Index, page = 0 }
+            //);
+
+            //routes.MapRoute(
+            //    name: "SiteMap-Paged",
+            //    url: "sitemap-{page}.xml",
+            //    defaults: new { controller = MVC.CustomXmlSiteMap.Name, action = MVC.CustomXmlSiteMap.ActionNames.Index, page = 0 }
+            //);
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = MVC.Home.Name, action = MVC.Home.ActionNames.Index, id = UrlParameter.Optional }
             );
         }
     }

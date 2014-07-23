@@ -26,6 +26,9 @@ namespace VirtualGallery.Web
             MvcHandler.DisableMvcResponseHeader = true;
             Database.SetInitializer<VirtualGalleryDbContext>(null);
             CaptchaUtils.ImageGenerator.FontColor = Color.DarkSlateGray;
+            
+            // Register the Sitemaps routes for search engines
+            MvcSiteMapProvider.Web.Mvc.XmlSiteMapController.RegisterRoutes(RouteTable.Routes);
         }
     }
 }

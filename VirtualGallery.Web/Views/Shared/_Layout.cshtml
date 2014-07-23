@@ -6,7 +6,7 @@
 <html class="no-js" lang="en" style="height: 100%;">
 	@Html.Partial(MVC.Shared.Views._LayoutHead)
     <body class="common">
-	    @Html.Partial(MVC.Shared.Views._YaMetrika, AppSettings.YaMetrika)
+        @Html.Partial(MVC.Shared.Views._YaMetrika, AppSettings.YaMetrika)
         <div class="book">
             <img src="@Links.Content.Img.book_jpg" alt="book.jpg"/>
             <img class="koffee-cup" src="@Links.Content.Img.koffee_cup_png" alt="koffee-cup.png"/>
@@ -110,8 +110,8 @@
             </script>
             @RenderSection("scripts", required: false)
         </div>        
-		<div class="dialogs">
-			@RenderSection("Dialogs", required: false)
-		</div>
+        <div class="dialogs">
+            @RenderSection("Dialogs", required: false)
+        </div>
     </body>
 </html>

@@ -23,6 +23,7 @@ namespace VirtualGallery.Web.Controllers
         [AllowAnonymous]
         public virtual ActionResult Login(string returnUrl, string username, int? error)
         {
+            ViewBag.AllowEdit = false;
             var loginModel = new LoginModel
 	            {
 		            ReturnUrl = returnUrl,
@@ -43,6 +44,7 @@ namespace VirtualGallery.Web.Controllers
         [ValidateAntiForgeryToken]
         public virtual ActionResult Login(LoginModel model)
         {
+            ViewBag.AllowEdit = false;
             using (var cryptoProvider = new MD5CryptoServiceProvider())
             {
                 if (ModelState.IsValid
@@ -64,6 +66,7 @@ namespace VirtualGallery.Web.Controllers
         [AllowAnonymous]
         public virtual ActionResult Logout()
         {
+            ViewBag.AllowEdit = false;
             FormsAuthentication.SignOut();
             WorkContext.Logout();
             return RedirectToAction(MVC.Home.Index());

@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using MvcSiteMapProvider;
 using VirtualGallery.BusinessLogic.Pictures;
 using VirtualGallery.BusinessLogic.Preferences.Interfaces;
 using VirtualGallery.BusinessLogic.WorkContext;
@@ -21,6 +22,7 @@ namespace VirtualGallery.Web.Controllers
             _preferenceService = preferenceService;
         }
 
+        [MvcSiteMapNode(Title = NameConst, Key = NameConst, ParentKey = HomeController.NameConst, UpdatePriority = UpdatePriority.Absolute_050)]
         public virtual ActionResult Index()
         {
             ViewBag.AllowEdit = CurrentUser != null;

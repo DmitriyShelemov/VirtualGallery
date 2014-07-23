@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using MvcSiteMapProvider;
 using VirtualGallery.BusinessLogic.Categories;
 using VirtualGallery.BusinessLogic.Categories.Interfaces;
 using VirtualGallery.BusinessLogic.Exceptions;
@@ -36,6 +37,7 @@ namespace VirtualGallery.Web.Controllers
             _preferenceService = preferenceService;
         }
 
+        [MvcSiteMapNode(Title = NameConst, Key = NameConst, UpdatePriority = UpdatePriority.Absolute_100)]
         public virtual ActionResult Index()
         {
             ViewBag.AllowEdit = CurrentUser != null;
@@ -84,6 +86,11 @@ namespace VirtualGallery.Web.Controllers
             return View(MVC.Home.Views._Categories, model);
         }
 
+        [MvcSiteMapNode(Title = ActionNameConstants.Category, 
+            Key = ActionNameConstants.Category, 
+            ParentKey = NameConst,
+            DynamicNodeProvider = "VirtualGallery.Web.Infrastructure.Dependency.GalleryDynamicNodeProvider, VirtualGallery.Web", 
+            UpdatePriority = UpdatePriority.Absolute_050)]
         public virtual ActionResult Category(int categoryId)
         {
             var category = _categoryService.GetById(categoryId);

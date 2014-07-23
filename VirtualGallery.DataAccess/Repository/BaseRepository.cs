@@ -13,8 +13,6 @@ namespace VirtualGallery.DataAccess.Repository
     {
         private readonly DbSet<TEntity> _dbSet;
 
-        private IList<TEntity> _all;
-
         public BaseRepository(IDbContextProvider dbContextProvider)
         {
             DbContextProvider = dbContextProvider;

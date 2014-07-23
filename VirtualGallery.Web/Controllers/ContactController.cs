@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using CaptchaMvc.Attributes;
 using CaptchaMvc.HtmlHelpers;
+using MvcSiteMapProvider;
 using VirtualGallery.BusinessLogic.Configuration;
 using VirtualGallery.BusinessLogic.EMail;
 using VirtualGallery.BusinessLogic.EMail.Interfaces;
@@ -32,6 +33,7 @@ namespace VirtualGallery.Web.Controllers
             _preferenceService = preferenceService;
         }
 
+        [MvcSiteMapNode(Title = NameConst, Key = NameConst, ParentKey = HomeController.NameConst, UpdatePriority = UpdatePriority.Absolute_050)]
         public virtual ActionResult Index()
         {
             ViewBag.AllowEdit = CurrentUser != null;
