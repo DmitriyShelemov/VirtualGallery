@@ -123,6 +123,9 @@
   <data name="Common_Delivery_Type" xml:space="preserve">
     <value>Тип доставки</value>
   </data>
+  <data name="Common_Description" xml:space="preserve">
+    <value>Картинная галерея ProArt. Продажа картин для душевного и недорогого подарка. Яркие краски живых полотен, написанных маслом, глубокие сюжеты и простота подачи не оставят вас равдонушными.</value>
+  </data>
   <data name="Common_Details" xml:space="preserve">
     <value>Пожелания(адрес, удобное время доставки...)</value>
   </data>
@@ -130,7 +133,7 @@
     <value>Обратная связь</value>
   </data>
   <data name="Common_Gallery" xml:space="preserve">
-    <value>ПроАрт. Галерея</value>
+    <value>ПроАрт. Галерея картин</value>
   </data>
   <data name="Common_Name" xml:space="preserve">
     <value>Имя</value>

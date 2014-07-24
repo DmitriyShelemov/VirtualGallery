@@ -242,6 +242,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BingSiteAuth.xml" />
     <Content Include="Content\Bootstrap\bootstrap-theme.css" />
     <Content Include="Content\Bootstrap\bootstrap-theme.min.css" />
     <Content Include="Content\Bootstrap\bootstrap.css" />
@@ -270,7 +271,6 @@
     <Content Include="Content\Img\Textures\stariy-parket.jpg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\Img\decorSimpleBox.jpg" />
-    <Content Include="Infrastructure\Dependency\Autofac\ReadMe.txt" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -309,9 +309,12 @@
     <Content Include="Content\FontAwesome\scss\_spinning.scss" />
     <Content Include="Content\FontAwesome\scss\_stacked.scss" />
     <Content Include="Content\FontAwesome\scss\_variables.scss" />
+    <Content Include="googlef478516a227bf643.html" />
     <Content Include="MVC.sitemap" />
+    <Content Include="yandex_4442167a099057bf.html" />
     <None Include="Properties\PublishProfiles\Test.pubxml" />
     <None Include="Scripts\jquery\jquery-2.1.0.intellisense.js" />
+    <Content Include="robots.txt" />
     <Content Include="Scripts\common\bootstrap.js" />
     <Content Include="Scripts\common\bootstrap.min.js" />
     <Content Include="Scripts\ShoppingCart.js" />

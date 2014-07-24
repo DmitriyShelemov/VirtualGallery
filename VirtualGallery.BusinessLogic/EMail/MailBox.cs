@@ -28,7 +28,6 @@ namespace VirtualGallery.BusinessLogic.EMail
 
         public bool Send(Message message)
         {
-            Logger.Instance.WriteLog("Send " + message.From, LogLevel.Error);
             QueueMessage(message);
             SendQueuedMessages();
             return true;
@@ -36,7 +35,6 @@ namespace VirtualGallery.BusinessLogic.EMail
 
         private void SendQueuedMessages()
         {
-            Logger.Instance.WriteLog("SendQueuedMessages", LogLevel.Error);
             new TaskFactory().StartNew(SendQueuedMessagesTask);
         }
          
@@ -59,7 +57,6 @@ namespace VirtualGallery.BusinessLogic.EMail
 
         private void QueueMessage(Message message)
         {
-            Logger.Instance.WriteLog("QueueMessage " + message.From, LogLevel.Error);
             _messageQueue.Enqueue(message);
         }
 
@@ -67,8 +64,18 @@ namespace VirtualGallery.BusinessLogic.EMail
         {
             try
             {
-                MailMessage mailMessage = CreateMailMessage(message);
-                smtpClient.Send(mailMessage);
+                //MailMessage mailMessage = CreateMailMessage(message);
+                //smtpClient.Send(mailMessage);
+
+                SendMail("smtp.gmail.com",
+                        465,
+                        "dmitryshelemov@gmail.com",
+                        "xw30qxw30q",
+                        "dmitryshelemov@gmail.com",
+                        message.To,
+                        message.Subject,
+                        message.Body,
+                        true);
             }
             catch (Exception ex)
             {
@@ -80,6 +87,42 @@ namespace VirtualGallery.BusinessLogic.EMail
             Logger.Instance.WriteLogFormat(LogLevel.Debug, "Message to {0} sent successfully", message.To);
 
             return true;
+        }
+
+        public static void SendMail(string sHost, int nPort, string sUserName, string sPassword,
+        string sFromEmail, string sToEmail, string sHeader, string sMessage, bool fSSL)
+        {
+            System.Web.Mail.MailMessage Mail = new System.Web.Mail.MailMessage();
+            Mail.Fields["http://schemas.microsoft.com/cdo/configuration/smtpserver"] = sHost;
+            Mail.Fields["http://schemas.microsoft.com/cdo/configuration/sendusing"] = 2;
+
+            Mail.Fields["http://schemas.microsoft.com/cdo/configuration/smtpserverport"] =
+         nPort.ToString();
+            if (fSSL)
+                Mail.Fields["http://schemas.microsoft.com/cdo/configuration/smtpusessl"] = "true";
+
+            if (sUserName.Length == 0)
+            {
+                //Ingen auth
+            }
+            else
+            {
+                Mail.Fields["http://schemas.microsoft.com/cdo/configuration/smtpauthenticate"] = 1;
+                Mail.Fields["http://schemas.microsoft.com/cdo/configuration/sendusername"] =
+         sUserName;
+                Mail.Fields["http://schemas.microsoft.com/cdo/configuration/sendpassword"] =
+         sPassword;
+            }
+
+            Mail.To = sToEmail;
+            Mail.From = sFromEmail;
+            Mail.Subject = sHeader;
+            Mail.Body = sMessage;
+            Logger.Instance.WriteLogFormat(LogLevel.Debug, "Message to {0} sent successfully", sMessage);
+            Mail.BodyFormat = System.Web.Mail.MailFormat.Html;
+
+            System.Web.Mail.SmtpMail.SmtpServer = sHost;
+            System.Web.Mail.SmtpMail.Send(Mail);
         }
 
         private void SendQueuedMessagesTask()

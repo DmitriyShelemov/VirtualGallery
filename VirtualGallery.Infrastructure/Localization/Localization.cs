@@ -131,6 +131,7 @@ namespace VirtualGallery.Infrastructure.Localization
 			public const string Decoration_Type_Frame = "Decoration_Type_Frame";
 			public const string Decoration_Type_Lux = "Decoration_Type_Lux";
 			public const string Decoration_Type_Simple = "Decoration_Type_Simple";
+			public const string Common_Description = "Common_Description";
 		 		    	
 		}
 
@@ -369,6 +370,10 @@ namespace VirtualGallery.Infrastructure.Localization
 		public static string Decoration_Type_Simple
 		{
 			get{ return GetString(Names.Decoration_Type_Simple);}
+		}
+		public static string Common_Description
+		{
+			get{ return GetString(Names.Common_Description);}
 		}
 		 		    	
 	}

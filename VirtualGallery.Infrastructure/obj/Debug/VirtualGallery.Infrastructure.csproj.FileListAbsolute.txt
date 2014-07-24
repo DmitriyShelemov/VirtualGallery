@@ -45,3 +45,4 @@ D:\Dima\VirtualGallery2\VirtualGallery.Infrastructure\obj\Debug\VirtualGallery.I
 D:\Dima\VirtualGallery2\VirtualGallery.Infrastructure\obj\Debug\ru-RU\VirtualGallery.Infrastructure.resources.dll
 D:\Dima\VirtualGallery2\VirtualGallery.Infrastructure\obj\Debug\VirtualGallery.Infrastructure.dll
 D:\Dima\VirtualGallery2\VirtualGallery.Infrastructure\obj\Debug\VirtualGallery.Infrastructure.pdb
+F:\GitHub\Repos\VirtualGallery\VirtualGallery.Infrastructure\obj\Debug\VirtualGallery.Infrastructure.csprojResolveAssemblyReference.cache

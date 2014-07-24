@@ -1,0 +1,12 @@
+User-agent: *
+Disallow: /Auth/Login
+Disallow: /Auth/Logout
+Crawl-delay: 0.5
+
+User-agent: Yandex
+Disallow: /Auth/Login
+Disallow: /Auth/Logout
+Crawl-delay: 0.5
+
+Host: proart.somee.com
+Sitemap: http://proart.somee.com/sitemap.xml
